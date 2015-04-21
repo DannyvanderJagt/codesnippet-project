@@ -1,0 +1,16 @@
+{
+    "name": "dannyvanderjagt/codesnippet-project",
+    "authors": [
+        {
+            "name": "Code Snippet",
+            "email": "no@email.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+	    "vendor-dir": "src/assets/libs"
+	},
+    "require": {
+    	"twig/twig": "1.18.1"
+    }
+}

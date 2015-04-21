@@ -1,0 +1,29 @@
+{
+  "name": "codesnippet-project",
+  "version": "1.0.0",
+  "description": "**This is a school project! Please don't create issues or pull requests!**",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DannyvanderJagt/codesnippet-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DannyvanderJagt/codesnippet-project/issues"
+  },
+  "homepage": "https://github.com/DannyvanderJagt/codesnippet-project",
+  "dependencies": {
+ 
+  },
+  "devDependencies":{
+    "gulp": "^3.8.11",
+    "gulp-minify-css": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^1.3.3",
+    "gulp-uglify": "^1.2.0",
+    "run-sequence": "^1.0.2"
+  }
+}
