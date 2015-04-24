@@ -9,13 +9,13 @@ Twig_Autoloader::register();
 class Controller
 {
 	public $twig;
+	public $loader;
 
 	public function __construct(){
-		$loader = new Twig_Loader_Filesystem('../' . PATHS['templates']);
-		$this->twig = new Twig_Environment($loader, array(
-		    'cache' => '../' . PATHS['cache']
+		$this->loader = new Twig_Loader_Filesystem('../' . PATHS['templates']);
+		$this->twig = new Twig_Environment($this->loader, array(
+		    'cache' => '../../cache' 
 		));
-		echo 'controller construct';
 	}
 
 	public function model($model){

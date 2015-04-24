@@ -3,6 +3,11 @@
 class NotFound extends Controller
 {
 	public function load(){
-		echo 'load 404';
+		$template = $this->twig->loadTemplate('home.html');
+
+		$params = array(
+			'name' => 'Danny'
+		);
+		$template->display($params);
 	}
 }

@@ -11,6 +11,12 @@
 	    "vendor-dir": "src/assets/libs"
 	},
     "require": {
-    	"twig/twig": "1.18.1"
+    	"twig/twig": "1.18.1",
+        "illuminate/database": "~5.0"
+    },
+    "autoload":{
+       "classmap":[
+            "src/models"
+       ]
     }
 }

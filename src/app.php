@@ -1,6 +1,8 @@
 <?php
 
 include('config.php');
+require_once 'assets/libs/autoload.php';
+require_once 'database.php';
 require_once 'controller.php';
 
 class App
