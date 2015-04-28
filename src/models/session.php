@@ -9,24 +9,25 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 require('user.php');
 
-class Session extends Eloquent
+class Session
 {
-	// Database.
-	// protected $table = 'user';
-	// public $timestamps = [];
-	// protected $fillable = ['Username', 'email'];
 	private $sessionExpireDate = 1 * 60 * 60; // 1 Day.
-	private $key;
-	private $time;
+	private $key; // Store a unique key connected to 1 user.
+	private $time; // The last time on login.
 	private $loggedin = false;
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct(){
-		parent::__construct();
 		$this->user = new User();
 	}
 
+	/**
+	 * Load the session.
+	 * @return [type] [description]
+	 */
 	public function load(){
-		// print_r($_COOKIE);
 		$set = 0;
 		if(isset($_COOKIE['time'])){
 			$set++;
@@ -51,7 +52,6 @@ class Session extends Eloquent
 		$this->key = $_COOKIE['key'];
 		$this->time = $_COOKIE['time'];
 
-		// echo $this->key;
 		// Try to find the key in the database.
 		$this->user = new User();
 		$count = $this->user->where('Session_key','=',$this->key)->count();
@@ -63,23 +63,41 @@ class Session extends Eloquent
 
 		// The user is now loggedin.
 		$this->loggedin = true;
+		setcookie("key", $key, time() + $this->sessionExpireDate,'/');
 	}
 
+	/**
+	 * Check if a user is loggedin.
+	 * @return boolean [description]
+	 */
 	public function isLoggedin(){
 		return $this->loggedin;
 	}
 
+	/**
+	 * Generate a unique key.
+	 * @return [type] [description]
+	 */
 	private function generateKey(){
 		return md5(microtime().rand());
 	}
 
+	/**
+	 * Get the unique key.
+	 * @return [type] [description]
+	 */
 	public function getKey(){
 		return $this->key;
 	}
 
+	/**
+	 * Login in.
+	 * @param  [String] $username [The username]
+	 * @param  [String] $password [The password md5!]
+	 * @return [type]           [description]
+	 */
 	public function login($username, $password){
 		// Check for username and password.
-		// 
 		$count = $this->user->where(['Username' => $username, 'Password' => $password])->count();
 
 		// Check the count.
@@ -98,19 +116,21 @@ class Session extends Eloquent
 		$this->user->where('Username',$username)->update(['Session_key' => $key]);
 		
 		// Redirect to the home page.
-		header("Location: http://localhost/home");
+		redirectToPage('home');
 		exit();
 	}
 
+	/**
+	 * Signout
+	 * @return [type] [description]
+	 */
 	public function signout(){
-		echo 'signout';
 		unset($_COOKIE['time']);
 		unset($_COOKIE['key']);
 		setcookie('time', '', time(),'/');
 		setcookie('key', '', time(),'/');
 		
-		header("Location: http://localhost/signin");
-		exit();
+		redirectToPage('signin');
 	}
 
 }

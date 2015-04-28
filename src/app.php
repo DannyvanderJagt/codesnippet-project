@@ -4,10 +4,10 @@
 
 // Load these before we do anything.
 include('config.php');
+include('pageHandler.php');
 require_once 'assets/libs/autoload.php';
 require_once 'database.php';
 require_once 'controller.php';
-
 include('models/session.php');
 
 // The App.
@@ -35,14 +35,12 @@ class App
 		// Check the login required setting of the page.
 		if($this->requestedPage['login'] == 1 && !$Session->isLoggedin()){
 			// Redirect to the signin page.
-			header("Location: signin");
-			exit();
+			redirectToPage('signin');
 		}
 
 		if($this->requestedPage['login'] == 2 && $Session->isLoggedin()){
 			// Redirect to the home page.
-			header("Location: home");
-			exit();
+			redirectToPage('home');
 		}
 
 		// Catch the 404 page.
@@ -82,7 +80,6 @@ class App
 	 * @return [type] [description]
 	 */
 	private function redirect404(){
-		echo "Load 404!";
 		// Load the 404 controller.
 		require_once '../' . PATHS['controllers'] . '/404.php';
 		$this->controller = 'NotFound';

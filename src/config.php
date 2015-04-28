@@ -1,5 +1,7 @@
 <?php
 
+const DOMAIN = 'http://localhost';
+
 const PATHS = array(
 	'libs' => 'assets/libs',
 	'controllers' => 'controllers',
