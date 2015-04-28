@@ -1,10 +1,14 @@
 <?php
+// Start the sessions.
+session_start();
 
+// Load these before we do anything.
 include('config.php');
 require_once 'assets/libs/autoload.php';
 require_once 'database.php';
 require_once 'controller.php';
 
+// The App.
 class App
 {
 	private $homePage = 'home';
@@ -14,12 +18,36 @@ class App
 
 	// Process the requested url.
 	public function __construct(){
+		// Get the loggedin user.
+		$user = [
+			'state'=> 0 // 0 = logged out, 1 = logged in.
+		];
+
 		$this->params = $this->parseUrl();
 
 		if(in_array($this->params[0], array_keys(PAGES))){
 			$this->requestedPage = PAGES[$this->params[0]];
 		}else{
 			$this->requestedPage = PAGES[$this->notFoundPage];
+		}
+
+		// Check the login required setting of the page.
+		if($user['state'] != $this->requestedPage['login'] && $this->requestedPage['login'] == 1){
+			// Redirect to the signin page.
+			header("Location: signin");
+			exit();
+		}
+
+		if($user['state'] != $this->requestedPage['login'] && $this->requestedPage['login'] == 2){
+			// Redirect to the home page.
+			header("Location: home");
+			exit();
+		}
+
+		// Catch the 404 page.
+		if($this->requestedPage['controller'] == '404'){
+			$this->redirect404();
+			return false;
 		}
 
 		// Check if the controller exists.
@@ -33,7 +61,7 @@ class App
 			$this->redirect404();
 			return false;
 		}
-	
+
 		// Unset.
 		unset($this->params[0]);
 		
@@ -53,6 +81,7 @@ class App
 	 * @return [type] [description]
 	 */
 	private function redirect404(){
+		echo "Load 404!";
 		// Load the 404 controller.
 		require_once '../' . PATHS['controllers'] . '/404.php';
 		$this->controller = 'NotFound';

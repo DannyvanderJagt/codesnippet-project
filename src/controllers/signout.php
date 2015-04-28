@@ -1,8 +1,8 @@
 <?php
 
-class Signin extends Controller
+class Signout extends Controller
 {
-	private $templates = PAGES['signin']['templates'];
+	private $templates = PAGES['signout']['templates'];
 
 	public function load($params = []){
 		print_r($params);

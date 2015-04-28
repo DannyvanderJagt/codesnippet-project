@@ -1,9 +1,9 @@
 <?php
 
-class Home extends Controller
+class Search extends Controller
 {
 	public function load($params = []){
-		echo 'Load home';
+		echo 'Load Search';
 		print_r($params);
 	}
 }

@@ -1,9 +1,9 @@
 <?php
 
-class Home extends Controller
+class Upload extends Controller
 {
 	public function load($params = []){
-		echo 'Load home';
+		echo 'Load Upload';
 		print_r($params);
 	}
 }

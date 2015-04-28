@@ -4,7 +4,7 @@ require_once '../' . PATHS['libs'] . '/twig/twig/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
 
 /**
- * To use a constructor in a controller extended class use: parent::construct();
+ * To use a constructor in a controller extended class use: parent::__construct();
  */
 class Controller
 {
@@ -14,7 +14,7 @@ class Controller
 	public function __construct(){
 		$this->loader = new Twig_Loader_Filesystem('../' . PATHS['templates']);
 		$this->twig = new Twig_Environment($this->loader, array(
-		    'cache' => '../../cache' 
+		    // 'cache' => '../cache' 
 		));
 	}
 

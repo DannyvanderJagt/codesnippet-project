@@ -1,9 +1,9 @@
 <?php
 
-class Home extends Controller
+class Policy extends Controller
 {
 	public function load($params = []){
-		echo 'Load home';
+		echo 'Load Policy';
 		print_r($params);
 	}
 }

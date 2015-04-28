@@ -6,9 +6,9 @@ class User extends Eloquent
 {
 	public $name;
 
-	protected $table = 'users';
+	protected $table = 'user';
 
 	public $timestamps = [];
 
-	protected $fillable = ['username', 'email'];	
+	protected $fillable = ['Username', 'email'];
 }
