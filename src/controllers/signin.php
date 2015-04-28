@@ -10,6 +10,6 @@ class Signin extends Controller
 		$template = $this->twig->loadTemplate($this->templates[0].'.html');
 		$template->display([]);
 
-		$Session->login();
+		$Session->login($params[0], $params[1]);
 	}
 }

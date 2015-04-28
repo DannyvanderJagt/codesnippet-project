@@ -20,8 +20,13 @@ class Session extends Eloquent
 	private $time;
 	private $loggedin = false;
 
+	public function __construct(){
+		parent::__construct();
+		$this->user = new User();
+	}
+
 	public function load(){
-		print_r($_COOKIE);
+		// print_r($_COOKIE);
 		$set = 0;
 		if(isset($_COOKIE['time'])){
 			$set++;
@@ -46,15 +51,18 @@ class Session extends Eloquent
 		$this->key = $_COOKIE['key'];
 		$this->time = $_COOKIE['time'];
 
+		// echo $this->key;
 		// Try to find the key in the database.
 		$this->user = new User();
-		$result = $this->user->where('Session_key','=','a0c563ad25a742ff40973fbbf1d94b8a')->count();
+		$count = $this->user->where('Session_key','=',$this->key)->count();
 
-		// TODO: Check for count.
-		
-		
+		// Check for count.
+		if($count != 1){
+			return false;
+		}
+
+		// The user is now loggedin.
 		$this->loggedin = true;
-		var_dump($this->loggedin);
 	}
 
 	public function isLoggedin(){
@@ -69,22 +77,44 @@ class Session extends Eloquent
 		return $this->key;
 	}
 
-	public function login(){
-		$username = 'Danny';
-		$password = 'Welkom01';
+	public function login($username, $password){
+		// Check for username and password.
+		// 
+		$count = $this->user->where(['Username' => $username, 'Password' => $password])->count();
+
+		// Check the count.
+		if($count != 1){
+			return false;
+		}
+
+		// Set key.
 		$key = $this->generateKey();
 
+		// Set the cookie.
 		setcookie("time", time(), time() + $this->sessionExpireDate,'/');
 		setcookie("key", $key, time() + $this->sessionExpireDate,'/');
 
-		$this->user = new User();
+		// Store the key in the database.
 		$this->user->where('Username',$username)->update(['Session_key' => $key]);
-		echo $key;
 		
-		header("Location: home");
+		// Redirect to the home page.
+		header("Location: http://localhost/home");
+		exit();
+	}
+
+	public function signout(){
+		echo 'signout';
+		unset($_COOKIE['time']);
+		unset($_COOKIE['key']);
+		setcookie('time', '', time(),'/');
+		setcookie('key', '', time(),'/');
+		
+		header("Location: http://localhost/signin");
+		exit();
 	}
 
 }
 
+// Create a new session.
 $Session = new Session();
 $Session->load();

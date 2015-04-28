@@ -14,11 +14,11 @@ class NotFound extends Controller
 		// $user = $this->user->find(1);
 		// print_r($user->First_name);
 		// $template = $this->twig->loadTemplate($this->templates[0].'.html');
-		$this->user = new User();
-		$this->user->find(4)->update(['Session_key', '9879']);
+		// $this->user = new User();
+		// $this->user->find(4)->update(['Session_key', '9879']);
 		// $this->user->push();
-		print_r($this->user->find(4));
-
+		// print_r($this->user->find(4));
+		print_r($_COOKIE);
 		// global $Session;
 		// var_dump($Session->isLoggedin());
 
