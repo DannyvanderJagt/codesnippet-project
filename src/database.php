@@ -9,6 +9,7 @@ $capsule->addConnection([
 	// 'host' => 'localhost',
 	// 'username' => 'root',
 	// 'password' => '',
+	// 'database' => 'website',
 	'host' => '94.213.72.122',
 	'username' => 'root',
 	'password' => 'Welkom2015',

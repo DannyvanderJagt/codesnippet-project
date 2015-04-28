@@ -1,12 +1,14 @@
 <?php
 // Start the sessions.
-session_start();
+// session_start();
 
 // Load these before we do anything.
 include('config.php');
 require_once 'assets/libs/autoload.php';
 require_once 'database.php';
 require_once 'controller.php';
+
+include('models/session.php');
 
 // The App.
 class App
@@ -19,10 +21,9 @@ class App
 	// Process the requested url.
 	public function __construct(){
 		// Get the loggedin user.
-		$user = [
-			'state'=> 0 // 0 = logged out, 1 = logged in.
-		];
+		global $Session;
 
+		// Convert the url to an array.
 		$this->params = $this->parseUrl();
 
 		if(in_array($this->params[0], array_keys(PAGES))){
@@ -32,13 +33,13 @@ class App
 		}
 
 		// Check the login required setting of the page.
-		if($user['state'] != $this->requestedPage['login'] && $this->requestedPage['login'] == 1){
+		if($this->requestedPage['login'] == 1 && !$Session->isLoggedin()){
 			// Redirect to the signin page.
 			header("Location: signin");
 			exit();
 		}
 
-		if($user['state'] != $this->requestedPage['login'] && $this->requestedPage['login'] == 2){
+		if($this->requestedPage['login'] == 2 && $Session->isLoggedin()){
 			// Redirect to the home page.
 			header("Location: home");
 			exit();

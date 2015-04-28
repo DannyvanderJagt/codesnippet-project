@@ -14,7 +14,7 @@ class Controller
 	public function __construct(){
 		$this->loader = new Twig_Loader_Filesystem('../' . PATHS['templates']);
 		$this->twig = new Twig_Environment($this->loader, array(
-		    // 'cache' => '../cache' 
+		    'cache' => '../cache' 
 		));
 	}
 
