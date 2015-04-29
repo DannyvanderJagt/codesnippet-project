@@ -44,7 +44,7 @@ class Register extends Controller
 				{
 					$this->data['error.email'] = "E-mail not filled in.";
 				}
-					if(isset($_POST['birthday'] && isset($_POST['birthmonth'] && isset($_POST['birthyear'])){
+					if(isset($_POST['birthday']) && isset($_POST['birthmonth']) && isset($_POST['birthyear'])){
 						$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
 					}
 					else
