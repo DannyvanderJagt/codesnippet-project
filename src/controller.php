@@ -11,15 +11,26 @@ class Controller
 	public $twig;
 	public $loader;
 
+	protected $data = [];
+
 	public function __construct(){
 		$this->loader = new Twig_Loader_Filesystem('../' . PATHS['templates']);
 		$this->twig = new Twig_Environment($this->loader, array(
-		    'cache' => '../cache' 
+		    // 'cache' => '../cache' 
 		));
 	}
 
 	public function model($model){
 		require_once '../' . PATHS['models'] . '/' . $model . '.php';
 		return new $model();
+	}
+
+	public function display($template = '', $templateData = []){
+		$loaded = $this->twig->loadTemplate($template);
+		$data = [
+			'template' => $templateData,
+			// 'user' => $Session.getData()
+		];
+		$loaded->display($data);
 	}
 }

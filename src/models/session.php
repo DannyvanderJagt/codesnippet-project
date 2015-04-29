@@ -16,6 +16,9 @@ class Session
 	private $time; // The last time on login.
 	private $loggedin = false;
 
+	// User.
+	private $user;
+
 	/**
 	 * Constructor.
 	 */
@@ -38,14 +41,12 @@ class Session
 		
 		if($set != 2){
 			// No valid login session data.
-			echo 'unvalid data!';
 			$this->loggedin = false;
 			return false;
 		}
 
 		// Check time.
 		if($_COOKIE['time'] < time() - $this->sessionExpireDate){
-			echo 'Time expired!';
 			return false;
 		}
 
@@ -62,8 +63,14 @@ class Session
 		}
 
 		// The user is now loggedin.
+		$this->user = new User();
+		$this->user->where('Session_key','=',$this->key);
+
+		print_r($this->user);
+
+
 		$this->loggedin = true;
-		setcookie("key", $key, time() + $this->sessionExpireDate,'/');
+		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
 	}
 
 	/**
