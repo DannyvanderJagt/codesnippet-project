@@ -2,8 +2,9 @@
 
 class About extends Controller
 {
+	private $templates = PAGES['about']['templates'];
+
 	public function load($params = []){
-		echo 'Load About';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

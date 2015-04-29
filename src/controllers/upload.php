@@ -2,8 +2,9 @@
 
 class Upload extends Controller
 {
+	private $templates = PAGES['upload']['templates'];
+
 	public function load($params = []){
-		echo 'Load Upload';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

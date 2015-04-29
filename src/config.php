@@ -1,7 +1,5 @@
 <?php
 
-const DOMAIN = 'http://localhost';
-
 const PATHS = array(
 	'libs' => 'assets/libs',
 	'controllers' => 'controllers',
@@ -91,7 +89,7 @@ const PAGES = [
 		'login' => 0
 	],
 	'snippet' => [
-		'controller' => 'snippet',
+		'controller' => 'snippets',
 		'templates' => ['snippet'],
 		'login' => 0
 	]

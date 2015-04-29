@@ -23,7 +23,7 @@ class Session
 	 * Constructor.
 	 */
 	public function __construct(){
-		$this->user = new User();
+		
 	}
 
 	/**
@@ -55,19 +55,15 @@ class Session
 
 		// Try to find the key in the database.
 		$this->user = new User();
-		$count = $this->user->where('Session_key','=',$this->key)->count();
+		$users = $this->user->where('Session_key','=',$this->key);
 
 		// Check for count.
-		if($count != 1){
+		if($users->count() != 1){
 			return false;
 		}
 
 		// The user is now loggedin.
-		$this->user = new User();
-		$this->user->where('Session_key','=',$this->key);
-
-		print_r($this->user);
-
+		$this->user = User::find($users->get()[0]->ID);
 
 		$this->loggedin = true;
 		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
@@ -120,7 +116,7 @@ class Session
 		setcookie("key", $key, time() + $this->sessionExpireDate,'/');
 
 		// Store the key in the database.
-		$this->user->where('Username',$username)->update(['Session_key' => $key]);
+		$this->user->where('Username', $username)->update(['Session_key' => $key]);
 		
 		// Redirect to the home page.
 		redirectToPage('home');
@@ -138,6 +134,10 @@ class Session
 		setcookie('key', '', time(),'/');
 		
 		redirectToPage('signin');
+	}
+
+	public function getUser(){
+		return $this->user;
 	}
 
 }

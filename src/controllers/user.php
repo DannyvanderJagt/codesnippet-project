@@ -2,8 +2,9 @@
 
 class User extends Controller
 {
+	private $templates = PAGES['user']['templates'];
+
 	public function load($params = []){
-		echo 'Load User';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

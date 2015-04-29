@@ -2,8 +2,9 @@
 
 class Home extends Controller
 {
+	private $templates = PAGES['home']['templates'];
+
 	public function load($params = []){
-		echo 'Load home';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

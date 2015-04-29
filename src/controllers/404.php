@@ -6,10 +6,10 @@ class NotFound extends Controller
 
 	public function __construct(){
 		parent::__construct();
-		$this->user = $this->model('user');
 	}
 
 	public function load($params = []){
 		print_r($_COOKIE);
+		$this->display($this->templates[0]);
 	}
 }

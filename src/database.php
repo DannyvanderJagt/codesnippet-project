@@ -10,7 +10,7 @@ $capsule->addConnection([
 	// 'username' => 'root',
 	// 'password' => '',
 	// 'database' => 'website',
-	'host' => '94.213.72.122',
+	'host' => $_SERVER['SERVER_NAME'] == 'localhost' ? '94.213.72.122' : 'localhost',
 	'username' => 'root',
 	'password' => 'Welkom2015',
 	'database' => 'codesnippet',

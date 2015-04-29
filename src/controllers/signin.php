@@ -6,9 +6,6 @@ class Signin extends Controller
 
 	public function load($params = []){
 		global $Session;
-		// print_r($params);
-		// $template = $this->twig->loadTemplate($this->templates[0].'.html');
-		// $this->loadTemplate($this->templates[0].'.html');
 
 		if(isset($_POST['submit'])){
 			
@@ -24,6 +21,6 @@ class Signin extends Controller
 			$this->data['password'] = $_POST['password'];
 		}
 
-		$this->display($this->templates[0].'.html', $this->data);
+		$this->display($this->templates[0], $this->data);
 	}
 }

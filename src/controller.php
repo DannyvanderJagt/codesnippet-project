@@ -26,10 +26,13 @@ class Controller
 	}
 
 	public function display($template = '', $templateData = []){
-		$loaded = $this->twig->loadTemplate($template);
+		global $Session;
+		$loaded = $this->twig->loadTemplate('basic.template.html');
+
 		$data = [
-			'template' => $templateData,
-			// 'user' => $Session.getData()
+			'template' => $template .'.html',
+			'data' => $templateData,
+			'Session' => $Session->getUser()
 		];
 		$loaded->display($data);
 	}

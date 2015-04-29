@@ -2,8 +2,9 @@
 
 class Policy extends Controller
 {
+	private $templates = PAGES['policy']['templates'];
+
 	public function load($params = []){
-		echo 'Load Policy';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

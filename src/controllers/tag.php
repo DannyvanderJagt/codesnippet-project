@@ -2,8 +2,9 @@
 
 class Tag extends Controller
 {
+	private $templates = PAGES['tag']['templates'];
+
 	public function load($params = []){
-		echo 'Load Tag';
-		print_r($params);
+		$this->display($this->templates[0]);
 	}
 }

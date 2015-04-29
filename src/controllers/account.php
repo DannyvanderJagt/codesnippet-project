@@ -1,8 +1,8 @@
 <?php
 
-class Contact extends Controller
+class Account extends Controller
 {
-	private $templates = PAGES['contact']['templates'];
+	private $templates = PAGES['account']['templates'];
 
 	public function load($params = []){
 		$this->display($this->templates[0]);
