@@ -10,6 +10,7 @@ class Signin extends Controller
 		if(isset($_POST['submit'])){
 			
 			if(isset($_POST['username']) && $_POST['password']){
+				$_POST['password'] = md5($_POST['password']);
 				$result = $Session->login($_POST['username'], $_POST['password']);
 				if($result == false){
 					$this->data['error'] = 'Your username and/or password is incorrect!';
