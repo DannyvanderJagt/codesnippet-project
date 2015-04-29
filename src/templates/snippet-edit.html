@@ -1,1 +1,12 @@
 snippet edit
+
+{{ data.message }}
+
+<form action="" method='post'>
+	
+	Title: <input type="text" name='title' value='{{ data.snippet.Title }}'> <br>
+	Code: <input type="text" name='code' value='{{ data.snippet.Code }}'  id=""> <br>
+	Description: <input type="text" name='description' value='{{ data.snippet.Description }}' id=""> <br>
+
+	<input type="submit" name='submit' value="submit">
+</form>

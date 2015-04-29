@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Snippet extends Eloquent
 {
+	protected $primaryKey = "ID";
 	protected $table = 'snippet';
 	public $timestamps = [];
 	protected $fillable = ['ID', 

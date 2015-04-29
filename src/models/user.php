@@ -20,4 +20,8 @@ class User extends Eloquent
 	'Profile_picture', 
 	'Votes', 
 	'Session_key'];
+
+	public function __construct(){
+		parent::__construct();
+	}
 }

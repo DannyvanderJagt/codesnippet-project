@@ -62,8 +62,8 @@ class Session
 		}
 
 		// The user is now loggedin.
-		$this->loggedInUser = User::find($users->get()[0]->ID);
-
+		$this->loggedInUser = User::find($users->get()->first()->ID);
+	
 		$this->loggedin = true;
 		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
 	}

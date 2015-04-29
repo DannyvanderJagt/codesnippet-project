@@ -5,7 +5,7 @@ class Snippets extends Controller
 	private $templates = PAGES['snippet']['templates'];
 
 	public function load($params = []){
-		$this->user = $this->model('snippet');
+		$this->user = $this->model('user');
 		$this->comment = $this->model('comment');
 		$this->snippet = $this->model('snippet');
 
@@ -26,24 +26,37 @@ class Snippets extends Controller
 
 	// Create.
 	private function create(){
-		$this->snippet = new $this->snippet();
-		$this->snippet->create([
-			'ID' => 'NULL',
-			'Title' => 'Test',
-			'Code' => 'testCode',
-			'Description' => 'Description test',
-			'Lang' => 2,
-			'User_ID' => 2,
-			'Framework' => 0,
-			'Date' => date('Y-m-d'),
-			'Views' => 0
-		]);
+
+		if(isset($_POST['submit'])){
+			$this->snippet = new $this->snippet();
+			$this->snippet->create([
+				'ID' => 'NULL',
+				'Title' => 'Test',
+				'Code' => 'testCode',
+				'Description' => 'Description test',
+				'Lang' => 2,
+				'User_ID' => 2,
+				'Framework' => 0,
+				'Date' => date('Y-m-d'),
+				'Views' => 0
+			]);
+		}
 
 		$this->display($this->templates['create'], $this->data);
 	}
 	
 	// Edit. (Check for owner)
 	private function edit($id){
+		print_r($_POST);
+		if(isset($_POST['submit'])){
+			$snippet = Snippet::find($id);
+			$snippet->update([
+				'Title' => $_POST['title'],
+				'Code' => $_POST['code'],
+				'Description' => $_POST['description']
+			]);
+			$this->data['message'] = 'The snippet is updated!';
+		}
 		$snippet = Snippet::find($id);
 
 		if($snippet){
@@ -54,7 +67,8 @@ class Snippets extends Controller
 		}else{
 			$this->data['error'] = 'The snippet doesn\'t exists!';
 		}
-		$this->display($this->templates['default'], $this->data);
+
+		$this->display($this->templates['edit'], $this->data);
 	}
 
 	// Show.
@@ -74,13 +88,22 @@ class Snippets extends Controller
 
 	// Delete. (Check for owner)
 	private function delete($id){
+		global $Session;
 		$snippet = Snippet::find($id);
+
 		if($snippet){
-			echo 'delete'.$id;
-			$snippet->delete();
-			// Get all the comments.
-			// $this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
+			// Check for user permission.
+			if($snippet->User_ID == $Session->getUser()->ID){
+				// Not the owner.
+				$snippet->delete();
+				$this->data['deleted'] = true;
+			}else{
+				$this->data['error'] = 'Your are not the owner of this snippet!';
+			}
+		}else{
+			$this->data['error'] = 'The snippet doesn\'t exists!';
 		}
+
 		$this->display($this->templates['delete'], $this->data);
 	}
 }
