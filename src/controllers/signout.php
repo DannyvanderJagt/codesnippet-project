@@ -7,8 +7,7 @@ class Signout extends Controller
 	public function load($params = []){
 		global $Session;
 
-		$template = $this->twig->loadTemplate($this->templates[0].'.html');
-		$template->display([]);
+		$this->display($this->templates['default']);
 
 		$Session->signout();
 	}

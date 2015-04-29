@@ -21,6 +21,6 @@ class Signin extends Controller
 			$this->data['password'] = $_POST['password'];
 		}
 
-		$this->display($this->templates[0], $this->data);
+		$this->display($this->templates['default'], $this->data);
 	}
 }

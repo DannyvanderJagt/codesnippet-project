@@ -9,7 +9,6 @@ class NotFound extends Controller
 	}
 
 	public function load($params = []){
-		print_r($_COOKIE);
-		$this->display($this->templates[0]);
+		$this->display($this->templates['default']);
 	}
 }

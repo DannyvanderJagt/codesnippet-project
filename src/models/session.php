@@ -17,13 +17,13 @@ class Session
 	private $loggedin = false;
 
 	// User.
-	private $user;
+	private $loggedInUser;
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct(){
-		
+		$this->user = new User();
 	}
 
 	/**
@@ -54,7 +54,6 @@ class Session
 		$this->time = $_COOKIE['time'];
 
 		// Try to find the key in the database.
-		$this->user = new User();
 		$users = $this->user->where('Session_key','=',$this->key);
 
 		// Check for count.
@@ -63,7 +62,7 @@ class Session
 		}
 
 		// The user is now loggedin.
-		$this->user = User::find($users->get()[0]->ID);
+		$this->loggedInUser = User::find($users->get()[0]->ID);
 
 		$this->loggedin = true;
 		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
@@ -137,7 +136,7 @@ class Session
 	}
 
 	public function getUser(){
-		return $this->user;
+		return $this->loggedInUser;
 	}
 
 }

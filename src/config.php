@@ -25,72 +25,89 @@ const MODELS = [
 const PAGES = [
 	'404' => [ // The notfound page.
 		'controller' => '404',
-		'templates' => ['404'],
+		'templates' => [
+			'default' =>'404'],
 		'login' => 0
 	],
 	'home' => [ // The home controller can't receive any parameters.
 		'controller' => 'home',
-		'templates' => ['home'],
+		'templates' => [
+			'default' =>'home'],
 		'login' => 0
 	],
 	'signin' => [
 		'controller' => 'signin',
-		'templates' => ['signin'],
+		'templates' => [
+			'default' =>'signin'],
 		'login' => 2
 	], 
 	'signout' => [
 		'controller' => 'signout',
-		'templates' => ['signout'],
+		'templates' => [
+			'default' =>'signout'],
 		'login' => 1
 	],
 	'register' => [
 		'controller' => 'register',
-		'templates' => ['register'],
+		'templates' => [
+			'default' =>'register'],
 		'login' => 2
 	],
 	'about' => [
 		'controller' => 'about',
-		'templates' => ['about'],
+		'templates' => [
+			'default' =>'about'],
 		'login' => 0
 	],
 	'contact' => [
 		'controller' => 'contact',
-		'templates' => ['contact'],
+		'templates' => [
+			'default' =>'contact'],
 		'login' => 0
 	],
 	'policy' => [
 		'controller' => 'policy',
-		'templates' => ['policy'],
+		'templates' => [
+			'default' =>'policy'],
 		'login' => 0
 	],
 	'upload' => [
 		'controller' => 'upload',
-		'templates' => ['upload'],
+		'templates' => [
+			'default' =>'upload'],
 		'login' => 1
 	],
 	'account' => [
 		'controller' => 'account',
-		'templates' => ['account'],
+		'templates' => [
+			'default' =>'account'],
 		'login' => 1
 	],
 	'user' => [
 		'controller' => 'user',
-		'templates' => ['user'],
+		'templates' => [
+			'default' =>'user'],
 		'login' => 0
 	],
 	'tag' => [
 		'controller' => 'tag',
-		'templates' => ['tag'],
+		'templates' => [
+			'default' =>'tag'],
 		'login' => 0
 	],
 	'search' => [
 		'controller' => 'search',
-		'templates' => ['search'],
+		'templates' => [
+			'default' =>'search'],
 		'login' => 0
 	],
 	'snippet' => [
 		'controller' => 'snippets',
-		'templates' => ['snippet'],
+		'templates' => [
+			'default'=>'snippet', 
+			'edit' => 'snippet-edit',
+			'delete' => 'snippet-delete',
+			'create' => 'snippet-create'],
 		'login' => 0
 	]
 ];
