@@ -10,9 +10,9 @@ class Signin extends Controller
 		if(isset($_POST['submit'])){
 			
 			if(isset($_POST['username']) && $_POST['password']){
-				$_POST['password'] = md5($_POST['password']);
-				$_POST['password'] = sha1($_POST)['password'];
-				$result = $Session->login($_POST['username'], $_POST['password']);
+				$passwordMD5 = md5($_POST['password']);
+				$passwordSHA1 = sha1($passwordMD5);
+				$result = $Session->login($_POST['username'], $passwordSHA1);
 				if($result == false){
 					$this->data['error'] = 'Your username and/or password is incorrect!';
 				}
@@ -20,7 +20,7 @@ class Signin extends Controller
 				$this->data['error'] = 'Please fill in your username and password!';
 			}
 			$this->data['username'] = $_POST['username'];
-			$this->data['password'] = $_POST['password'];
+			$this->data['password'] = $passwordSHA1;
 		}
 
 		$this->display($this->templates['default'], $this->data);
