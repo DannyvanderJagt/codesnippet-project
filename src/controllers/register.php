@@ -59,6 +59,7 @@ class Register extends Controller
 					$this->data['error.profession'] = "Profession not filled in.";
 				}
 			}
+			
 			if ($data['error'].count() > 0)
 			{
 			$this->data['username'] = $_POST['username'];
@@ -70,13 +71,19 @@ class Register extends Controller
 			$this->data['birthmonth'] = $_POST['birthmonth'];
 			$this->data['birthyear'] = $_POST['birthyear'];
 			$this->data['profession'] = $_POST['profession'];
-			isset($_POST['profile_picture'])
+			if(isset($_POST['profile_picture']))
 			{
 				$this->data['profile_picture'] = $_POST['profile_picture'];
 			}
 		}
+		
 		else
 		{
+			$picture = 'NULL';
+			// if(isset($_POST['profile_picture']))
+			// 	{
+			// 	$picture =  $_POST['profile_picture'];
+			// 	}
 			$this->user = new $this->user();
 			$this->user->create([
 				'ID' => 'NULL',
@@ -87,14 +94,13 @@ class Register extends Controller
 				'Email' => $_POST['email'],
 				'Birthday' => $date,
 				'Profession' => $_POST['profession'],
-				isset($_POST['profile_picture'])
-				{
-				'Profile_picture' => $_POST['profile_picture'];
-				}
+				'Profile_picture' => $picture,
 				'Votes' => 'NULL',
 				'Session_key' => 'NULL',
+				'Last_online' => 'NULL',
+				'Register_date' => 'NULL',
 			]);
 		}
 		}
 	}
-}
+
