@@ -17,8 +17,7 @@ class Register extends Controller
 					$this->data['error']['username'] = "Username not filled in.";
 				}
 					if(isset($_POST['password'])){
-						$passwordMD5 = md5($_POST['password']);
-						$passwordSHA1 = sha1($passwordMD5);
+						
 					}
 					else
 				{
@@ -46,7 +45,7 @@ class Register extends Controller
 					$this->data['error']['email'] = "E-mail not filled in.";
 				}
 					if(isset($_POST['birthday']) && isset($_POST['birthmonth']) && isset($_POST['birthyear'])){
-						$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
+						
 					}
 					else
 				{
@@ -81,10 +80,13 @@ class Register extends Controller
 		else
 		{
 			$picture = 'NULL';
-			// if(isset($_POST['profile_picture']))
-			// 	{
-			// 	$picture =  $_POST['profile_picture'];
-			// 	}
+			if(isset($_POST['profile_picture']))
+				{
+				$picture =  $_POST['profile_picture'];
+				}
+			$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
+			$passwordMD5 = md5($_POST['password']);
+			$passwordSHA1 = sha1($passwordMD5);
 			print_r($_POST);
 			$this->user = $this->model('user');
 			$user = new $this->user();
