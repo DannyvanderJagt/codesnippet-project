@@ -18,7 +18,7 @@ class Register extends Controller
 				}
 					if(isset($_POST['password'])){
 						$passwordMD5 = md5($_POST['password']);
-				$passwordSHA1 = sha1($passwordMD5);
+						$passwordSHA1 = sha1($passwordMD5);
 					}
 					else
 				{
@@ -88,31 +88,16 @@ class Register extends Controller
 			print_r($_POST);
 			$this->user = $this->model('user');
 			$user = new $this->user();
-			// $user->create([
-			// 	'ID' => 'NULL',
-			// 	'Username' => $_POST['username'],
-			// 	'Password' => $passwordSHA1,
-			// 	'First_name' => $_POST['first_name'],
-			// 	'Last_name' => $_POST['last_name'],
-			// 	'Email' => $_POST['email'],
-			// 	'Birthday' => $date,
-			// 	'Profession' => $_POST['profession'],
-			// 	'Profile_picture' => $picture,
-			// 	'Votes' => 'NULL',
-			// 	'Session_key' => 'NULL',
-			// 	'Last_online' => 'NULL',
-			// 	'Register_date' => 'NULL',
-			// ]);
 			$user->create([
 				'ID' => 'NULL',
-				'Username' => "test",
-				'Password' => "test",
-				'First_name' => "test",
-				'Last_name' => "test",
-				'Email' => "test",
-				'Birthday' => "2010-10-10",
-				'Profession' => "test",
-				'Profile_picture' => "test",
+				'Username' => $_POST['username'],
+				'Password' => $passwordSHA1,
+				'First_name' => $_POST['first_name'],
+				'Last_name' => $_POST['last_name'],
+				'Email' => $_POST['email'],
+				'Birthday' => $date,
+				'Profession' => $_POST['profession'],
+				'Profile_picture' => $picture,
 				'Votes' => 'NULL',
 				'Session_key' => 'NULL',
 				'Last_online' => 'NULL',

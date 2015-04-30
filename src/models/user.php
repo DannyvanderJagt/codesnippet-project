@@ -6,6 +6,7 @@ class User extends Eloquent
 {
 	protected $table = 'user';
 	public $timestamps = [];
+	protected $primaryKey = "ID";
 
 	protected $guarded = ['ID', 'Password'];
 	protected $fillable = [
@@ -20,8 +21,4 @@ class User extends Eloquent
 	'Profile_picture', 
 	'Votes', 
 	'Session_key'];
-
-	public function __construct(){
-		parent::__construct();
-	}
 }
