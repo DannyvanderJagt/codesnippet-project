@@ -8,7 +8,7 @@ class User extends Eloquent
 	public $timestamps = [];
 	protected $primaryKey = "ID";
 
-	protected $guarded = ['ID', 'Password'];
+	protected $guarded = ['ID'];
 	protected $fillable = [
 	'Register_date',
 	'Last_online', 
@@ -20,5 +20,6 @@ class User extends Eloquent
 	'Profession', 
 	'Profile_picture', 
 	'Votes', 
-	'Session_key'];
+	'Session_key', 
+	'Password'];
 }
