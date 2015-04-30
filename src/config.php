@@ -71,12 +71,6 @@ const PAGES = [
 			'default' =>'policy'],
 		'login' => 0
 	],
-	'upload' => [
-		'controller' => 'upload',
-		'templates' => [
-			'default' =>'upload'],
-		'login' => 1
-	],
 	'account' => [
 		'controller' => 'account',
 		'templates' => [
