@@ -5,19 +5,30 @@ class Snippets extends Controller
 	private $templates = PAGES['snippet']['templates'];
 
 	public function load($params = []){
+		global $Session;
 		$this->user = $this->model('user');
 		$this->comment = $this->model('comment');
 		$this->snippet = $this->model('snippet');
 
 		if(isset($params[0])){
-			if($params[0] === 'create'){
-				$this->create();
-			}else if(isset($params[1]) && $params[1] === 'edit'){
-				$this->edit($params[0]);
-			}else if(isset($params[1]) && $params[1] === 'delete'){
-				$this->delete($params[0]);
+			if($Session->isLoggedin()){
+				if($params[0] === 'create'){
+					$this->create();
+				}else if(isset($params[1]) && $params[1] === 'edit'){
+					$this->edit($params[0]);
+				}else if(isset($params[1]) && $params[1] === 'delete'){
+					$this->delete($params[0]);
+				}else{
+					$this->show($params[0]);
+				}
 			}else{
-				$this->show($params[0]);
+				if(isset($params[1])){
+					redirectToPage('signin');
+				}else if(intval($params[0]) > 0){
+					$this->show($params[0]);
+				}else{
+					redirectToPage('home');
+				}
 			}
 		}else{
 			$this->display($this->templates['default'], ['error'=>'This snippet doesn\'t exists!']);
@@ -47,7 +58,8 @@ class Snippets extends Controller
 	
 	// Edit. (Check for owner)
 	private function edit($id){
-		print_r($_POST);
+		global $Session;
+
 		if(isset($_POST['submit'])){
 			$snippet = Snippet::find($id);
 			$snippet->update([
@@ -59,13 +71,17 @@ class Snippets extends Controller
 		}
 		$snippet = Snippet::find($id);
 
-		if($snippet){
-			$this->data['snippet'] = $snippet;
+		if($snippet->User_ID !== $Session->getUser()->ID){
+			$this->data['error'] = 'You don\'t have the right permissions!';
+		}else{	
+			if($snippet){
+				$this->data['snippet'] = $snippet;
 
-			// Get all the comments.
-			$this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
-		}else{
-			$this->data['error'] = 'The snippet doesn\'t exists!';
+				// Get all the comments.
+				$this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
+			}else{
+				$this->data['error'] = 'The snippet doesn\'t exists!';
+			}
 		}
 
 		$this->display($this->templates['edit'], $this->data);
