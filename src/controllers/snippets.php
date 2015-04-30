@@ -28,8 +28,8 @@ class Snippets extends Controller
 	private function create(){
 
 		if(isset($_POST['submit'])){
-			$this->snippet = new $this->snippet();
-			$this->snippet->create([
+			$snippet = new $this->snippet();
+			$snippet->create([
 				'ID' => 'NULL',
 				'Title' => 'Test',
 				'Code' => 'testCode',
