@@ -60,7 +60,7 @@ class Register extends Controller
 				}
 			}
 			
-			if (count($data['error']) > 0)
+			if ($data['error'].count() > 0)
 			{
 			$this->data['username'] = $_POST['username'];
 			$this->data['password'] = $_POST['password'];
