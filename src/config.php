@@ -21,7 +21,6 @@ const MODELS = [
 		1 = You must be logged in!
 		2 = You can't be logged in!
  */
-
 const PAGES = [
 	'404' => [ // The notfound page.
 		'controller' => '404',
