@@ -1,40 +1,15 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 30-apr-2015, 13:54:10
-    Author     : Roseline
-*/
-
-body{
-    font-family: 'Roboto', sans-serif;
-    min-width: 880px;
-    font-size:14px;
-    margin: 0px;
-}
-
-.header{
+#header{
     background-color: #414042;
-    height: 50px;       
+    height: 50px;  
 }
 
 img.logo{   
-    //height: 30px;
-
     width: inherit;       
     padding-top: 10px;
     display: block;
     margin: 0 auto;
     float: right;
     margin-right: 30%;
-    //margin-left: auto;
-    //margin-right: auto;
-}
-
-a.logo{
-    
 }
 
 .searchbar{    
@@ -42,38 +17,32 @@ a.logo{
     margin-top: 10px;
 }
 
-.input{
+.searchbar .input{
     width:50%;
     height: 28px;
     float: left;
     background-color: #58595B;
     color: #E6E7E8;
-    font-weight: bold;
-    border-right: 1px solid #414042;     
-    border-left-style: none;
-    border-top-style: none;
-    border-bottom-style: none;
+    border: none;
+    border-right: 1px solid #414042;
     padding-left: 10px;
 }
 
-.dropdown{
+.searchbar .dropdown{
     background-color: #58595B;
-    width: 45px;
+    width: 70px;
     height: 30px;
     float: left;
     color: #E6E7E8;
-    border-style: none;
+    border: none;
 }
 
 .searchbtn{
-    background-image: url(../images/search.png);
-    background-repeat: no-repeat;
-    background-size: 20px, 20px;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     float: left;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-top: 7px;
+    margin-left: 7px;
 }
 
 .user{

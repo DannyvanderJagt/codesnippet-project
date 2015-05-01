@@ -2,4 +2,3 @@ vendor
 cache
 libs
 node_modules
-src/dist/*
