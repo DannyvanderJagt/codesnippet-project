@@ -30,16 +30,14 @@
         <div class="pure-u-1-5"></div>
 
         <div class="content pure-u-2-5">
-            <h1> Time Converter</h1>                        
+            <h1>{{data.snippet.Title}}</h1>                        
             <div id="CodeBlock">
-                Datetime time = System.Datetime;
-                for(int i = 0; i < time; i++)
-                {
-                blabla code;
-                }
+                {{data.snippet.Code}}
+
             </div>      
             <h3>Description</h3>
-            <div id="Description"></div>
+            <div id="Description">
+                {{data.snippet.Description}}</div>
             <div class="commentBlock">
                 <div class="commentInfo">
                     <div class="userImage"></div>
@@ -94,7 +92,7 @@
                 <a href=tagIdLink.php id="creatorInfo">
                     <div id="creatorImage"></div>
                     <div id="creatorText">
-                        <div id="creatorName">Leroy Rocks</div>
+                        <div id="creatorName">{{data.snippet.writer.First_name}} {{data.snippet.writer.Last_name}}</div>
                         <div id="creatorProfession">Student, Programmer</div>
                         <div id="creatorUpvotes">
                             <div id="creatorUpvotesImage"></div>

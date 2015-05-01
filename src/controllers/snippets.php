@@ -93,9 +93,10 @@ class Snippets extends Controller
 
 		if($snippet){
 			$this->data['snippet'] = $snippet;
-
 			// Get all the comments.
 			$this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
+			$this->data['snippet']['writer'] = $this->user->where('User_ID', '=', $snippet->User_ID);
+			//print_r($this->data);
 		}else{
 			$this->data['error'] = 'The snippet doesn\'t exists!';
 		}
