@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-apr-2015, 13:54:18
+    Author     : Roseline
+*/
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    margin: 0px;
+}
+
+.footer{
+    width:100%;
+    background-color: #414042;
+    height: 125px; 
+    margin-top: auto;
+    position: absolute;
+    left: 0px;
+}
+
+.footerLogo{
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 225px, 60px;
+    height: 80px;
+    margin-top: 10px;
+    float: left;
+}
+
+.footerURL{
+    float: left;
+    margin-top: 10px;
+}
+
+a.urlfooter{
+    width: 100%;
+    font-size: 16px;
+    color: #FFF;
+    margin-top: 1px;
+    margin-right: 20px;
+    text-decoration: none;
+    float: left;
+}
+
+.urlLeft{
+    width: 20%;
+    margin-top: 5px;
+    float: left;
+}
+
+.urlRight{    
+    width: 20%;
+    margin-top: 5px;
+    float: left;
+}

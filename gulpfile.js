@@ -15,9 +15,9 @@ var gulp			= require('gulp'),
 // File paths.
 var files = {
 	scss: 'src/assets/scss',
-	distCss: 'src/dist/css',
+	distCss: 'src/public/dist/css',
 	javascript: 'src/assets/javascript',
-	distJavascript: 'src/dist/js'
+	distJavascript: 'src/public/dist/js'
 };
 
 /*************************/

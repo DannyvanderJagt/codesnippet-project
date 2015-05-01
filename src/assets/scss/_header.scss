@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-apr-2015, 13:54:10
+    Author     : Roseline
+*/
+
+body{
+    font-family: 'Roboto', sans-serif;
+    min-width: 880px;
+    font-size:14px;
+    margin: 0px;
+}
+
+.header{
+    background-color: #414042;
+    height: 50px;       
+}
+
+img.logo{   
+    //height: 30px;
+
+    width: inherit;       
+    padding-top: 10px;
+    display: block;
+    margin: 0 auto;
+    float: right;
+    margin-right: 30%;
+    //margin-left: auto;
+    //margin-right: auto;
+}
+
+a.logo{
+    
+}
+
+.searchbar{    
+    height: 30px;
+    margin-top: 10px;
+}
+
+.input{
+    width:50%;
+    height: 28px;
+    float: left;
+    background-color: #58595B;
+    color: #E6E7E8;
+    font-weight: bold;
+    border-right: 1px solid #414042;     
+    border-left-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    padding-left: 10px;
+}
+
+.dropdown{
+    background-color: #58595B;
+    width: 45px;
+    height: 30px;
+    float: left;
+    color: #E6E7E8;
+    border-style: none;
+}
+
+.searchbtn{
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-size: 20px, 20px;
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.user{
+    height: 30px;
+    margin-top: 10px;
+    // margin-right: 200px;
+}
+
+.userOptions{
+    float: right;
+    margin-right:30px;
+}
+
+.uploadbtn{
+    background-image: url(../images/upload.png);
+    background-repeat: no-repeat;
+    background-size: 15px,15px;
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+a.userAccount{
+    color: white;
+    margin-top: 5px;
+    margin-right: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    float: left;
+}
+
+.userAvatar{
+    background-image: url(../images/account_default.png);
+    background-repeat: no-repeat;
+    float: left;
+    height: 30px;
+    width: 30px;
+}

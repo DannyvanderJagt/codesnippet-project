@@ -3,5 +3,23 @@
 
 // Load codesnippet predefined files.
 @import "colors";
-@import "elements";
 
+// Pure css
+@import "pureCss.scss";
+
+// Header
+@import "header";
+
+// Footer
+@import "footer";
+
+// Snippet template.
+@import "snippet";
+
+body, html{
+	height: 100%;
+}
+
+#template{
+	min-height: calc(100% - 175px);
+}

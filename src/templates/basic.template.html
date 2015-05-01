@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Code snippet</title>
+	{% include 'head.html' %}
 </head>
 <body>
 	{% include 'header.html' %}
 
-	{% include template %}
+	<div id="template">
+		{% include template %}
+	</div>
 
 	{% include 'footer.html' %}
 </body>
