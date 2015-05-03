@@ -95,7 +95,7 @@ hoiiii
                     <div id="creatorImage"></div>
                     <div id="creatorText">
                         <div id="creatorName">{{data.snippet.writer.First_name}} {{data.snippet.writer.Last_name}}</div>
-                        <div id="creatorProfession">Student, Programmer</div>
+                        <div id="creatorProfession">{{data.snippet.writer.Profession}}</div>
                         <div id="creatorUpvotes">
                             <div id="creatorUpvotesImage"></div>
                             <div id="creatorUpvotesText">400</div>
@@ -106,7 +106,7 @@ hoiiii
                 </a>
                 <div id="pageSettings">
                     <div class="headerRightContent"><h5>Settings:</h5></div>
-                    <div class="settingsDiv">Language: C#</div> 
+                    <div class="settingsDiv">Language: {{data.snippet.lang.language_name}}</div> 
                     <div class="settingsDiv">Framework: WPF</div>
                     <div class="settingsDiv">Import: System.Timer</div>
                 </div>

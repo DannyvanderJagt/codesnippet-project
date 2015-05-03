@@ -9,6 +9,7 @@ class Snippets extends Controller
 		$this->user = $this->model('user');
 		$this->comment = $this->model('comment');
 		$this->snippet = $this->model('snippet');
+		$this->prog_lang = $this->model('prog_lang');
 
 		if(isset($params[0])){
 			if($Session->isLoggedin()){
@@ -95,7 +96,10 @@ class Snippets extends Controller
 			$this->data['snippet'] = $snippet;
 			// Get all the comments.
 			$this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
+			// Get user data
 			$this->data['snippet']['writer'] = $this->user->where('ID', '=', $snippet->User_ID)->first();
+			// Get snippet specs
+			$this->data['snippet']['lang'] = $this->prog_lang->where('language_ID', '=', $snippet->Lang)->first();
 			//print_r($this->data);
 		}else{
 			$this->data['error'] = 'The snippet doesn\'t exists!';
