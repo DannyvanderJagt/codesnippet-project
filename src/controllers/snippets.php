@@ -94,15 +94,39 @@ class Snippets extends Controller
 		if($snippet){
 			$this->data['snippet'] = $snippet;
 			// Get all the comments.
-			$this->data['snippet']['comments'] = $this->comment->where('Snippet_ID','=', $id)->get();
+			$this->data['snippet']['comments'] = $this->getComments($id);
 			// Get user data
 			$this->data['snippet']['writer'] = $this->user->where('ID', '=', $snippet->User_ID)->first();
 			// Get snippet specs
 			$this->data['snippet']['lang'] = $this->prog_lang->where('language_ID', '=', $snippet->Lang)->first();
+
 		}else{
 			$this->data['error'] = 'The snippet doesn\'t exists!';
 		}
 		$this->display($this->templates['default'], $this->data);	
+	}
+
+	private function getComments($snippetID){
+		$comments = $this->comment->where('Snippet_ID','=', '4')->orderBy('Comment_top_ID', 'asc')->get();	
+		$arr = array();
+		foreach($comments as $comment){
+			$id = $comment->Comment_ID;
+			$top = $comment->Comment_top_ID;
+			if(!isset($arr[$id]) && !isset($top)){
+				$arr[$id] = $comment;
+				// echo 'main';
+			}else if(!empty($top)){
+				// echo 'sub';
+				$subs = $arr[$top]['subcomments'];
+				if(empty($subs)){
+					$subs = array();
+				}
+				array_push($subs, $comment);
+				$arr[$top]['subcomments'] = $subs;
+			}
+		}
+		return $arr;
+
 	}
 
 	// Delete. (Check for owner)

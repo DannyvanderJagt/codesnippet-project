@@ -1,3 +1,18 @@
+
+{% for comment in data.snippet.comments %}
+<hr>
+    {{ comment.Comment_text }}
+    
+    {% for subcomment in comment.subcomments %}
+    
+        <p style='margin: 20px 20px;'>
+            {{ subcomment.Comment_text }}
+        </p>
+        
+    {% endfor %}
+
+{% endfor %}
+
  <script type="text/javascript">
             function showHideComments()
             {
