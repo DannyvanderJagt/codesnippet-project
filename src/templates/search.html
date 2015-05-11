@@ -1,1 +1,14 @@
 search
+
+<!-- {{ data.results }} -->
+
+{% for snippet in data.results %}
+
+<hr>
+<p>{{ snippet.ID }}</p>
+<p>{{ snippet.Title }}</p>
+<p>{{ snippet.Description }}</p>
+<p>{{ snippet.Lang }}</p>
+
+
+{% endfor %}

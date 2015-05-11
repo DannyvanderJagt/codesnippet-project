@@ -16,41 +16,41 @@ class Search extends Controller
 			echo 'no search query!';
 		}
 
-		$this->display($this->templates['default']);
+		$this->display($this->templates['default'], $this->data);
 	}
 
 	private function searchByQuery($query){
 		$this->snippet = $this->model('snippet');
 
-		$count = $this->snippet
+		$results = $this->snippet
 			->where('title', 'LIKE', '%'.$query.'%')
 			->orWhere('description', 'LIKE', '%'.$query.'%')
-			->count();
+			->get();
 
-		echo $count;
+		$this->data['results'] = $results;
 	}
 
 	private function searchByLanguage($lang){
 		$this->snippet = $this->model('snippet');
 
 		$count = $this->snippet->where('Lang','=', $lang)
-		->count();
+		->get();
 
-		echo $count;
+		$this->data['results'] = $results;
 	}
 
 	public function searchNormal($search, $lang){
 		$this->snippet = $this->model('snippet');
 
-		$count = $this->snippet
+		$results = $this->snippet
 			->where('Lang', 'LIKE', 2)
 			->where(function($query) use ($search){
 				$query
 					->where('title', 'LIKE', '%'.$search.'%')
 					->orWhere('description', 'LIKE', '%'.$search.'%');
 			})
-			->count();
+			->get();
 
-		echo $count;
+		$this->data['results'] = $results;
 	}
 }
