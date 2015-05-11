@@ -91,7 +91,7 @@ class Snippets extends Controller
 	// Show.
 	private function show($id){
 		$snippet = Snippet::find($id);
-		//print_r($this->user->where('ID', '=', $snippet->User_ID)->first());
+		print_r($this->user->where('ID', '=', $snippet->User_ID)->first());
 		if($snippet){
 			$this->data['snippet'] = $snippet;
 			// Get all the comments.
@@ -99,8 +99,12 @@ class Snippets extends Controller
 			// Get user data
 			$this->data['snippet']['writer'] = $this->user->where('ID', '=', $snippet->User_ID)->first();
 			// Get snippet specs
+			var_dump($snippet->Lang);
+			// $this->data['snippet']['lang'] = $this->prog_lang->find($snippet->Lang);
+			// print_r($this->data['snippet']['lang']->first());
+
 			$this->data['snippet']['lang'] = $this->prog_lang->where('language_ID', '=', $snippet->Lang)->first();
-			//print_r($this->data);
+			// print_r($this->data);
 		}else{
 			$this->data['error'] = 'The snippet doesn\'t exists!';
 		}

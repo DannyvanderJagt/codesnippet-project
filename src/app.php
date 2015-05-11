@@ -129,7 +129,6 @@ class App
 	 * @return [type] [description]
 	 */
 	private function parseUrl(){
-		echo $_GET['url'];
 		if(isset($_GET['url'])){
 			return explode('/',filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
 		}
