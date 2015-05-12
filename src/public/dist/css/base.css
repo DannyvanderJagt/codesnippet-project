@@ -311,10 +311,18 @@ h6 {
 .relatedDiv {
   padding: 5px; }
 
+.pageNumberHolder {
+  text-align: center; }
+
 .pageNumber {
-  width: 25S0px;
+  width: auto;
+  display: inline-block;
+  margin: 60px auto 0px auto; }
+
+.pagesInfo {
+  width: auto;
   margin: 40px auto 0px auto;
-  background-color: #ff66cc; }
+  text-align: center; }
 
 #searchInput {
   background-color: #414042;
