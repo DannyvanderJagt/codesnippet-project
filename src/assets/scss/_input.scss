@@ -1,0 +1,23 @@
+#searchInput {
+	background-color: $darkgrey;
+    color: $lightgrey;
+    width:50%;
+    height: 28px;
+    float: left;
+    font-weight: bold;
+    border-right: 1px solid #414042;     
+    border-left-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    padding-left: 10px;
+}
+
+textarea {
+    width:auto;
+    margin:10px;
+    border: 1px solid $lightgrey;
+    color: $lightgrey;
+    resize:none;
+    float:left;
+}
+

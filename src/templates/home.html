@@ -1,3 +1,139 @@
 home.php 
+<script type="text/javascript">
+    function showHideComments()
+    {
+        var e = document.getElementById('subcomments');
+        var a = document.getElementById('commentDropDownIcon');
+        if (e.style.display === 'block')
+        {
+            e.style.display = 'none';
+            a.style.backgroundImage = 'url(dist/images/plus.png)';
+        }
+        else
+        {
+            e.style.display = 'block';
+            a.style.backgroundImage = 'url(dist/images/min.png)';
+        }
+    }
+    function replyToComment()
+    {
+        var c = document.getElementById('replyBox');
+        if (c.style.display === 'block')
+        {
+            c.style.display = 'none';
+        }
+        else
+        {
+            c.style.display = 'block';
+        }
+    }
+</script>
+<div class="pure-u-1-5"></div>
 
-<!-- {{ session.email }} -->
+<div class="content pure-u-2-5">
+    <h1> Time Converter</h1>                        
+    <div id="CodeBlock">
+        Datetime time = System.Datetime;
+        for(int i = 0; i < time; i++)
+        {
+        blabla code;
+        }
+    </div>      
+    <h3>Description</h3>
+    <div id="Description"></div>
+    <div class="commentBlock">
+        <div class="commentInfo">
+            <div class="userImage"></div>
+            <div class="userSays">Joop says:</div>
+            <div class="commentDate">17-04-2015</div>
+        </div>
+        <div class="commentText">Super comment van Joop</div>
+        <div class="commentOptions">
+            <div class="commentUpVote"></div>
+            <div class="commentUpVotes">10</div>
+            <div class="commentDownVote"></div>
+            <div class="commentDownVotes">1</div>
+            <div class="commentReplies">
+                <div class="commentRepliesNumber">1</div>
+                <div class="commentRepliesText">replies</div>
+                <div id="commentDropDownIcon" onclick="showHideComments()"></div>
+                <!-- <button onclick="showHideComments()" id="commentDropDownIcon"></button> -->
+            </div>
+            <div class="commentNewReplyText">reply</div>
+        </div>
+        <div id="subcomments">
+            <div class="commentBlock sub">
+                <div class="commentInfo">
+                    <div class="userImage"></div>
+                    <div class="userSays">iemand anders says:</div>
+                    <div class="commentDate">23-04-2015</div>
+                </div>
+                <div class="commentText">Super mooie reactie van iemand anders</div>
+                <div class="commentOptions">
+                    <div class="commentArrowUp"></div>
+                    <div class="commentUpVotes">2</div>
+                    <div class="commentArrowDown"></div>
+                    <div class="commentDownVotes">0</div>
+                    <div class="commentReplies">
+                        <div class="commentRepliesNumber">0</div>
+                        <div class="commentRepliesText">replies</div>
+                    </div>
+                    <div class="commentNewReplyText" onClick="replyToComment()">reply</div>
+                </div>
+                <div id="replyBox">
+                    <textarea rows="4" cols="55">@iemand anders</textarea>
+                </div>
+            </div>
+        </div>
+        <h5>Leave your comment:</h5>
+        <textarea rows="4" cols="60" >Comment...</textarea>
+        <button class="styleButton">Submit</button>
+    </div>
+    <div class="pageNumber">
+        <div class="styleButton">1</div>
+        <div class="styleButton">2</div>
+        <div class="styleButton">3</div>
+        <div class="styleButton">4</div>
+        <div class="styleButton">5</div>
+        <div class="styleButton">...</div>
+    </div>
+</div>
+<div class="pure-u-1-5">
+    <div class="rightContent">
+        <a href="tagIdLink.php" id="creatorInfo">
+            <div id="creatorImage"></div>
+            <div id="creatorText">
+                <div id="creatorName">Leroy Rocks</div>
+                <div id="creatorProfession">Student, Programmer</div>
+                <div id="creatorUpvotes">
+                    <div id="creatorUpvotesImage"></div>
+                    <div id="creatorUpvotesText">400</div>
+                </div>
+            </div>
+        </a>
+        <div id="pageSettings">
+            <div class="headerRightContent"><h5>Settings:</h5></div>
+            <div class="settingsDiv">Language: C#</div>
+            <div class="settingsDiv">Framework: WPF</div>
+            <div class="settingsDiv">Import: System.Timer</div>
+        </div>
+        <div id="pageTags">
+            <div class="headerRightContent"><h5>Tags:</h5></div>
+            <a href="tagIdLink.php" class="tag-button">C#</a>
+            <a href="tagIdLink.php" class="tag-button">Java</a>
+            <a href="tagIdLink.php" class="tag-button">Javascript</a>
+        </div>
+        <div id="pageInformation">
+            <div class="headerRightContent"><h5>Views:</h5></div>
+            <div class="informationDiv">Views: 100</div> 
+            <div class="informationDiv">2 comments</div>
+        </div>
+        <div id="pageRelated">
+            <div class="headerRightContent"><h5>Related:</h5></div>
+            <div class="relatedDiv">Timer</div> 
+            <div class="relatedDiv">Converter</div>
+        </div>
+    </div>
+</div>
+<div class="pure-u-1-5"></div>
+

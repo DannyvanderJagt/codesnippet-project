@@ -1,16 +1,3 @@
-/* 
-    Created on : 22-apr-2015, 10:43:11
-    Author     : Roseline,
-    Author     : Leroy, 
-*/
-
-body{
-    font-family: 'Roboto', sans-serif;
-    font-size:14px;
-    margin: 0px;
-    box-sizing:border-box;
-}
-
 h1 {
     color: #178D46; 
     font-size: 36px;
@@ -70,14 +57,11 @@ h6{
 
 .commentBlock{
     width:auto;
-    //background-color:#00669b;
-    //border-bottom: 1px solid #E6E7E8;
 }
 
 .commentBlock.sub{
     width:auto;
     margin-left:50px;
-    //border-bottom: 1px solid #E6E7E8;
 }
 
 #subcomments{
@@ -134,28 +118,10 @@ h6{
     border-bottom: 1px solid #E6E7E8;
 }
 
-.commentArrowUp{
-    margin-top:3px;
-    height:12px;
-    width:25px;
-    background-image: url(../images/arrow_up_small.png);
-    background-repeat: no-repeat;
-    float:left;
-}
-
 .commentUpVotes{
     margin-top:1px;
     height:12px;
     width:25px;
-    float:left;
-}
-
-.commentArrowDown{
-    margin-top:3px;
-    height:12px;
-    width:25px;
-    background-image: url(../images/arrow_down_small.png);
-    background-repeat: no-repeat;
     float:left;
 }
 
@@ -224,19 +190,6 @@ h6{
     float:left;
     display:none;
     //width:auto;
-}
-
-textarea {
-    width:auto;
-    margin:10px;
-    border: 1px solid #E6E7E8;
-    //display:block;
-    resize:none;
-    float:left;
-}
-
-.submitButton{
-    float:right;
 }
 
 .rightContent{
@@ -333,36 +286,6 @@ textarea {
     //background-color:#000;
 }
 
-.tag-button {
-    /* Structure */
-    display: inline-block;
-    zoom: 1;
-    line-height: normal;
-    white-space: nowrap;
-    vertical-align: middle;
-    text-align: center;
-    cursor: pointer;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.tag-button {
-    font-family: inherit;
-    font-size: 100%;
-    padding: 4px;
-    color: #000;
-    border: 1px solid #000; 
-    background-color: #fff;
-    text-decoration: none;
-    border-radius: 0.6em;
-}
-
 #pageInformation{
     width:100%;
     float:left;
@@ -388,3 +311,7 @@ textarea {
     padding:5px;
 }
 
+.pageNumber{
+    margin:0px auto;
+    background-color:#ff66cc;
+}

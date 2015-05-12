@@ -1,0 +1,55 @@
+.pure-u-1-4,
+.pure-u-1-2,
+.pure-u-1-5,
+.pure-u-2-5,
+.pure-u-3-5,
+.pure-u-4-5,
+.pure-u-5-5 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;    
+    margin-right: -4px;
+}
+.pure-u-1-4 {
+    width: 25%;
+    *width: 24.9690%;
+}
+
+.pure-u-1-2{
+    width: 50%;
+    *width: 49.9690%;
+}
+
+.pure-u-1-3{
+    width: 33.3333%;
+    *width: 33.3023%;
+}
+
+.pure-u-1-5 {
+    width: 20%;
+    *width: 19.9690%;
+}
+
+.pure-u-2-5 {
+    width: 40%;
+    *width: 39.9690%;
+}
+
+.pure-u-3-5 {
+    width: 60%;
+    *width: 59.9690%;
+}
+
+.pure-u-4-5 {
+    width: 80%;
+    *width: 79.9690%;
+}
+
+
+.pure-u-5-5 {
+    width: 100%;
+}
