@@ -1,4 +1,11 @@
 <meta charset="UTF-8">
 
 <!-- Css -->
-<link rel="stylesheet" href="../dist/css/main.css">
+{% for file in meta.css %}
+	<link rel="stylesheet" href="{{ file }}">
+{% endfor %}
+
+<!-- Javascript -->
+{% for file in meta.js %}
+	<script src="{{ file }}"></script>
+{% endfor %}

@@ -32,7 +32,8 @@ class Controller
 		$data = [
 			'template' => $template .'.html',
 			'data' => $templateData,
-			'Session' => $Session->getUser()
+			'session' => $Session->getUser(),
+			'meta' => ["css" => ["dist/css/main.css"], "js" => ["dist/js/js.js"]]
 		];
 		$loaded->display($data);
 	}
