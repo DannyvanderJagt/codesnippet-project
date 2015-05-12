@@ -76,6 +76,11 @@
     border: none rgba(0, 0, 0, 0); 
     background-color: #58595B;
     text-decoration: none;
+
+    &.right{
+        float:right !important;
+        margin-right: 15px;
+    }
 }
 
 .styleButton:active{

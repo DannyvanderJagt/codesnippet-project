@@ -312,7 +312,8 @@ h6 {
   padding: 5px; }
 
 .pageNumber {
-  margin: 0px auto;
+  width: 250px;
+  margin: 40px auto 0px auto;
   background-color: #ff66cc; }
 
 #searchInput {
@@ -334,7 +335,7 @@ textarea {
   border: 1px solid #E6E7E8;
   color: #E6E7E8;
   resize: none;
-  float: left; }
+  width: calc(100% - 30px); }
 
 .searchbtn {
   background-image: url(../images/search.png);
@@ -407,6 +408,9 @@ textarea {
   border: none transparent;
   background-color: #58595B;
   text-decoration: none; }
+  .styleButton.right {
+    float: right !important;
+    margin-right: 15px; }
 
 .styleButton:active {
   float: left;
@@ -457,8 +461,9 @@ textarea {
   height: 125px;
   margin-top: auto;
   bottom: 0px;
-  position: absolute;
-  left: 0px; }
+  position: relative;
+  left: 0px;
+  bottom: 0px; }
 
 .footerLogo {
   background-image: url(../images/logo.png);

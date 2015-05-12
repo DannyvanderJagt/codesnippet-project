@@ -18,6 +18,6 @@ textarea {
     border: 1px solid $lightgrey;
     color: $lightgrey;
     resize:none;
-    float:left;
+    width: calc(100% - 30px);
 }
 
