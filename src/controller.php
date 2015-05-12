@@ -33,7 +33,7 @@ class Controller
 			'template' => $template .'.html',
 			'data' => $templateData,
 			'session' => $Session->getUser(),
-			'meta' => ["css" => ["dist/css/base.css"], "js" => ["dist/js/js.js"]]
+			'meta' => ["css" => ["../dist/css/base.css"], "js" => ["../dist/js/js.js"]]
 		];
 		$loaded->display($data);
 	}

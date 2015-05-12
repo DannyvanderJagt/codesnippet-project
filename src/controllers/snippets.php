@@ -107,7 +107,7 @@ class Snippets extends Controller
 	}
 
 	private function getComments($snippetID){
-		$comments = $this->comment->where('Snippet_ID','=', '4')->orderBy('Comment_top_ID', 'asc')->get();	
+		$comments = $this->comment->where('Snippet_ID','=', '4')->orderBy('Comment_top_ID', 'asc')->join('user', 'comment.User_ID', '=', 'user.ID')->get();	
 		$arr = array();
 		foreach($comments as $comment){
 			$id = $comment->Comment_ID;
