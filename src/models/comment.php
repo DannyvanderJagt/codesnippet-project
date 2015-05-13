@@ -12,4 +12,10 @@ class Comment extends Eloquent
 	'User_ID',
 	'Comment_text',
 	'Comment_date']; 
+
+
+
+	public function getBySnippet($id){
+		return 'getBySnippet' . $id;
+	}
 }

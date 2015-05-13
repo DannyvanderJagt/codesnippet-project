@@ -17,4 +17,21 @@ class Snippet extends Eloquent
 	'Date',
 	'Change_date',
 	'Views'];
+
+	/* Api:
+	getById($id)
+		- snippet
+		- user
+		- comments
+		- votes
+	*/
+
+	public function getSnippet($id){
+		require_once '../' . PATHS['models'] . '/' . 'comment' . '.php';
+		$this->comment = new Comment();
+		return "snippet ".$id . $this->comment->getBySnippet(3);
+	}
+
+
+
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent; 
 
-class Prog_lang extends Eloquent
+class Vote_Snippet extends Eloquent
 {
 	protected $table = 'vote_snippet';
 	protected $primaryKey = 'Vote_ID';

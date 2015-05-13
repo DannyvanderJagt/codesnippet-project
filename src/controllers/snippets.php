@@ -1,5 +1,7 @@
 <?php
 
+include_once 'vote.php';
+
 class Snippets extends Controller
 {
 	private $templates = PAGES['snippet']['templates'];
@@ -90,9 +92,23 @@ class Snippets extends Controller
 
 	// Show.
 	private function show($id){
+		print_r($this->snippet->getSnippet(4));
+
+
 		$snippet = Snippet::find($id);
 		if($snippet){
+			$this->voteSnippet = $this->model('vote_snippet');
+
 			$this->data['snippet'] = $snippet;
+
+			$votes = $this->voteSnippet->where('Snippet_ID','=',4);
+			$upVotes = $votes->where('Vote_type','=',0)->count();
+			$downVotes = $votes->where('Vote_type', '=', 1)->count();
+			$this->data['snippet']['downvotes'] = $downVotes;
+			$this->data['snippet']['upvotes'] = $upVotes;
+
+			// $this->voteSnippet->add(["Snippet_ID"=>4, "Vote_User"=>1,]);
+
 			// Get all the comments.
 			$this->data['snippet']['comments'] = $this->getComments($id);
 			// Get user data
@@ -126,7 +142,6 @@ class Snippets extends Controller
 			}
 		}
 		return $arr;
-
 	}
 
 	// Delete. (Check for owner)
