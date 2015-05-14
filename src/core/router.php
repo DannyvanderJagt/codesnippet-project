@@ -19,13 +19,13 @@ class Router{
 		$this->parse($_GET);
 		// Catch api calls.
 		if($this->isApi()){
-			return false; 
+			return false;
 		}
 
 		// Then validate if the page exists.
 		$this->validate();
 		// Check for Auth requirements.
-		// $this->auth();
+		$this->auth();
 		// If everything is oke, load the constructor.
 		$this->loadConstructor();
 	}
@@ -68,7 +68,7 @@ class Router{
 	 * @return boolean [description]
 	 */
 	public function isApi(){
-		if(!$this->requestedPage == 'api'){
+		if($this->requestedPage != 'api'){
 			return false;
 		}
 
@@ -117,7 +117,7 @@ class Router{
 		// Get all the required parameters.
 		$requiredParams = (new ReflectionMethod($api, $method))->getParameters();
 
-		if(!count($requiredParams) == count($params)){
+		if(count($requiredParams) != count($params)){
 			$this->showApiResult([
 				'error'=>404,
 				'errorMessage'=>'The number of parameters for this method is wrong!'
@@ -154,9 +154,12 @@ class Router{
 	 * @return [type] [description]
 	 */
 	public function auth(){
-
+		$session = new Session();
+		if(!$session->isLoggedin()){
+			System::redirectTo('signin');
+		}
+		return true;
 	}
-
 
 	/**
 	 * If everything is validated then it is time to load the requested controller.

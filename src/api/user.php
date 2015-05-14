@@ -76,7 +76,21 @@ class User{
 			return false;
 		}
 		return true;
+	}
 
+	public function existByUsernameAndPassword($username, $password){
+		$model = new Model_User();
+		$result = $model->where(['Username'=> $username, 'Password'=>$password])->count();
+
+		if(empty($result)){
+			return false;
+		}
+		return true;
+	}
+
+	public function storeSessionKey($username, $key){
+		$model = new Model_User();
+		$result = $model->where('Username','=',$username)->first()->update(['Session_key'=>$key]);
 	}
 	
 }

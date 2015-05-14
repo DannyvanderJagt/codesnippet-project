@@ -16,8 +16,10 @@ require_once 'database.php';
 
 // System components.
 include_once('error.php');
-include_once('router.php');
 include_once('../api/index.php');
+include_once('session.php');
+include_once('router.php');
+
 
 // Extenable classes.
 include_once('controller.php');
@@ -40,7 +42,7 @@ class System{
 	}
 
 	public function redirectTo($page){
-		header("Location: " . $page);
+		header("Location: ". $SERVER_NAME . $page);
 		exit();
 	}
 
