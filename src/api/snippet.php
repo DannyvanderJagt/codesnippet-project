@@ -12,13 +12,21 @@ class Snippet{
 	
 	}
 
+	/**
+	 * Get Snippet by its id.
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function getById($id){
 		$model = new Model_Snippet();
-		return $model->find($id)->toArray();
-	}
+		$result = $model->find($id);
 
-	public function find(){
+		if(empty($result)){
+			return null;
+		}
 
+		$result['Comments'] = Comment::getBySnippetID($id);
+		return $result->toArray();
 	}
 }
 
