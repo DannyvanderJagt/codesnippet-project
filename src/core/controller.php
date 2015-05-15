@@ -40,11 +40,11 @@ class Controller {
 		$data = [
 			'data' => $data,
 			'view' => $this->views[$view], 
-			'basePath' => 'http://' . $_SERVER['SERVER_NAME'],
+			'basePath' => System::$baseUrl,
 			'auth' => System::$Auth->getUser(),
 			'meta' => [
 				'js' => [],
-				'css' => ['dist/css/base.css']
+				'css' => [System::$baseUrl . '/dist/css/base.css']
 			]
 		];
 

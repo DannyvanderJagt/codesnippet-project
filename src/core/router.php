@@ -162,7 +162,9 @@ class Router{
 			$this->requestedPage = 'NotFound';
 		}
 
-		$controller = new $this->requestedPage();
+		$controllerName = "Controller_" . $this->requestedPage;
+
+		$controller = new $controllerName();
 
 		// Check the auth.
 		$response = $controller->onAuth($this->requestedParams);

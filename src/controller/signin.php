@@ -1,6 +1,6 @@
 <?php
 
-class Signin extends Controller
+class Controller_Signin extends Controller
 {
 
 	// ***** Default Controller functions ***** //

@@ -1,6 +1,6 @@
 <?php
 
-class Home extends Controller
+class Controller_Home extends Controller
 {
 
 	// ***** Default Controller functions ***** //

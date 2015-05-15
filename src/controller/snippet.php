@@ -1,25 +1,22 @@
 <?php
 
-class Controller_Signout extends Controller
+class Controller_Snippet extends Controller
 {
 
 	// ***** Default Controller functions ***** //
 		protected $views = [
-			'default' => 'signout.view.html'
+			'default' => 'snippet.view.html'
 		];
 		
 		public function onAuth($params = []){
 			// This is only avialable when some one is signed in!
 			// Otherwise when an user is not signed in send them to the signin page.
-			return ['signin', System::$Auth->required()];
+			return System::$Auth->required();
 		}
 
 		public function onRequest($params = []){
-			$username = System::$Auth->getUser()['Username'];
-			System::$Auth->signout();
-			$this->renderView(['Username'=>$username]);
+			print_r($params);
+			$this->renderView();
 		}
 	// **************************************** //
-
-
 }

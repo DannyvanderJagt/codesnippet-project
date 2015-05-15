@@ -33,7 +33,10 @@ class System{
 	static $Router = null;
 	static $Api = null;
 
+	static $baseUrl = null;
+
 	public function __construct(){
+		self::$baseUrl = 'http://' . $_SERVER['SERVER_NAME'];
 		self::$Api = new Api();
 		self::$Auth = new Auth();
 		self::$Router = new Router();
@@ -46,7 +49,11 @@ class System{
 	}
 
 	public function redirectTo($page){
-		header("Location: http://". $_SERVER['SERVER_NAME'] . '/' . $page);
+		if($page == 'home'){
+			$page = '';
+		}
+
+		header("Location: " . self::$baseUrl . '/' . $page);
 		exit();
 	}
 
