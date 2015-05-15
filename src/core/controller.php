@@ -41,7 +41,11 @@ class Controller {
 			'data' => $data,
 			'view' => $this->views[$view], 
 			'basePath' => 'http://' . $_SERVER['SERVER_NAME'],
-			'auth' => System::$Auth->getUser()
+			'auth' => System::$Auth->getUser(),
+			'meta' => [
+				'js' => [],
+				'css' => ['dist/css/base.css']
+			]
 		];
 
 		$loaded->display($data);

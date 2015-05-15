@@ -1,1 +1,20 @@
-{% include view %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Code snippet</title>
+	{% include 'head.snippet.html' %}
+</head>
+<body>
+	{% include 'header.snippet.html' %}
+
+	<div class="pure-u-1-5"></div>
+	<div class="content pure-u-2-5">
+		{% include view %}
+	</div>
+	<div class="pure-u-1-5"></div>
+	
+	<div id="footer">
+		{% include 'footer.snippet.html' %}
+	</div>
+</body>
+</html>
