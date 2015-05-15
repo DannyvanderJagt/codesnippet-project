@@ -8,9 +8,9 @@ class NotFound extends Controller
 {
 
 	// ***** Default Controller functions ***** //
-		public function __construct(){
-
-		}
+		protected $views = [
+			'default' => '404.view.html'
+		];
 
 		public function onAuth($params = []){
 			// This page is always available!
@@ -18,7 +18,7 @@ class NotFound extends Controller
 		}
 
 		public function onRequest($params = []){
-
+			$this->renderView();
 		}
 	// **************************************** //
 

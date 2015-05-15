@@ -13,12 +13,13 @@ Twig_Autoloader::register();
 class Controller {
 	
 	protected $data = [];
+	protected $views = [];
 
 	/**
 	 * Create an instance of the Twig Library.
 	 */
 	public function __construct(){
-		$this->loader = new Twig_Loader_Filesystem('../views');
+		$this->loader = new Twig_Loader_Filesystem(array('../views', '../snippets'));
 		$this->twig = new Twig_Environment($this->loader, array(
 			// Disable the cache for development!
 		    // 'cache' => '../cache' 
@@ -31,9 +32,18 @@ class Controller {
 	 * @param  string $view [description]
 	 * @return [type]       [description]
 	 */
-	protected function renderView($view = 'default'){
+	protected function renderView($data = [], $view = 'default'){
 		// TODO: Load an other page when the default doesn't exists!
-		$loaded = $this->twig->loadTemplate($this->views[$view]);
-		$loaded->display([]);
+		$loaded = $this->twig->loadTemplate('layout.snippet.html');
+
+		// Collect and combine all the data before sending it to the template.
+		$data = [
+			'data' => $data,
+			'view' => $this->views[$view], 
+			'basePath' => 'http://' . $_SERVER['SERVER_NAME'],
+			'auth' => System::$Auth->getUser()
+		];
+
+		$loaded->display($data);
 	}
 }

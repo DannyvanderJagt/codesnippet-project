@@ -58,7 +58,7 @@ class Auth
 		if($user == null){
 			return false;
 		}
-
+		
 		// The user is now loggedin.
 		$this->loggedInUser = $user;
 		$this->loggedin = true;
