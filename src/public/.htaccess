@@ -3,7 +3,12 @@ RewriteEngine On
 
 RewriteBase /
 
+RewriteCond %{HTTP_HOST} ^api.localhost 
+RewriteRule ^(.*) http://nodejs-dannyvanderjagt.rhcloud.com/$1 [P] 
+
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+

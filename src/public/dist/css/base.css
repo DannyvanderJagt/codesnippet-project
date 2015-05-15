@@ -1,4 +1,6 @@
 body, html {
+  min-width: 800px;
+  height: 100%;
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -80,7 +82,7 @@ h6 {
 
 .content {
   color: #414041;
-  border-right: 1px solid #E6E7E8; }
+  height: calc(100% - 175px); }
 
 #CodeBlock {
   background-color: #E6E7E8;
@@ -468,10 +470,7 @@ textarea {
   background-color: #414042;
   height: 125px;
   margin-top: auto;
-  bottom: 0px;
-  position: relative;
-  left: 0px;
-  bottom: 0px; }
+  left: 0px; }
 
 .footerLogo {
   background-image: url(../images/logo.png);
