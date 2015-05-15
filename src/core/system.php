@@ -1,5 +1,4 @@
 <?php
-
 /**
  *	This file will load the basic files that 
  *	are necessary to get things going.
@@ -17,7 +16,7 @@ require_once 'database.php';
 // System components.
 include_once('error.php');
 include_once('../api/index.php');
-include_once('session.php');
+include_once('../core/auth.php');
 include_once('router.php');
 
 
@@ -30,10 +29,15 @@ include_once('controller.php');
  */
 class System{
 
+	static $Auth = null;
+	static $Router = null;
+	static $Api = null;
+
 	public function __construct(){
-		$this->Api = new Api();
-		// $this->Session = new Session();
-		$this->Router = new Router();
+		self::$Api = new Api();
+		self::$Auth = new Auth();
+		self::$Router = new Router();
+		self::$Router->load();
 	}
 
 	public function redirectToHome(){
@@ -42,7 +46,7 @@ class System{
 	}
 
 	public function redirectTo($page){
-		header("Location: ". $SERVER_NAME . $page);
+		header("Location: http://". $_SERVER['SERVER_NAME'] . '/' . $page);
 		exit();
 	}
 

@@ -2,20 +2,21 @@
 
 class Home extends Controller
 {
-	public function __construct($params = []){
-		echo 'home constructor';
 
-		// var_dump(Snippet::getById(4));
-	}
+	// ***** Default Controller functions ***** //
+		public function __construct(){
 
-	public function onRequest(){
+		}
 
-	}
+		public function onAuth($params = []){
+			// This page is always available!
+			return true;
+		}
 
+		public function onRequest($params = []){
 
-	// Preprogrammed!
-	public function onRoute(){
+		}
+	// **************************************** //
 
-	}
 
 }

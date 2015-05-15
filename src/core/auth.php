@@ -1,12 +1,9 @@
 <?php
 
-// Check session cookie
-// Check serial with database.
-// Loggedin = false / true.
-// true -> Load userdata.
-
-
-class Session
+/**
+ * Session: Handles the authentication.
+ */
+class Auth
 {
 	private $sessionExpireDate = 1 * 60 * 60; // 1 Day.
 	private $key; // Store a unique key connected to 1 user.
@@ -39,11 +36,15 @@ class Session
 		if($set != 2){
 			// No valid login session data.
 			$this->loggedin = false;
+			$this->signout();
 			return false;
 		}
 
 		// Check time.
 		if($_COOKIE['time'] < time() - $this->sessionExpireDate){
+			$this->loggedin = false;
+			// Destroy the cookie.
+			$this->signout();
 			return false;
 		}
 
@@ -52,7 +53,6 @@ class Session
 
 		// Try to find the key in the database.
 		$user = User::getBySessionKey($this->key);
-		// $users = $this->user->where('Session_key','=',$this->key);
 
 		// Check for count.
 		if($user == null){
@@ -62,7 +62,7 @@ class Session
 		// The user is now loggedin.
 		$this->loggedInUser = $user;
 		$this->loggedin = true;
-		
+
 		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
 	}
 
@@ -70,7 +70,7 @@ class Session
 	 * Check if a user is loggedin.
 	 * @return boolean [description]
 	 */
-	public function isLoggedin(){
+	public function required(){
 		return $this->loggedin;
 	}
 
@@ -80,14 +80,6 @@ class Session
 	 */
 	private function generateKey(){
 		return md5(microtime().rand());
-	}
-
-	/**
-	 * Get the unique key.
-	 * @return [type] [description]
-	 */
-	public function getKey(){
-		return $this->key;
 	}
 
 	/**
@@ -128,15 +120,14 @@ class Session
 		setcookie('time', '', time(),'/');
 		setcookie('key', '', time(),'/');
 		return true;
-		// System::redirectTo('signin');
 	}
 
+	/**
+	 * Get the user data of the user that is loggedin.
+	 * @return [type] [description]
+	 */
 	public function getUser(){
 		return $this->loggedInUser;
 	}
 
 }
-
-// Create a new session.
-// $Session = new Session();
-// $Session->load();

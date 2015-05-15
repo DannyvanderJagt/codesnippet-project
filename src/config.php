@@ -13,6 +13,13 @@ class Config{
 		'user',
 		'vote'
 	];
+
+	public static $loginRequired = [
+		'snippet/create',
+		'snippet/edit',
+		'snippet/delete',
+		'account'
+	];
 }
 
 ?>

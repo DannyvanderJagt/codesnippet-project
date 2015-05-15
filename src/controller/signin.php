@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Page: Notfound / 404
- * This will be loaded when a requested page doens't exists or can't be found.
- */
-class NotFound extends Controller
+class Signin extends Controller
 {
 
 	// ***** Default Controller functions ***** //
@@ -13,8 +9,9 @@ class NotFound extends Controller
 		}
 
 		public function onAuth($params = []){
-			// This page is always available!
-			return true;
+			// This is only avialable when some one is not signed in!
+			// Otherwise we an user is signed in send them to the home page.
+			return ['home', !System::$Auth->required()];
 		}
 
 		public function onRequest($params = []){

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * The router will get the requested 
  * url parameters (see .htaccess file) 
@@ -9,23 +9,25 @@ class Router{
 
 	private $requestedPage;
 	private $requestedParams;
+	private $rememberedView = null;
 
 	/**
 	 * Get the url parameters, validate the requested 
 	 * stuff and load what's requested if everything is valid.
 	 */
 	public function __construct(){
+	}
+
+	public function load(){
 		// Catche the request.
 		$this->parse($_GET);
 		// Catch api calls.
 		if($this->isApi()){
 			return false;
 		}
-
 		// Then validate if the page exists.
 		$this->validate();
-		// Check for Auth requirements.
-		$this->auth();
+
 		// If everything is oke, load the constructor.
 		$this->loadConstructor();
 	}
@@ -149,19 +151,6 @@ class Router{
 	}
 
 	/**
-	 * Check if the user has the right authorization for this requested page.
-	 * (Is using cookies)
-	 * @return [type] [description]
-	 */
-	public function auth(){
-		$session = new Session();
-		if(!$session->isLoggedin()){
-			System::redirectTo('signin');
-		}
-		return true;
-	}
-
-	/**
 	 * If everything is validated then it is time to load the requested controller.
 	 * @return [type] [description]
 	 */
@@ -174,7 +163,71 @@ class Router{
 		}
 
 		$controller = new $this->requestedPage();
-		$controller->onRequest();
+
+		// Check the auth.
+		$response = $controller->onAuth($this->requestedParams);
+		$allowed = false;
+		$redirectTo = 'signin'; // Default!
+
+		if(is_array($response)){
+			$allowed = $response[1];
+			$redirectTo = $response[0];
+		}else{
+			$allowed = $response;
+		}
+
+		if($allowed != true){
+			// Store this page.
+			$this->rememberView($this->requestedPage, $this->requestedParams);
+			System::redirectTo($redirectTo);
+		}
+
+		$controller->onRequest($this->requestedParams);
+	}
+
+
+	/**
+	 * Remember a view and its parameters for later use.
+	 * @param  [type] $page   [description]
+	 * @param  [type] $params [description]
+	 * @return [type]         [description]
+	 */
+	public function rememberView($page, $params){
+		$_SESSION['rememberedView'] = $page;
+		$_SESSION['rememberedViewParams'] = $params;
+		return true;
+	}
+
+	/**
+	 * Get the view that is remembered.
+	 * @return [type] [description]
+	 */
+	public function getRememberedView(){
+		if(isset($_SESSION['rememberedView'])){
+			$view = $_SESSION['rememberedView'];
+		}else{
+			$view = null;
+		}
+
+		if(isset($_SESSION['rememberedView'])){
+			$params = $_SESSION['rememberedViewParams'];
+		}else{
+			$params = null;
+		}
+		return [
+			'page' => $view,
+			'params' => $params
+		];
+	}
+
+	/**
+	 * Delete the remembered view.
+	 * @return [type] [description]
+	 */
+	public function deleteRememberedView(){
+		unset($_SESSION['rememberedView']);
+		unset($_SESSION['rememberedViewParams']);
+		return true;
 	}
 
 }
