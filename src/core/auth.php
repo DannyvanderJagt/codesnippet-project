@@ -131,4 +131,13 @@ class Auth
 		return $this->loggedInUser;
 	}
 
+	/**
+	 * Encrypt the password.
+	 * @param  [type] $pass [description]
+	 * @return [type]       [description]
+	 */
+	public function encrypt($pass){
+		return sha1(md5($pass));
+	}
+
 }

@@ -32,9 +32,13 @@ class Controller {
 	 * @param  string $view [description]
 	 * @return [type]       [description]
 	 */
-	protected function renderView($data = [], $view = 'default'){
+	protected function renderView($data = null, $view = 'default'){
 		// TODO: Load an other page when the default doesn't exists!
 		$loaded = $this->twig->loadTemplate('layout.snippet.html');
+
+		if($data == null){
+			$data = $this->data;
+		}
 
 		// Collect and combine all the data before sending it to the template.
 		$data = [

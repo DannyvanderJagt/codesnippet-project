@@ -14,7 +14,11 @@ class Controller_Snippet extends Controller
 		public function onAuth($params = []){
 			// This is only avialable when some one is signed in!
 			// Otherwise when an user is not signed in send them to the signin page.
-			return System::$Auth->required();
+			if(!isset($params[1])){
+				return true;
+			}else{
+				return System::$Auth->required();
+			}
 		}
 
 		/**
@@ -87,11 +91,11 @@ class Controller_Snippet extends Controller
 		public function onEditPost($id, $data){
 			// Filter the data.
 			$data = [
-				'Title' => $data['Title'],
-				'Code' => $data['Code'],
-				'Description' => $data['Description'],
-				'Lang' => $data['Lang'],
-				'Framework' => $data['Framework']
+				'Title' => $data['title'],
+				'Code' => $data['code'],
+				'Description' => $data['description'],
+				'Lang' => $data['lang'],
+				'Framework' => $data['framework']
 			];
 
 			Api::$Snippet->updateById($id, $data);

@@ -15,8 +15,23 @@ class Controller_Signin extends Controller
 		}
 
 		public function onRequest($params = []){
-			System::$Auth->signin("Danny", '91ffd2105e0c4be68c4b88caacc25df87739de32');
 			$this->renderView();
+		}
+
+		public function onPost($params = [], $data = []){
+			$result = System::$Auth->signin(
+				$data['username'], 
+				Auth::encrypt($data['password'])
+			);
+			if($result){
+				System::redirectToHome();
+			}else{
+				$this->data = [
+					'error' => true,
+					'errorMessage' => 'Your username and/or password are incorrect!'
+				];
+			}
+
 		}
 	// **************************************** //
 
