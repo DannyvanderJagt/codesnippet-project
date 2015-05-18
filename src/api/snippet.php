@@ -39,5 +39,20 @@ class Snippet{
 
 		$snippet->update($data);
 	}
+
+	public function create($title, $code, $description, $lang, $framework){
+		$model = new Model_Snippet();
+		$result = $model->create([
+			"ID" => null,
+			"Title" => $title,
+			"Code" => $code,
+			"Description" => $description,
+			"Lang" => $lang,
+			"Framework" => $framework,
+			"Date" => 'NULL',
+			"Views" => 0
+		]);
+		return $result->toArray();
+	}
 }
 
