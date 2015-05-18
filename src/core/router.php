@@ -184,7 +184,7 @@ class Router{
 			System::redirectTo($redirectTo);
 		}
 
-		if(isset($_POST['submit'])){
+		if(isset($_POST['submit']) && method_exists($controller, 'onPost')){
 			$controller->onPost($this->requestedParams, $_POST);
 		}
 		$controller->onRequest($this->requestedParams);

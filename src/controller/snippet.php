@@ -58,10 +58,14 @@ class Controller_Snippet extends Controller
 		 * @return [type]         [description]
 		 */
 		public function onPost($params = [], $data = []){
-			print_r($params);
-			print_r($data);
+			if(isset($params[0]) && isset($params[1])){
+
+				if($params[1] == 'edit'){
+					$this->onEditPost($params[0], $data);
+				}
+			}
 		}
-		
+
 	// ***** Default Controller functions ***** //
 
 		/**
@@ -78,6 +82,19 @@ class Controller_Snippet extends Controller
 				];
 			}
 			$this->renderView($data, 'edit');
+		}
+
+		public function onEditPost($id, $data){
+			// Filter the data.
+			$data = [
+				'Title' => $data['Title'],
+				'Code' => $data['Code'],
+				'Description' => $data['Description'],
+				'Lang' => $data['Lang'],
+				'Framework' => $data['Framework']
+			];
+
+			Api::$Snippet->updateById($id, $data);
 		}
 
 		/**
