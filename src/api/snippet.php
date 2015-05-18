@@ -39,5 +39,15 @@ class Snippet{
 
 		$snippet->update($data);
 	}
+
+	public function deleteById($id){
+				$model = new Model_Snippet();
+		$snippet = $model->find($id);
+		
+		if(empty($snippet)){
+			return false;
+		}
+		$snippet->delete();
+	}
 }
 

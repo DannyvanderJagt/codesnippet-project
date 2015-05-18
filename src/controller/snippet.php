@@ -107,6 +107,7 @@ class Controller_Snippet extends Controller
 		 * @return [type]     [description]
 		 */
 		public function onDelete($id){
+			Api::$snippet->deleteById($id);
 			$this->renderView([], 'delete');
 		}
 
