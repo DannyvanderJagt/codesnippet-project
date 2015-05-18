@@ -28,5 +28,16 @@ class Snippet{
 		$result['Comments'] = Comment::getBySnippetID($id);
 		return $result->toArray();
 	}
+
+	public function updateById($id, $data){
+		$model = new Model_Snippet();
+		$snippet = $model->find($id);
+		
+		if(empty($snippet)){
+			return false;
+		}
+
+		$snippet->update($data);
+	}
 }
 
