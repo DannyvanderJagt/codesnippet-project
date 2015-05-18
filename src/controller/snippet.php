@@ -23,6 +23,7 @@ class Controller_Snippet extends Controller
 		 * @return [type]         [description]
 		 */
 		public function onRequest($params = []){
+			// Look for post requests!
 			if(!isset($params[0])){
 				$this->renderView([
 					'error' => true,
@@ -50,15 +51,49 @@ class Controller_Snippet extends Controller
 			}
 		}
 
+		/**
+		 * Receive post data.
+		 * @param  [type] $params [description]
+		 * @param  [type] $data   [description]
+		 * @return [type]         [description]
+		 */
+		public function onPost($params = [], $data = []){
+			print_r($params);
+			print_r($data);
+		}
+		
+	// ***** Default Controller functions ***** //
 
+		/**
+		 * Edit a already existing snippet.
+		 * @param  [type] $id [description]
+		 * @return [type]     [description]
+		 */
 		public function onEdit($id){
-			$this->renderView([], 'edit');
+			$data = Api::$Snippet->getById($id);
+			if(empty($data)){
+				$data = [
+					'error' => true,
+					'errorMessage' => 'This snippet id doesn\'t exists!'
+				];
+			}
+			$this->renderView($data, 'edit');
 		}
 
+		/**
+		 * Delete a snippet.
+		 * @param  [type] $id [description]
+		 * @return [type]     [description]
+		 */
 		public function onDelete($id){
 			$this->renderView([], 'delete');
 		}
 
+		/**
+		 * Add a new snippet.
+		 * @param  [type] $id [description]
+		 * @return [type]     [description]
+		 */
 		public function onAdd($id){
 			$this->renderView([], 'add');
 		}
@@ -78,7 +113,5 @@ class Controller_Snippet extends Controller
 			}
 			$this->renderView($data);
 		}
-
-
 	// **************************************** //
 }
