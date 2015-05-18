@@ -99,7 +99,7 @@ class Controller_Signup extends Controller
 			
 
 			Api::$User->create($_POST['username'], $passwordSHA1,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $picture)
-		}
+		
 		}
 		$this->display($this->templates['default']);
 		}
