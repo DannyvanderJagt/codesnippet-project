@@ -93,12 +93,9 @@ class Controller_Signup extends Controller
 				$picture =  $_POST['profile_picture'];
 				}
 			$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
-			$passwordMD5 = md5($_POST['password']);
-			$passwordSHA1 = sha1($passwordMD5);
-			print_r($_POST);
-			
+			$password = Auth::encrypt($_POST['password']);
 
-			Api::$User->create($_POST['username'], $passwordSHA1,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $picture);
+			Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $picture);
 		
 		}
 	}
