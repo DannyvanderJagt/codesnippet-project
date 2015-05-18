@@ -1,6 +1,6 @@
  <div class="header"> 
     <div class="pure-u-1-4">
-        <a href="{{ basePath }}"><img src="../dist/images/logo.png" class="logo"></a>
+        <a href="{{ basePath }}"><img src="{{ basePath }}/dist/images/logo.png" class="logo"></a>
     </div>                            
     
     <div class="searchbar pure-u-1-2">
@@ -17,9 +17,9 @@
     
     <div class="user pure-u-1-4">
         <div class="userOptions">
-            {% if session %}
+            {% if auth %}
                 <a href="upload.html" title="Upload codesnippet"> <div class="uploadbtn" ></div> </a>
-                <a class="userAccount" href="{{ basePath }}/account">{{ session.Username }}</a>
+                <a class="userAccount" href="{{ basePath }}/account">{{ auth.Username }}</a>
                 <div class="userAvatar"></div>
             {% else %}
                 <a class='userAccount' href='{{ basePath }}/register'>Register</a>
