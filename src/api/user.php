@@ -92,5 +92,23 @@ class User{
 		$model = new Model_User();
 		$result = $model->where('Username','=',$username)->first()->update(['Session_key'=>$key]);
 	}
+
+	public function create($username, $password, $first_name, $last_name, $email, $birthday, $profession, $picture){
+		$model = new Model_User();
+		$user = $model->create([
+				'ID' => 'NULL',
+				'Username' => $username,
+				'Password' => $password,
+				'First_name' => $first_name,
+				'Last_name' => $last_name,
+				'Email' => $email,
+				'Birthday' => $birthday,
+				'Profession' => $profession,
+				'Profile_picture' => $picture,
+				'Votes' => 'NULL',
+				'Session_key' => 'NULL',
+				'Last_online' => 'NULL',
+				'Register_date' => 'NULL',]);
+	}
 	
 }
