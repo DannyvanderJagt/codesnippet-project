@@ -84,7 +84,7 @@ class Controller_Snippet extends Controller
 		}
 
 		public function upVote(){
-			$id => 'NULL'; 
+			$id = 'NULL'; 
 			$vote = 1; 
 			$voteUser = 'NULL'; 
 			$userAuth::getUser()['ID'];
