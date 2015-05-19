@@ -35,10 +35,7 @@ class Controller_Snippet extends Controller
 				]);
 			}else if($params[0] == 'add'){
 				$this->onAdd();
-			}
-
-			// Call the right action.
-			if(!isset($params[1])){
+			}else if(!isset($params[1])){
 				$this->onShow($params[0]);
 			}else{
 				switch($params[1]){

@@ -1,6 +1,4 @@
 body, html {
-  min-width: 800px;
-  height: 100%;
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -82,7 +80,8 @@ h6 {
 
 .content {
   color: #414041;
-  height: calc(100% - 175px); }
+  min-height: calc(100% - 225px);
+  margin-bottom: 50px; }
 
 #CodeBlock {
   background-color: #E6E7E8;
@@ -313,18 +312,10 @@ h6 {
 .relatedDiv {
   padding: 5px; }
 
-.pageNumberHolder {
-  text-align: center; }
-
 .pageNumber {
-  width: auto;
-  display: inline-block;
-  margin: 60px auto 0px auto; }
-
-.pagesInfo {
-  width: auto;
+  width: 250px;
   margin: 40px auto 0px auto;
-  text-align: center; }
+  background-color: #ff66cc; }
 
 #searchInput {
   background-color: #414042;
@@ -470,7 +461,10 @@ textarea {
   background-color: #414042;
   height: 125px;
   margin-top: auto;
-  left: 0px; }
+  bottom: 0px;
+  position: relative;
+  left: 0px;
+  bottom: 0px; }
 
 .footerLogo {
   background-image: url(../images/logo.png);
@@ -591,3 +585,213 @@ a.userAccount {
   height: 30px;
   float: left;
   border-style: none; }
+
+.dropDownOption {
+  margin-top: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 40px;
+  float: left; }
+
+.dropDownHeader {
+  margin-top: 5px;
+  float: left;
+  margin-right: 10px; }
+
+.codeSnippetInput {
+  width: 100%;
+  margin-top: 10px;
+  float: left; }
+
+.codeInput {
+  width: 100%;
+  background-color: #F1F2F2;
+  float: left;
+  resize: none;
+  border: 1px solid #58595B; }
+
+.codeDescription {
+  width: 100%;
+  margin-top: 10px;
+  float: left; }
+
+.codeDescriptionInput {
+  width: 100%;
+  float: left;
+  resize: none;
+  border: 1px solid #58595B; }
+
+.selectTags {
+  width: 100%;
+  margin-top: 10px;
+  float: left; }
+
+.tagOption {
+  width: 100%;
+  float: left; }
+
+.tagText {
+  float: left;
+  margin: 5px; }
+
+.submitBTN {
+  margin-top: 75px;
+  float: right; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-mei-2015, 9:50:02
+    Author     : Leroy
+*/
+/* 
+    Created on : 22-apr-2015, 10:43:11
+    Author     : Roseline,
+    Author     : Leroy, 
+*/
+.codeBlock {
+  float: left;
+  width: auto;
+  border: 1px solid #58595B;
+  margin-right: 10px;
+  padding: 10px; }
+
+.codeBlockContent {
+  width: auto;
+  padding: 10px; }
+
+.codeBlockVotes {
+  float: left;
+  width: 50px;
+  height: 100px;
+  margin-left: -61px; }
+
+.codeUpVote {
+  width: 30px;
+  height: 30px;
+  background-image: url(images/arrow_Up.png);
+  background-repeat: no-repeat; }
+
+.codeLikes {
+  width: 30px;
+  height: 30px;
+  text-align: center; }
+
+.codeDownVote {
+  width: 30px;
+  height: 30px;
+  background-image: url(images/arrow_down.png);
+  background-repeat: no-repeat; }
+
+.codeInfo {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #E6E7E8; }
+
+.codeTitle {
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.codeDate {
+  margin-top: 15px;
+  float: right; }
+
+.codeText {
+  float: left;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 10px; }
+
+.codeOptions {
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  width: 100%;
+  height: 23px;
+  border-top: 1px solid #E6E7E8; }
+
+.codeOptionsText {
+  height: 23px;
+  float: left;
+  margin-right: 5px; }
+
+.codeRepliesNumber {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  line-height: 20px;
+  text-align: center;
+  background: #58595B;
+  float: left;
+  font-size: 11px;
+  margin-right: 20px; }
+
+#codeDropDownIcon {
+  margin-top: 3px;
+  width: 19px;
+  height: 19px;
+  background-image: url(images/plus.png);
+  background-repeat: no-repeat;
+  float: left; }
+
+#codeSnippet {
+  display: none;
+  float: left;
+  width: 100%;
+  background-color: #E6E7E8;
+  border-top: 1px solid #58595B;
+  margin-left: -10px;
+  margin-bottom: -10px;
+  padding: 10px; }
+
+.rightContent {
+  margin-top: 100px;
+  padding-left: 10px; }
+
+.headerRightContent {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left; }
+
+#pageSettings {
+  width: 100%;
+  float: left;
+  padding: 10px; }
+
+.settingsDiv {
+  width: 100%;
+  padding: 5px; }
+
+#pageTags {
+  width: 100%;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px; }
+
+#pageInformation {
+  width: 100%;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px; }
+
+.informationDiv {
+  float: left;
+  padding: 5px; }
+
+#pageRelated {
+  width: 100%;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px; }
+
+.relatedDiv {
+  padding: 5px; }
