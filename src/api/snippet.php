@@ -42,16 +42,16 @@ class Snippet{
 		$snippet->update($data);
 	}
 
-<<<<<<< HEAD
 	public function deleteById($id){
-				$model = new Model_Snippet();
+		$model = new Model_Snippet();
 		$snippet = $model->find($id);
 		
 		if(empty($snippet)){
 			return false;
 		}
 		$snippet->delete();
-=======
+	}
+
 	public function create($title, $code, $description, $lang, $framework){
 		$model = new Model_Snippet();
 		$result = $model->create([
@@ -65,7 +65,6 @@ class Snippet{
 			"Views" => 0
 		]);
 		return $result->toArray();
->>>>>>> 2d2e5fbe05e1e4b0f507ef82d2ce2313cfa9333d
 	}
 }
 
