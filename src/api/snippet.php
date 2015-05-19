@@ -2,8 +2,7 @@
 
 // Load the required models.
 require_once 'model/snippet.model.php';
-require_once 'model/prog_lang.model.php';
-require_once 'model/framework.model.php';
+require_once 'model/vote_snippet.php';
 
 /**
  * Get, Update and remove any snippet.
@@ -22,18 +21,28 @@ class Snippet{
 	public function getById($id){
 		$model = new Model_Snippet();
 		$result = $model->find($id);
-		$result->Language;
-		$result->framework;
-		
 
 		if(empty($result)){
 			return null;
 		}
 
-		$result['User'] = User::getById($result['User_ID']);
 		$result['Comments'] = Comment::getBySnippetID($id);
-		$result['Votes'] = Vote::getBySnippetID($id);
 		return $result->toArray();
+	}
+
+	public function vote($id, $vote, $voteUser, $user){
+		$model = new Model_Vote_Snippet();
+		$result = $model->find($id);
+		if(empty($result)){
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $voteUser, 
+				'User_ID' => $user, 
+				'Vote_type' => $vote, 
+				'Snippet_ID' => $id
+				]);
+		}
+		return false;
 	}
 
 	public function updateById($id, $data){
@@ -46,30 +55,4 @@ class Snippet{
 
 		$snippet->update($data);
 	}
-
-	public function deleteById($id){
-		$model = new Model_Snippet();
-		$snippet = $model->find($id);
-		
-		if(empty($snippet)){
-			return false;
-		}
-		$snippet->delete();
-	}
-
-	public function create($title, $code, $description, $lang, $framework){
-		$model = new Model_Snippet();
-		$result = $model->create([
-			"ID" => null,
-			"Title" => $title,
-			"Code" => $code,
-			"Description" => $description,
-			"Lang" => $lang,
-			"Framework" => $framework,
-			"Date" => 'NULL',
-			"Views" => 0
-		]);
-		return $result->toArray();
-	}
 }
-

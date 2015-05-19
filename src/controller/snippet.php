@@ -83,6 +83,14 @@ class Controller_Snippet extends Controller
 			$this->renderView($data, 'edit');
 		}
 
+		public function upVote(){
+			$id => 'NULL'; 
+			$vote = 1; 
+			$voteUser = 'NULL'; 
+			$userAuth::getUser()['ID'];
+			Api::$Vote->vote($id, $vote, $voteUser, $user);
+		}
+
 		public function onEditPost($id, $data){
 			// Filter the data.
 			$data = [
@@ -102,7 +110,7 @@ class Controller_Snippet extends Controller
 		 * @return [type]     [description]
 		 */
 		public function onDelete($id){
-			Api::$snippet->deleteById($id);
+			Api::$Snippet->deleteById($id);
 			$this->renderView([], 'delete');
 		}
 
