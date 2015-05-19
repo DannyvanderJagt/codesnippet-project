@@ -33,6 +33,8 @@ class Controller_Snippet extends Controller
 					'error' => true,
 					'errorMessage' => "This snippet doesn't exists! (no id)"
 				]);
+			}else if($params[0] == 'add'){
+				$this->onAdd();
 			}
 
 			// Call the right action.
@@ -45,9 +47,6 @@ class Controller_Snippet extends Controller
 						break;
 					case 'delete':
 						$this->onDelete($params[0]);
-						break;
-					case 'add':
-						$this->onAdd($params[0]);
 						break;
 					default:
 						$this->onShow($params[0]);
@@ -62,11 +61,10 @@ class Controller_Snippet extends Controller
 		 * @return [type]         [description]
 		 */
 		public function onPost($params = [], $data = []){
-			if(isset($params[0]) && isset($params[1])){
-
-				if($params[1] == 'edit'){
-					$this->onEditPost($params[0], $data);
-				}
+			if(isset($params[0]) && isset($params[1]) && $params[1] == 'edit'){
+				$this->onEditPost($params[0], $data);
+			}else if(isset($params[0]) && $params[0] == 'add'){
+				$this->onAddPost($data);
 			}
 		}
 
@@ -116,8 +114,19 @@ class Controller_Snippet extends Controller
 		 * @param  [type] $id [description]
 		 * @return [type]     [description]
 		 */
-		public function onAdd($id){
+		public function onAdd(){
 			$this->renderView([], 'add');
+		}
+
+		public function onAddPost($data){
+			$id = Api::$Snippet->create(
+				$data['title'],
+				$data['code'],
+				$data['description'],
+				$data['lang'],
+				$data['framework']
+			);
+			System::redirectTo('snippet/' . $id['ID']);
 		}
 
 		/**

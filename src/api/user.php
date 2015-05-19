@@ -108,7 +108,21 @@ class User{
 				'Votes' => 'NULL',
 				'Session_key' => 'NULL',
 				'Last_online' => 'NULL',
-				'Register_date' => 'NULL',]);
+				'Register_date' => 'NULL']);
+	}
+
+	public function update($id, $data){
+		$model = new Model_User();
+		$user = $model->find($id);
+		if($user){
+			$user->update([
+				'First_name' => $data['firstname'],
+				'Last_name' => $data['lastname'],
+				'Email' => $data['email'],
+				'Birthday' => $data['birthday'],
+				'Profession' => $data['profession']
+			]);
+		}
 	}
 	
 }
