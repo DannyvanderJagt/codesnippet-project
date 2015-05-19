@@ -22,7 +22,7 @@ class User{
 			return null;
 		}
 
-		$result['votes'] = Vote::getByUserID($id);
+		$result['Votes'] = Vote::getByUserID($id);
 		$result = $result->toArray();
 		return $result;
 	}
@@ -41,7 +41,7 @@ class User{
 		}
 
 		$result = $result->toArray();
-		$result['votes'] = Vote::getByUserID($id);
+		$result['Votes'] = Vote::getByUserID($result['ID']);
 		return $result;
 	}
 
@@ -59,7 +59,7 @@ class User{
 		}
 
 		$result = $result->toArray();
-		$result['votes'] = Vote::getByUserID($id);
+		$result['Votes'] = Vote::getByUserID($id);
 		return $result;
 	}
 

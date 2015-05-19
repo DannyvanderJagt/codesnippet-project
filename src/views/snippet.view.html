@@ -1,53 +1,48 @@
 <div class="content pure-u-2-5">
-    <h1> {{ data.snippet.Title }} </h1>                        
+    <h1> {{ data.Title }} </h1>                        
     <div id="CodeBlock">
-        {{ data.snippet.Code }}
+        {{ data.Code }}
     </div>      
     <h3>Description</h3>
     <div id="Description">
-        {{ data.snippet.Description }}
+        {{ data.Description }}
     </div>
-    
+
     <h3>Comments</h3>
-    {% for comment in data.snippet.comments %}
+    {% for comment in data.Comments %}
     <div class="commentBlock">
         <div class="commentInfo">
             <div class="userImage"></div>
-            <div class="userSays">{{ comment.Username }}:</div>
+            <div class="userSays">{{ comment.user.Username }}:</div>
             <div class="commentDate">{{ comment.Comment_date }}</div>
         </div>
         <div class="commentText">{{ comment.Comment_text }}</div>
         <div class="commentOptions">
             <div class="commentUpVote"></div>
-            <div class="commentUpVotes">10</div>
+            <div class="commentUpVotes">{{ comment.Votes.up }}</div>
             <div class="commentDownVote"></div>
-            <div class="commentDownVotes">1</div>
+            <div class="commentDownVotes">{{ comment.Votes.down }}</div>
             <div class="commentReplies">
-                <div class="commentRepliesNumber">{{ comment.subcomments|length }}</div>
+                <div class="commentRepliesNumber">{{ comment.SubComments|length }}</div>
                 <div class="commentRepliesText">replies</div>
                 <div id="commentDropDownIcon" onclick="showHideComments()"></div>
-                <!-- <button onclick="showHideComments()" id="commentDropDownIcon"></button> -->
             </div>
             <div class="commentNewReplyText">reply</div>
         </div>
         <div id="subcomments">
-            {% for subcomment in comment.subcomments %}
+            {% for subcomment in comment.SubComments %}
             <div class="commentBlock sub">
                 <div class="commentInfo">
                     <div class="userImage"></div>
-                    <div class="userSays">{{ subcomment.Username }}:</div>
+                    <div class="userSays">{{ subcomment.user.Username }}:</div>
                     <div class="commentDate"> {{ subcomment.Comment_date }}</div>
                 </div>
                 <div class="commentText">{{ subcomment.Comment_text }}</div>
                 <div class="commentOptions">
                     <div class="commentUpVote"></div>
-                    <div class="commentUpVotes">2</div>
+                    <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
                     <div class="commentDownVote"></div>
-                    <div class="commentDownVotes">0</div>
-                    <div class="commentReplies">
-                        <div class="commentRepliesNumber">0</div>
-                        <div class="commentRepliesText">replies</div>
-                    </div>
+                    <div class="commentDownVotes">{{ subcomment.Votes.down }}</div>
                     <div class="commentNewReplyText" onClick="replyToComment()">reply</div>
                 </div>
                 <div id="replyBox">
@@ -83,35 +78,65 @@
         <a href="tagIdLink.php" id="creatorInfo">
             <div id="creatorImage"></div>
             <div id="creatorText">
-                <div id="creatorName">Leroy Rocks</div>
-                <div id="creatorProfession">Student, Programmer</div>
+                <div id="creatorName">{{ data.User.Username }}</div>
+                <div id="creatorProfession">{{ data.User.Profession }}</div>
                 <div id="creatorUpvotes">
                     <div id="creatorUpvotesImage"></div>
-                    <div id="creatorUpvotesText">400</div>
+                    <div id="creatorUpvotesText">
+                        {{ data.User.Votes.up }}
+                    </div>
                 </div>
             </div>
         </a>
         <div id="pageSettings">
             <div class="headerRightContent"><h5>Settings:</h5></div>
-            <div class="settingsDiv">Language: C#</div>
-            <div class="settingsDiv">Framework: WPF</div>
-            <div class="settingsDiv">Import: System.Timer</div>
+            <div class="settingsDiv">Language: {{ data.language.language_name }}</div>
+            <div class="settingsDiv">Framework: {{ data.framework.Framework_name}}</div>
         </div>
-        <div id="pageTags">
+        <!-- <div id="pageTags">
             <div class="headerRightContent"><h5>Tags:</h5></div>
             <a href="tagIdLink.php" class="tag-button">C#</a>
             <a href="tagIdLink.php" class="tag-button">Java</a>
             <a href="tagIdLink.php" class="tag-button">Javascript</a>
-        </div>
+        </div> -->
         <div id="pageInformation">
             <div class="headerRightContent"><h5>Views:</h5></div>
-            <div class="informationDiv">Views: 100</div> 
-            <div class="informationDiv">2 comments</div>
+            <div class="informationDiv">Views: {{ data.Views }}</div> 
+            <div class="informationDiv">{{ data.Comments | length }} comments</div>
         </div>
-        <div id="pageRelated">
+       <!--  <div id="pageRelated">
             <div class="headerRightContent"><h5>Related:</h5></div>
             <div class="relatedDiv">Timer</div> 
             <div class="relatedDiv">Converter</div>
-        </div>
+        </div> -->
     </div>
 </div>
+<script type="text/javascript">
+    function showHideComments()
+    {
+        var e = document.getElementById('subcomments');
+        var a = document.getElementById('commentDropDownIcon');
+        if (e.style.display === 'block')
+        {
+            e.style.display = 'none';
+            a.style.backgroundImage = 'url(../dist/images/plus.png)';
+        }
+        else
+        {
+            e.style.display = 'block';
+            a.style.backgroundImage = 'url(../dist/images/min.png)';
+        }
+    }
+    function replyToComment()
+    {
+        var c = document.getElementById('replyBox');
+        if (c.style.display === 'block')
+        {
+            c.style.display = 'none';
+        }
+        else
+        {
+            c.style.display = 'block';
+        }
+    }
+</script>

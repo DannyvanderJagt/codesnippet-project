@@ -47,9 +47,11 @@ class Comment{
 		foreach($comments as $comment){
 			if(!empty($comment['Comment_top_ID'])){
 				// This is an subcomment.
+				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
 				$newOrder[$comment['Comment_top_ID']]['SubComments'][] = $comment;
 			}else{
 				// This is an top comment.
+				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
 				$comment['SubComments'] = [];
 				$newOrder[$comment['Comment_ID']] = $comment;
 			}

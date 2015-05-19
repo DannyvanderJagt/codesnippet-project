@@ -22,5 +22,13 @@ class Model_Snippet extends Eloquent
 		return $this->belongsTo('Model_User', 'User_ID', 'ID');
 	}
 
+	public function Language(){
+		return $this->belongsTo('Model_Proglang', 'Lang', 'language_ID');
+	}
+
+	public function framework(){
+		return $this->belongsTo('Model_Framework', 'Framework', 'Framework_ID');
+	}
+
 
 }
