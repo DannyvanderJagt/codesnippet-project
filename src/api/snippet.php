@@ -32,7 +32,7 @@ class Snippet{
 
 	public function vote($id, $vote, $voteUser, $user){
 		$model = new Model_Vote_Snippet();
-		$result = $model->find($id);
+		$result = $model->find($user);
 		if(empty($result)){
 			$voteCreate = $model->create([
 				'Vote_ID' => 'NULL', 
@@ -41,6 +41,7 @@ class Snippet{
 				'Vote_type' => $vote, 
 				'Snippet_ID' => $id
 				]);
+			return true;
 		}
 		return false;
 	}
