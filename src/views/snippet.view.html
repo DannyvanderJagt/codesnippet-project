@@ -25,11 +25,19 @@
             <div class="commentReplies">
                 <div class="commentRepliesNumber">{{ comment.SubComments|length }}</div>
                 <div class="commentRepliesText">replies</div>
-                <div id="commentDropDownIcon" onclick="showHideComments()"></div>
+                <div class="commentDropDownIcon"></div>
             </div>
             <div class="commentNewReplyText">reply</div>
+            <div class="replyBox">
+                <br><br>
+                <h5>Leave your reply:</h5>
+                <form action="" method='post'>
+                    <textarea rows="4" cols="60" >Comment...</textarea>
+                    <button class="styleButton right">Submit</button>
+                </form>
+            </div>
         </div>
-        <div id="subcomments">
+        <div class="subcomments">
             {% for subcomment in comment.SubComments %}
             <div class="commentBlock sub">
                 <div class="commentInfo">
@@ -43,18 +51,25 @@
                     <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
                     <div class="commentDownVote"></div>
                     <div class="commentDownVotes">{{ subcomment.Votes.down }}</div>
-                    <div class="commentNewReplyText" onClick="replyToComment()">reply</div>
-                </div>
-                <div id="replyBox">
-                    <textarea rows="4" cols="55">@iemand anders</textarea>
+                    <div class="commentNewReplyText">reply</div>
+                    <br>
+                    <div class="replyBox">
+                        <h5>Leave your reply:</h5>
+                        <form action="" method='post'>
+                            <textarea rows="4" cols="60" >Comment...</textarea>
+                            <button class="styleButton right">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% endfor %}
         <h5>Leave your comment:</h5>
-        <textarea rows="4" cols="60" >Comment...</textarea>
-        <button class="styleButton right">Submit</button>
+        <form action="" method='post'>
+            <textarea rows="4" cols="60" >Comment...</textarea>
+            <button class="styleButton right">Submit</button>
+        </form>
         <div class="pageNumberHolder">
          <div class="pageNumber">
              <div class="styleButton"><</div>
@@ -112,31 +127,38 @@
     </div>
 </div>
 <script type="text/javascript">
-    function showHideComments()
-    {
-        var e = document.getElementById('subcomments');
-        var a = document.getElementById('commentDropDownIcon');
-        if (e.style.display === 'block')
-        {
-            e.style.display = 'none';
-            a.style.backgroundImage = 'url(../dist/images/plus.png)';
-        }
-        else
-        {
-            e.style.display = 'block';
-            a.style.backgroundImage = 'url(../dist/images/min.png)';
+    // Show and hide subcomments.
+    var replies = document.getElementsByClassName('commentNewReplyText');
+    var drops = document.getElementsByClassName('commentDropDownIcon');
+
+
+    for(var i = 0, len = replies.length; i < len; i++){
+        replies[i].addEventListener('click', toggleReply);
+    }
+
+    function toggleReply(){
+        var sub = this.parentNode.parentNode.getElementsByClassName('replyBox');
+        if(sub[0].style.display == 'block'){
+            sub[0].style.display = 'none';
+        }else{
+            sub[0].style.display = 'block';
         }
     }
-    function replyToComment()
-    {
-        var c = document.getElementById('replyBox');
-        if (c.style.display === 'block')
-        {
-            c.style.display = 'none';
-        }
-        else
-        {
-            c.style.display = 'block';
+
+
+    // Show and hide subcomments.
+    for(var i = 0, len = drops.length; i < len; i++){
+        drops[i].addEventListener('click', toggleShowHide);
+    }
+
+    function toggleShowHide(){
+        var sub = this.parentNode.parentNode.parentNode.getElementsByClassName('subcomments');
+        // sub.style.display = 'block';
+        if(sub[0].style.display == 'block'){
+            sub[0].style.display = 'none';
+        }else{
+            sub[0].style.display = 'block';
         }
     }
+
 </script>
