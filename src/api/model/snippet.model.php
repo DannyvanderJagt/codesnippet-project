@@ -18,8 +18,9 @@ class Model_Snippet extends Eloquent
 	'Change_date',
 	'Views'];
 
-
-	public function comment(){
-		return $this->hasMany('Model_Comment', 'Snippet_ID');
+	public function User(){
+		return $this->belongsTo('Model_User', 'User_ID', 'ID');
 	}
+
+
 }

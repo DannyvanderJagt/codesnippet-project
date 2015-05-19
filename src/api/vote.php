@@ -25,23 +25,23 @@ class Vote{
 		$commentModel = new Model_Vote_Comment();
 
 		// User table votes.
-		$userUp = $userModel::where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
-		$userDown = $userModel::where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$userUp = $userModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$userDown = $userModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
 
 		// Snippet table.
-		$snippetUp = $snippetModel::where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
-		$snippetDown = $snippetModel::where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$snippetUp = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$snippetDown = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
 
 		// Comment table.
-		$commentUp = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
-		$commentDown = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
-
+		$commentUp = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$commentDown = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
+	
 		$totalUp = $userUp + $snippetUp + $commentUp;
 		$totalDown = $userDown + $snippetDown + $commentDown; 
 
 		return [
-			'totalUpVotes'=>$totalUp,
-			'totalDownVotes'=>$totalDown,
+			'up'=>$totalUp,
+			'down'=>$totalDown,
 			'userUpVotes' => $userUp,
 			'userDownVotes' => $userDown,
 			'snippetUpVotes' => $snippetUp,
@@ -50,5 +50,40 @@ class Vote{
 			'commentDownVotes' => $commentDown
 		];
 	}
+
+	/**
+	 * Get the up and down votes of a snippet by its id.
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getBySnippetID($id){
+		$model = new Model_Vote_Snippet();
+
+		$up = $model->where('Snippet_ID', $id)->where('Vote_type', '=', 1)->count();
+		$down = $model->where('Snippet_ID', $id)->where('Vote_type', '=', 0)->count();
+
+		return [
+			'up' => $up,
+			'down' => $down
+		];
+	}
+
+	/**
+	 * Get the up and down vote of a comment by its id.
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function getByCommentID($id){
+		$model = new Model_Vote_Comment();
+
+		$up = $model->where('Comment_ID', $id)->where('Vote_type', '=', 1)->count();
+		$down = $model->where('Comment_ID', $id)->where('Vote_type', '=', 0)->count();
+
+		return [
+			'up' => $up,
+			'down' => $down
+		];
+	}
+
 
 }

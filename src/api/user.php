@@ -22,8 +22,8 @@ class User{
 			return null;
 		}
 
+		$result['votes'] = Vote::getByUserID($id);
 		$result = $result->toArray();
-		// unset($result['Password']);	// Remove the password!
 		return $result;
 	}
 
@@ -41,7 +41,7 @@ class User{
 		}
 
 		$result = $result->toArray();
-		unset($result['Password']);	// Remove the password!
+		$result['votes'] = Vote::getByUserID($id);
 		return $result;
 	}
 
@@ -59,7 +59,7 @@ class User{
 		}
 
 		$result = $result->toArray();
-		unset($result['Password']);	// Remove the password!
+		$result['votes'] = Vote::getByUserID($id);
 		return $result;
 	}
 

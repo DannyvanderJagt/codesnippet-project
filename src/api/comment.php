@@ -10,8 +10,16 @@ class Comment{
 		
 	}
 
-	public function getByUser($id){
-		return array('id'=>$id);
+	public function getByUserID($id){
+		$model = new Model_Comment();
+
+		$comments = $model->where('User_ID', $id)->get();
+		
+		if(empty($comments)){
+			return null;
+		}
+
+		return $comments->toArray();
 	}
 
 	/**

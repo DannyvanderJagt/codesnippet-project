@@ -25,7 +25,9 @@ class Snippet{
 			return null;
 		}
 
+		$result['User'] = User::getById($result['User_ID']);
 		$result['Comments'] = Comment::getBySnippetID($id);
+		$result['Votes'] = Vote::getBySnippetID($id);
 		return $result->toArray();
 	}
 
