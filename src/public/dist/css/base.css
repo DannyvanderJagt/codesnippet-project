@@ -3,7 +3,8 @@ body, html {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin: 0px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  height: 100%; }
 
 /* Colors - See StyleGuide */
 /* Elements */
@@ -80,8 +81,8 @@ h6 {
 
 .content {
   color: #414041;
-  min-height: calc(100% - 225px);
-  margin-bottom: 50px; }
+  border-right: 1px solid #E6E7E8;
+  min-height: calc(100% - 175px); }
 
 #CodeBlock {
   background-color: #E6E7E8;
@@ -314,8 +315,20 @@ h6 {
 
 .pageNumber {
   width: 250px;
+  margin: 40px auto 0px auto; }
+
+.pageNumberHolder {
+  text-align: center; }
+
+.pageNumber {
+  width: auto;
+  display: inline-block;
+  margin: 60px auto 0px auto; }
+
+.pagesInfo {
+  width: auto;
   margin: 40px auto 0px auto;
-  background-color: #ff66cc; }
+  text-align: center; }
 
 #searchInput {
   background-color: #414042;
@@ -652,6 +665,10 @@ and open the template in the editor.
     Author     : Roseline,
     Author     : Leroy, 
 */
+.content {
+  color: #414041;
+  border-right: 1px solid #E6E7E8; }
+
 .codeBlock {
   float: left;
   width: auto;

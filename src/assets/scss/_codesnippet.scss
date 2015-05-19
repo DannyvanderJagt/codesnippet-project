@@ -31,10 +31,9 @@ h6{
 }
 
 .content{
-    color: #414041;
-    min-height: calc(100% - 225px);
-    margin-bottom: 50px;
-    // border-right: 1px solid #E6E7E8;    
+    color: #414041; 
+    border-right: 1px solid #E6E7E8;
+    min-height: calc(100% - 175px);
 }
 
 #CodeBlock{
@@ -314,5 +313,20 @@ h6{
 .pageNumber{
     width: 250px;
     margin:40px auto 0px auto;
-    background-color:#ff66cc;
+}
+
+.pageNumberHolder{
+ text-align: center;
+}
+
+.pageNumber {
+ width: auto;
+ display: inline-block;
+ margin: 60px auto 0px auto;
+}
+
+.pagesInfo {
+ width: auto;
+ margin: 40px auto 0px auto;
+ text-align:center;
 }
