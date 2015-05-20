@@ -59,4 +59,28 @@ class Comment{
 		return $newOrder;
 	}
 
+
+	public function addBySnippetID($snippetID, $commentText, $topCommentID = null){
+		$comment = new Model_Comment();
+		// Check for login.
+		if(!System::$Auth->required()){
+			return false;
+		}
+		
+		// Check for snippet exists.
+		if(!Snippet::existByID($snippetID)){
+			return false;
+		}
+
+		$comment->create([
+			"Comment_ID" => null,
+			"Snippet_ID" => $snippetID,
+			"Comment_top_ID" => $topCommentID,
+			"User_ID" => System::$Auth->getUser()['ID'],
+			"Comment_text" => $commentText,
+			"Comment_date" => date("Y-m-d")
+		]);
+		return true;
+	}
+
 }

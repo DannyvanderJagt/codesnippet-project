@@ -37,6 +37,15 @@ class Snippet{
 		return $result->toArray();
 	}
 
+	public function existByID($id){
+		$model = new Model_Snippet();
+		$result = $model->find($id);
+		if(empty($result)){
+			return false;
+		}
+		return true;
+	}
+
 	public function vote($id, $vote, $voteUser, $user){
 		$model = new Model_Vote_Snippet();
 		$result = $model->find($user);
@@ -62,5 +71,15 @@ class Snippet{
 		}
 
 		$snippet->update($data);
+	}
+
+	public function getAllLanguages(){
+		$model = new Model_Proglang();
+		return $model->get()->toArray();
+	}
+
+	public function getAllFrameworks(){
+		$model = new Model_Framework();
+		return $model->get()->toArray();
 	}
 }

@@ -62,10 +62,30 @@ class Controller_Snippet extends Controller
 				$this->onEditPost($params[0], $data);
 			}else if(isset($params[0]) && $params[0] == 'add'){
 				$this->onAddPost($data);
+			}else if(isset($params[0])){
+				// Add comments.
+				$this->onAddComment($params[0], $data);
 			}
 		}
 
 	// ***** Default Controller functions ***** //
+
+		public function onAddComment($snippetID, $data){
+			$snippet = Api::$Snippet->getById($snippetID);
+			if(empty($snippet)){
+				$this->data = [
+					'error' => true,
+					'errorMessage' => 'This snippet id doesn\'t exists!'
+				];
+			}
+			if(!isset($data['topCommentID'])){
+				$data['topCommentID'] = null;
+			}
+			Api::$Comment->addBySnippetID($snippetID, $data['comment'], $data['topCommentID']);
+
+			return true;
+		}
+
 
 		/**
 		 * Edit a already existing snippet.

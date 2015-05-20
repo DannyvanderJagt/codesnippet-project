@@ -32,43 +32,46 @@
                 <br><br>
                 <h5>Leave your reply:</h5>
                 <form action="" method='post'>
-                    <textarea rows="4" cols="60" >Comment...</textarea>
-                    <button class="styleButton right">Submit</button>
+                    <textarea rows="4" cols="60" name="comment"> </textarea>
+                    <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
+                    <input type='submit' name='submit' class="styleButton right" value="Submit">
                 </form>
             </div>
         </div>
-        <div class="subcomments">
-            {% for subcomment in comment.SubComments %}
-            <div class="commentBlock sub">
-                <div class="commentInfo">
-                    <div class="userImage"></div>
-                    <div class="userSays">{{ subcomment.user.Username }}:</div>
-                    <div class="commentDate"> {{ subcomment.Comment_date }}</div>
-                </div>
-                <div class="commentText">{{ subcomment.Comment_text }}</div>
-                <div class="commentOptions">
-                    <div class="commentUpVote"></div>
-                    <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
-                    <div class="commentDownVote"></div>
-                    <div class="commentDownVotes">{{ subcomment.Votes.down }}</div>
-                    <div class="commentNewReplyText">reply</div>
-                    <br>
-                    <div class="replyBox">
-                        <h5>Leave your reply:</h5>
-                        <form action="" method='post'>
-                            <textarea rows="4" cols="60" >Comment...</textarea>
-                            <button class="styleButton right">Submit</button>
-                        </form>
+            <div class="subcomments">
+                {% for subcomment in comment.SubComments %}
+                <div class="commentBlock sub">
+                    <div class="commentInfo">
+                        <div class="userImage"></div>
+                        <div class="userSays">{{ subcomment.user.Username }}:</div>
+                        <div class="commentDate"> {{ subcomment.Comment_date }}</div>
+                    </div>
+                    <div class="commentText">{{ subcomment.Comment_text }}</div>
+                    <div class="commentOptions">
+                        <div class="commentUpVote"></div>
+                        <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
+                        <div class="commentDownVote"></div>
+                        <div class="commentDownVotes">{{ subcomment.Votes.down }}</div>
+                        <div class="commentNewReplyText">reply</div>
+                        <br>
+                        <div class="replyBox">
+                            <h5>Leave your reply:</h5>
+                            <form action="" method='post'>
+                                <textarea rows="4" cols="60" name="comment">@{{subcomment.user.Username}} </textarea>
+                                <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
+                                <input type='submit' name='submit' class="styleButton right" value="Submit">
+                            </form>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         {% endfor %}
         <h5>Leave your comment:</h5>
         <form action="" method='post'>
-            <textarea rows="4" cols="60" >Comment...</textarea>
-            <button class="styleButton right">Submit</button>
+            <textarea rows="4" cols="60" name="comment">Comment...</textarea>
+            <input type='submit' name='submit' class="styleButton right" value="Submit">
         </form>
         <div class="pageNumberHolder">
          <div class="pageNumber">
