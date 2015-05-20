@@ -83,17 +83,33 @@ class Snippet{
 
 	public function create($title, $code, $description, $lang, $framework, $userID){
 		$model = new Model_Snippet();
-		return $model->create([
-			"Title" => $title,
-			"Code" =>	$code,
-			"Description" => $description,
-			"Lang" => $lang, 
-			"Framework" => $framework,
-			"User_ID" => $userID,
-			"Date" => date("Y-m-d"),
-			"Views" => 0,
-			"Code_Styled" => ""
-		]);
+
+		$code = ['code' => $code, 'language' => 'css'];
+		$loop = new React\EventLoop\StreamSelectLoop();
+		$dnode = new DNode\DNode($loop);
+
+		$dnode->connect("7070", function($remote, $connection) {
+			global $code;
+		    $remote->highlight($code, function($n) use ($connection) {
+		        return $model->create([
+					"Title" => $title,
+					"Code" =>	$code,
+					"Description" => $description,
+					"Lang" => $lang, 
+					"Framework" => $framework,
+					"User_ID" => $userID,
+					"Date" => date("Y-m-d"),
+					"Views" => 0,
+					"Code_Styled" => $n
+				]);
+		        $connection->end();
+		    });
+		});
+
+		$loop->run();
+
+
+		
 	}
 
 	public function updateById($id, $data){
