@@ -39,5 +39,18 @@ class Controller_Account extends Controller
 			User::update(System::$Auth->getUser()['ID'], $data);
 		}
 
+		public function upVoteSnippet($user){
+			$vote = 1; 
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = $user;
+			Api::$Vote->voteUser($id, $vote, $voteUser, $user);
+		}
+
+		public function downVoteSnippet($user){
+			$vote = 1; 
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = $user;
+			Api::$Vote->voteUser($id, $vote, $voteUser, $user);
+		}
 	// ***** Default Controller functions ***** //
 }

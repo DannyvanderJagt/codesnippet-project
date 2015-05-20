@@ -103,12 +103,36 @@ class Controller_Snippet extends Controller
 			$this->renderView($data, 'edit');
 		}
 
-		public function upVote(){
-			$id = 'NULL'; 
+		public function upVoteSnippet($snippet){
+			$id = $snippet
 			$vote = 1; 
-			$voteUser = 'NULL'; 
-			$userAuth::getUser()['ID'];
-			Api::$Vote->vote($id, $vote, $voteUser, $user);
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = 'NULL';
+			Api::$Vote->voteSnippet($id, $vote, $voteUser, $user);
+		}
+
+		public function downVoteSnippet($snippet){
+			$id = $snippet
+			$vote = 1; 
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = 'NULL';
+			Api::$Vote->voteSnippet($id, $vote, $voteUser, $user);
+		}
+
+			public function upVoteComment($comment){
+			$id = $comment
+			$vote = 1; 
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = 'NULL';
+			Api::$Vote->voteComment($id, $vote, $voteUser, $user);
+		}
+
+		public function downVoteComment($comment){
+			$id = $comment
+			$vote = 1; 
+			$voteUser = $userAuth::getUser()['ID']; 
+			$user = 'NULL';
+			Api::$Vote->voteComment($id, $vote, $voteUser, $user);
 		}
 
 		public function onEditPost($id, $data){

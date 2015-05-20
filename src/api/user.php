@@ -2,6 +2,7 @@
 
 // Load the required models.
 require_once 'model/user.model.php';
+require_once 'model/vote_user.model.php';
 
 class User{
 
