@@ -84,6 +84,51 @@ class Vote{
 			'down' => $down
 		];
 	}
+	public function voteSnippet($id, $vote, $voteUser, $user){
+		$model = new Model_Vote_Snippet();
+		$result = $model->find($user);
+		if(empty($result)){
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $voteUser, 
+				'User_ID' => $user, 
+				'Vote_type' => $vote, 
+				'Snippet_ID' => $id
+				]);
+			return true;
+		}
+		return false;
+	}
 
+	public function voteComment($id, $vote, $voteUser, $user){
+		$model = new Model_Vote_Snippet();
+		$result = $model->find($user);
+		if(empty($result)){
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $voteUser, 
+				'User_ID' => $user, 
+				'Vote_type' => $vote, 
+				'Comment_ID' => $id
+				]);
+			return true;
+		}
+		return false;
+	}
+
+		public function voteUser($vote, $voteUser, $user){
+		$model = new Model_Vote_User();
+		$result = $model->find($user);
+		if(empty($result)){
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $voteUser, 
+				'User_ID' => $user, 
+				'Vote_type' => $vote, 
+				]);
+			return true;
+		}
+		return false;
+	}
 
 }
