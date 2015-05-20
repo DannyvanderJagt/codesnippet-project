@@ -53,6 +53,23 @@ $lightgrey: #E6E7E8;
 .pure-u-5-5 {
   width: 100%; }
 
+#errorDiv {
+  margin-top: 50px;
+  width: 100px; }
+
+#errorText {
+  text-align: center;
+  width: 400px;
+  float: left; }
+
+#errorImage {
+  margin-left: 78px;
+  display: block;
+  width: 400px;
+  height: 200px;
+  background-image: url(/dist/images/errorImage.png);
+  background-repeat: no-repeat; }
+
 h1 {
   color: #178D46;
   font-size: 36px; }
@@ -81,7 +98,6 @@ h6 {
 
 .content {
   color: #414041;
-  border-right: 1px solid #E6E7E8;
   min-height: calc(100% - 175px); }
 
 #CodeBlock {
@@ -666,8 +682,7 @@ and open the template in the editor.
     Author     : Leroy, 
 */
 .content {
-  color: #414041;
-  border-right: 1px solid #E6E7E8; }
+  color: #414041; }
 
 .codeBlock {
   float: left;
