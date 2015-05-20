@@ -104,7 +104,7 @@ class Controller_Snippet extends Controller
 		}
 
 		public function upVoteSnippet($snippet){
-			$id = $snippet
+			$id = $snippet;
 			$vote = 1; 
 			$voteUser = $userAuth::getUser()['ID']; 
 			$user = 'NULL';
@@ -112,7 +112,7 @@ class Controller_Snippet extends Controller
 		}
 
 		public function downVoteSnippet($snippet){
-			$id = $snippet
+			$id = $snippet;
 			$vote = 1; 
 			$voteUser = $userAuth::getUser()['ID']; 
 			$user = 'NULL';
@@ -120,7 +120,7 @@ class Controller_Snippet extends Controller
 		}
 
 			public function upVoteComment($comment){
-			$id = $comment
+			$id = $comment;
 			$vote = 1; 
 			$voteUser = $userAuth::getUser()['ID']; 
 			$user = 'NULL';
@@ -128,7 +128,7 @@ class Controller_Snippet extends Controller
 		}
 
 		public function downVoteComment($comment){
-			$id = $comment
+			$id = $comment;
 			$vote = 1; 
 			$voteUser = $userAuth::getUser()['ID']; 
 			$user = 'NULL';
