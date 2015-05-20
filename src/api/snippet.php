@@ -70,7 +70,7 @@ class Snippet{
 		$result = $model->find($user);
 		if(empty($result)){
 			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL', 
+				'Vote_ID' => 'NULL',
 				'Vote_user_ID' => $voteUser, 
 				'User_ID' => $user, 
 				'Vote_type' => $vote, 
@@ -81,6 +81,20 @@ class Snippet{
 		return false;
 	}
 
+	public function create($title, $code, $description, $lang, $framework, $userID){
+		$model = new Model_Snippet();
+		return $model->create([
+			"Title" => $title,
+			"Code" =>	$code,
+			"Description" => $description,
+			"Lang" => $lang, 
+			"Framework" => $framework,
+			"User_ID" => $userID,
+			"Date" => date("Y-m-d"),
+			"Views" => 0,
+			"Code_Styled" => ""
+		]);
+	}
 
 	public function updateById($id, $data){
 		$model = new Model_Snippet();
@@ -93,12 +107,12 @@ class Snippet{
 		$snippet->update($data);
 	}
 
-	public function getAllLanguages(){
+	public function getLanguages(){
 		$model = new Model_Proglang();
 		return $model->get()->toArray();
 	}
 
-	public function getAllFrameworks(){
+	public function getFrameworks(){
 		$model = new Model_Framework();
 		return $model->get()->toArray();
 	}

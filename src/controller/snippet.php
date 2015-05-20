@@ -14,7 +14,9 @@ class Controller_Snippet extends Controller
 		public function onAuth($params = []){
 			// This is only avialable when some one is signed in!
 			// Otherwise when an user is not signed in send them to the signin page.
-			if(!isset($params[1])){
+			if(isset($params[0]) && $params[0] == 'add'){
+				return System::$Auth->required();
+			}else if(!isset($params[1])){
 				return true;
 			}else{
 				return System::$Auth->required();
@@ -164,7 +166,10 @@ class Controller_Snippet extends Controller
 		 * @return [type]     [description]
 		 */
 		public function onAdd(){
-			$this->renderView([], 'add');
+			$data = [];
+			$data['languages'] = Api::$Snippet->getLanguages();
+			$data['frameworks'] = Api::$Snippet->getFrameworks();
+			$this->renderView($data, 'add');
 		}
 
 		public function onAddPost($data){
@@ -172,8 +177,9 @@ class Controller_Snippet extends Controller
 				$data['title'],
 				$data['code'],
 				$data['description'],
-				$data['lang'],
-				$data['framework']
+				$data['language'],
+				$data['framework'], 
+				System::$Auth->getUser()['ID']
 			);
 			System::redirectTo('snippet/' . $id['ID']);
 		}
