@@ -83,13 +83,12 @@ class Snippet{
 
 	public function create($title, $code, $description, $lang, $framework, $userID){
 		$model = new Model_Snippet();
-		$language = "javascript";
-
+		$language = Snippet::getLanguageByID($lang);
 		$contents = file_get_contents("http://127.0.0.1:3000?code=".urlencode($_POST['code'])."&language=".$language);
 
 		return $model->create([
 			"Title" => $title,
-			"Code" =>	$code,
+			"Code" =>	$language,
 			"Description" => $description,
 			"Lang" => $lang, 
 			"Framework" => $framework,
@@ -97,8 +96,7 @@ class Snippet{
 			"Date" => date("Y-m-d"),
 			"Views" => 0,
 			"Code_Styled" => $contents
-		]);
-		
+		]);	
 	}
 
 	public function updateById($id, $data){
@@ -121,4 +119,13 @@ class Snippet{
 		$model = new Model_Framework();
 		return $model->get()->toArray();
 	}
+
+	public function getLanguageByID($id){
+		$model = new Model_ProgLang();
+		$result = $model->where('language_ID','=',$id)->first();
+		return $result['language_name'];
+	}
+
+
+
 }

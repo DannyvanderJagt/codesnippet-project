@@ -44,6 +44,9 @@ class Controller {
 		$data = [
 			'data' => $data,
 			'view' => $this->views[$view], 
+			'header' => [
+				'languages' => Snippet::getLanguages()
+			],
 			'basePath' => System::$baseUrl,
 			'auth' => System::$Auth->getUser(),
 			'meta' => [

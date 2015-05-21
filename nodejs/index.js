@@ -6,7 +6,7 @@ app.get('/', function(req, res){
 	console.log('received a get call');
 	console.log(req.query.code);
 	if(req.query && req.query.code){
-		res.send(highligher.highlight(req.query.code, highligher.getLanguage(req.query.language))); 
+		res.send(highligher.highlight(req.query.code, highligher.getLanguage(req.query.language.toLowerCase())));
 	}else{
 		res.send('Hoi');
 	}
