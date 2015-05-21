@@ -2,7 +2,8 @@
             <h3>Search Results for: Time Converter</h3>
             
             
-            
+            {% for snippet in data %}
+
             <div class="codeBlock">
                 <div class="codeBlockContent">
                     <div class="codeBlockVotes">
@@ -11,11 +12,11 @@
                         <div class="codeDownVote"></div>
                     </div>
                     <div class="codeInfo">
-                        <h3 class="codeTitle">C# : Time converter</h3>
-                        <div class="codeDate">Last updated: 17-04-2015</div>
+                        <h3 class="codeTitle">C# : {{snippet.Title}}</h3>
+                        <div class="codeDate">Last updated: {{ snippet.Date }}</div>
                     </div>
 
-                    <div class="codeText">A simple time converter I use everytime when I'm working with dates and stuff. Let me know what you think!</div>
+                    <div class="codeText">{{snippet.Description}}</div>
                     
                     <div class="codeOptions">
                         <div class="codeOptionsText">replies</div>
@@ -29,7 +30,7 @@
                 </div>
             </div>
             
-                
+               {% endfor %}  
                 
                 
                 <div class="pageNumberHolder">
@@ -48,7 +49,7 @@
                     </div>
                 </div>
             </div>
-
+       
 
 
         <div class="pure-u-1-5">

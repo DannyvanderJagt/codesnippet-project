@@ -4,17 +4,15 @@
     </div>                            
     
     <div class="searchbar pure-u-1-2">
-        <input type="text" class="input" placeholder="Search">
-        <select class="dropdown">
-            {% for lang in header.languages %}
-                <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
-            {% endfor %}
-             <option value="java">Java</option>
-             <option value="php">PHP</option>
-             <option value="html">HTML</option>
-             <option value="JavaScript">JavaScript</option>
-         </select>
-        <a href="searchresult.html"><div class="searchbtn"></div> </a>
+        <form action="search" method="get">
+            <input type="text" class="input" name="q" placeholder="Search">
+            <select class="dropdown" name='l'>
+                {% for lang in header.languages %}
+                    <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
+                {% endfor %}
+             </select>
+             <input type="submit" value="" class="searchbtn">
+        </form>
     </div>
     
     <div class="user pure-u-1-4">

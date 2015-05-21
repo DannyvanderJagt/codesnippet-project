@@ -126,6 +126,14 @@ class Snippet{
 		return $result['language_name'];
 	}
 
+	public function search($query){
+		$model = new Model_Snippet();
+		$result = $model->where('title', 'LIKE', '%'.$query.'%')
+			->orWhere('description', 'LIKE', '%'.$query.'%')
+			->get();
+		return $result;
+	}
+
 
 
 }
