@@ -16,7 +16,8 @@ class Model_Snippet extends Eloquent
 	'User_ID',
 	'Date',
 	'Change_date',
-	'Views'];
+	'Views',
+	'Code_Styled'];
 
 	public function User(){
 		return $this->belongsTo('Model_User', 'User_ID', 'ID');

@@ -83,32 +83,21 @@ class Snippet{
 
 	public function create($title, $code, $description, $lang, $framework, $userID){
 		$model = new Model_Snippet();
+		$language = "javascript";
 
-		$code = ['code' => $code, 'language' => 'css'];
-		$loop = new React\EventLoop\StreamSelectLoop();
-		$dnode = new DNode\DNode($loop);
+		$contents = file_get_contents("http://127.0.0.1:3000?code=".urlencode($_POST['code'])."&language=".$language);
 
-		$dnode->connect("7070", function($remote, $connection) {
-			global $code;
-		    $remote->highlight($code, function($n) use ($connection) {
-		        return $model->create([
-					"Title" => $title,
-					"Code" =>	$code,
-					"Description" => $description,
-					"Lang" => $lang, 
-					"Framework" => $framework,
-					"User_ID" => $userID,
-					"Date" => date("Y-m-d"),
-					"Views" => 0,
-					"Code_Styled" => $n
-				]);
-		        $connection->end();
-		    });
-		});
-
-		$loop->run();
-
-
+		return $model->create([
+			"Title" => $title,
+			"Code" =>	$code,
+			"Description" => $description,
+			"Lang" => $lang, 
+			"Framework" => $framework,
+			"User_ID" => $userID,
+			"Date" => date("Y-m-d"),
+			"Views" => 0,
+			"Code_Styled" => $contents
+		]);
 		
 	}
 
