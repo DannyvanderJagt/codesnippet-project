@@ -58,7 +58,7 @@ class Comment{
 				$voted = Model_Vote_Comment::where(["Comment_ID" => $comment["Comment_ID"], "Vote_user_ID"=>$userid])->first();
 				
 				if(empty($votes)){
-					$comment['Voted'] = null;
+					$comment['Voted'] = -1;
 				}else{
 					$comment['Voted'] = $voted['Vote_type'];
 				}
@@ -69,7 +69,7 @@ class Comment{
 				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
 				$voted = Model_Vote_Comment::where(["Comment_ID" => $comment["Comment_ID"], "Vote_user_ID"=>$userid])->first();
 				if($voted == null){
-					$comment['Voted'] = null;
+					$comment['Voted'] = -1;
 				}else{
 					$comment['Voted'] = $voted->toArray()['Vote_type'];
 				}

@@ -20,10 +20,12 @@
         </div>
         <div class="commentText">{{ comment.Comment_text }}</div>
         <div class="commentOptions">
-            <div class="commentUpVote"></div>
-            <div class="commentUpVotes">{{ comment.Votes.up }}</div>
-            <div class="commentDownVote"></div>
+            <div class="commentUpVote" {% if comment.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_small_color.png)' {% endif%}></div>
+            <div class="commentUpVotes">{{ comment.Votes.up}}</div>
+            <div class="commentDownVote" {% if comment.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_small_color.png)' {% endif%}></div>
             <div class="commentDownVotes">{{ comment.Votes.down }}</div>
+
+            <div class="commentNewReplyText">reply</div>
             <div class="commentReplies">
                 <div class="commentRepliesNumber">{{ comment.SubComments|length }}</div>
                 <div class="commentRepliesText">replies</div>
@@ -51,10 +53,9 @@
                     </div>
                     <div class="commentText">{{ subcomment.Comment_text }}</div>
                     <div class="commentOptions">
-                        {{ subcomment.Voted | raw }}
-                        <div class="commentUpVote"></div>
+                        <div class="commentUpVote" {% if subcomment.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_small_color.png)' {% endif%}></div>
                         <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
-                        <div class="commentDownVote"></div>
+                        <div class="commentDownVote" {% if subcomment.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_small_color.png)' {% endif%}></div>
                         <div class="commentDownVotes">{{ subcomment.Votes.down }}</div>
                         <div class="commentNewReplyText">reply</div>
                         <br>

@@ -38,7 +38,7 @@ class Snippet{
 			$votes = $model->where("Snippet_ID", '=', $id)->where("Vote_user_ID","=",$user['ID'])->first()->toArray();
 			$result['Voted'] = $votes['Vote_type'];
 		}else{
-			$result['Voted'] = null;
+			$result['Voted'] = -1;
 		}
 
 		$result['User'] = User::getById($result['User_ID']);
