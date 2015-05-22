@@ -11,8 +11,10 @@ class Vote{
 		
 	}
 
-	/** 
+	/**
 	 * Get all the up and down votes of an User.
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
 	 */
 	public function getByUserID($id){
 		// Check if the user exists.
@@ -84,48 +86,80 @@ class Vote{
 			'down' => $down
 		];
 	}
-	public function voteSnippet($id, $vote, $voteUser, $user){
+
+	/**
+	 * Vote a snipept up or down.
+	 * @param  [type] $id       [Snippet id]
+	 * @param  [type] $vote     [Votetype (0 = downvote, 1 = upvote)]
+	 * @param  [type] $voteUser [The userID of the user that is voting]
+	 * @return [type]           [description]
+	 */
+	public function voteSnippet($id, $vote, $voteUser){
 		$model = new Model_Vote_Snippet();
 		$result = $model->find($user);
 		if(empty($result)){
-			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL', 
-				'Vote_user_ID' => $voteUser, 
-				'User_ID' => $user, 
-				'Vote_type' => $vote, 
-				'Snippet_ID' => $id
+			try{
+				$voteCreate = $model->create([
+					'Vote_ID' => 'NULL', 
+					'Vote_user_ID' => $voteUser, 
+					'Vote_type' => $vote, 
+					'Snippet_ID' => $id
 				]);
+			}catch(\Illuminate\Database\QueryException $e){
+				return false;
+			}
 			return true;
 		}
 		return false;
 	}
 
-	public function voteComment($id, $vote, $voteUser, $user){
+	/**
+	 * Vote a comment up or down.
+	 * @param  [type] $id       [The id of the comment]
+	 * @param  [type] $vote     [Votetype (0 = downvote, 1 = upvote)]
+	 * @param  [type] $voteUser [The userID of the user that is voting]
+	 * @return [type]           [description]
+	 */
+	public function voteComment($id, $vote, $voteUser){
 		$model = new Model_Vote_Snippet();
 		$result = $model->find($user);
 		if(empty($result)){
-			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL', 
-				'Vote_user_ID' => $voteUser, 
-				'User_ID' => $user, 
-				'Vote_type' => $vote, 
-				'Comment_ID' => $id
+			try{
+				$voteCreate = $model->create([
+					'Vote_ID' => 'NULL', 
+					'Vote_user_ID' => $voteUser, 
+					'Vote_type' => $vote, 
+					'Comment_ID' => $id
 				]);
+			}catch(\Illuminate\Database\QueryException $e){
+				return false;
+			}
 			return true;
 		}
 		return false;
 	}
 
-		public function voteUser($vote, $voteUser, $user){
+	/**
+	 * Vote a user up or down.
+	 * @param  [type] $vote     [Votetype (0 = downvote, 1 = upvote)]
+	 * @param  [type] $voteUser [The userID of the user that is voting]
+	 * @param  [type] $user     [The userID of the user which the vote is for]
+	 * @return [type]           [description]
+	 */
+	public function voteUser($vote, $voteUser, $user){
 		$model = new Model_Vote_User();
 		$result = $model->find($user);
 		if(empty($result)){
-			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL', 
-				'Vote_user_ID' => $voteUser, 
-				'User_ID' => $user, 
-				'Vote_type' => $vote, 
-				]);
+			try{
+				$voteCreate = $model->create([
+					'Vote_ID' => 'NULL', 
+					'Vote_user_ID' => $voteUser, 
+					'User_ID' => $user, 
+					'Vote_type' => $vote, 
+					]);
+			}catch(\Illuminate\Database\QueryException $e){
+				return false;
+			}
 			return true;
 		}
 		return false;

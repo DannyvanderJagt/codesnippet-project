@@ -4,7 +4,7 @@
     </div>                            
     
     <div class="searchbar pure-u-1-2">
-        <form action="search" method="get">
+        <form action="{{basePath}}/search" method="get">
             <input type="text" class="input" name="q" placeholder="Search">
             <select class="dropdown" name='l'>
                 {% for lang in header.languages %}
@@ -18,9 +18,9 @@
     <div class="user pure-u-1-4">
         <div class="userOptions">
             {% if auth %}
-                <a href="upload.html" title="Upload codesnippet"> <div class="uploadbtn" ></div> </a>
+                <a href="{{ basePath }}/snippet/add" title="Upload codesnippet"> <div class="uploadbtn" ></div> </a>
                 <a class="userAccount" href="{{ basePath }}/account">{{ auth.Username }}</a>
-                <div class="userAvatar"></div>
+                <a href="{{ basePath }}/account"><div class="userAvatar"></div></a>
             {% else %}
                 <a class='userAccount' href='{{ basePath }}/signup'>Register</a>
                 <a class='userAccount' href='{{ basePath }}/signin'>Signin</a>

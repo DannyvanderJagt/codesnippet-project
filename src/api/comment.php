@@ -10,6 +10,11 @@ class Comment{
 		
 	}
 
+	/**
+	 * Get every comment created by this userID.
+	 * @param  [type] $id [The userID of the user]
+	 * @return [type]     [description]
+	 */
 	public function getByUserID($id){
 		$model = new Model_Comment();
 
@@ -24,7 +29,7 @@ class Comment{
 
 	/**
 	 * Get all the comments by an snippet id.
-	 * @param  [type] $id [description]
+	 * @param  [type] $id [The ID of the snippet]
 	 * @return [type]     [description]
 	 */
 	public function getBySnippetID($id){
@@ -60,6 +65,12 @@ class Comment{
 	}
 
 
+	/**
+	 * Add a comment to a snippet.
+	 * @param [type] $snippetID    [The id of the snippet]
+	 * @param [type] $commentText  [The comment]
+	 * @param [type] $topCommentID [The id of the top comment]
+	 */
 	public function addBySnippetID($snippetID, $commentText, $topCommentID = null){
 		$comment = new Model_Comment();
 		// Check for login.

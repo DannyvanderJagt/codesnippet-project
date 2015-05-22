@@ -38,7 +38,11 @@ class Snippet{
 		return $result->toArray();
 	}
 
-
+	/**
+	 * Check if an snippet exists by snippet id.
+	 * @param  [type] $id [The id of the snippet]
+	 * @return [type]     [description]
+	 */
 	public function existByID($id){
 		$model = new Model_Snippet();
 		$result = $model->find($id);
@@ -48,39 +52,16 @@ class Snippet{
 		return true;
 	}
 
-
-	public function voteSnippet($id, $vote, $voteUser, $user){
-		$model = new Model_Vote_Snippet();
-		$result = $model->find($user);
-		if(empty($result)){
-			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL', 
-				'Vote_user_ID' => $voteUser, 
-				'User_ID' => $user, 
-				'Vote_type' => $vote, 
-				'Snippet_ID' => $id
-				]);
-			return true;
-		}
-		return false;
-	}
-
-	public function voteComment($id, $vote, $voteUser, $user){
-		$model = new Model_Vote_Snippet();
-		$result = $model->find($user);
-		if(empty($result)){
-			$voteCreate = $model->create([
-				'Vote_ID' => 'NULL',
-				'Vote_user_ID' => $voteUser, 
-				'User_ID' => $user, 
-				'Vote_type' => $vote, 
-				'Comment_ID' => $id
-				]);
-			return true;
-		}
-		return false;
-	}
-
+	/**
+	 * Create a new Snippet
+	 * @param  [type] $title       [The title of the snippet]
+	 * @param  [type] $code        [The code of the snippet]
+	 * @param  [type] $description [The description of the snippet]
+	 * @param  [type] $lang        [The languageID of the snippet]
+	 * @param  [type] $framework   [The frameworkID of the snippet]
+	 * @param  [type] $userID      [The userID of the user which is creating the snippet]
+	 * @return [type]              [description]
+	 */
 	public function create($title, $code, $description, $lang, $framework, $userID){
 		$model = new Model_Snippet();
 		$language = Snippet::getLanguageByID($lang);
@@ -99,6 +80,12 @@ class Snippet{
 		]);	
 	}
 
+	/**
+	 * Update a snippet by SnippetID.
+	 * @param  [type] $id   [The id of the snippet]
+	 * @param  [type] $data [The data of the snippet that must be updated]
+	 * @return [type]       [description]
+	 */
 	public function updateById($id, $data){
 		$model = new Model_Snippet();
 		$snippet = $model->find($id);
@@ -110,22 +97,40 @@ class Snippet{
 		$snippet->update($data);
 	}
 
+	/**
+	 * Get all the languages from the database.
+	 * @return [type] [description]
+	 */
 	public function getLanguages(){
 		$model = new Model_Proglang();
 		return $model->get()->toArray();
 	}
 
+	/**
+	 * Get all the frameworkd from the database.
+	 * @return [type] [description]
+	 */
 	public function getFrameworks(){
 		$model = new Model_Framework();
 		return $model->get()->toArray();
 	}
 
+	/**
+	 * Get a language by languageID.
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function getLanguageByID($id){
 		$model = new Model_ProgLang();
 		$result = $model->where('language_ID','=',$id)->first();
 		return $result['language_name'];
 	}
 
+	/**
+	 * Search the database for snippets.
+	 * @param  [type] $query [The query for searching]
+	 * @return [type]        [description]
+	 */
 	public function search($query){
 		$model = new Model_Snippet();
 		$result = $model->where('title', 'LIKE', '%'.$query.'%')
@@ -133,7 +138,5 @@ class Snippet{
 			->get();
 		return $result;
 	}
-
-
 
 }
