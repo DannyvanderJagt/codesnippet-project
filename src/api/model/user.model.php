@@ -19,7 +19,8 @@ class Model_User extends Eloquent
 	'Email', 
 	'Birthday', 
 	'Profession', 
-	'Profile_picture', 
+	'Profile_picture_large',
+	'Profile_picture_thumb', 
 	'Votes', 
 	'Session_key',
 	'Password'];

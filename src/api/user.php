@@ -118,7 +118,7 @@ class User{
 	 * @param  [type] $picture    [description]
 	 * @return [type]             [description]
 	 */
-	public function create($username, $password, $first_name, $last_name, $email, $birthday, $profession, $picture){
+	public function create($username, $password, $first_name, $last_name, $email, $birthday, $profession, $picture, $picture_thumb){
 		$model = new Model_User();
 		$user = $model->create([
 				'ID' => 'NULL',
@@ -129,7 +129,8 @@ class User{
 				'Email' => $email,
 				'Birthday' => $birthday,
 				'Profession' => $profession,
-				'Profile_picture' => $picture,
+				'Profile_picture_large' => $picture,
+				'Profile_picture_thumb' => $picture_thumb,
 				'Votes' => 'NULL',
 				'Session_key' => 'NULL',
 				'Last_online' => 'NULL',
