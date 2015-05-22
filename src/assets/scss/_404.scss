@@ -1,0 +1,19 @@
+#errorDiv{
+    margin-top:50px;
+    width:100px;
+}
+
+#errorText{
+    text-align:center;
+    width:400px;
+    float:left;
+}
+
+#errorImage{
+    margin-left: 78px;
+    display:block;
+    width:400px;
+    height:200px;
+    background-image: url(/dist/images/errorImage.png);
+    background-repeat: no-repeat;
+}

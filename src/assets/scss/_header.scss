@@ -1,0 +1,81 @@
+.header{
+    background-color: $darkgrey;
+    height: 50px;       
+}
+
+img.logo{   
+    width: inherit;       
+    padding-top: 10px;
+    display: block;
+    margin: 0 auto;
+    float: right;
+    margin-right: 30%;
+}
+
+.searchbar{
+    height: 30px;
+    margin-top: 10px;
+}
+
+.input{
+    width:50%;
+    height: 28px;
+    float: left;
+    background-color: $grey;
+    color: $lightgrey;
+    font-weight: bold;
+    border-right: 1px solid $darkgrey;     
+    border-left-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    padding-left: 10px;
+}
+
+.searchbtn{
+    background-image: url(../images/search.png);
+    background-repeat: no-repeat;
+    background-size: 20px, 20px;
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.user{
+    height: 30px;
+    margin-top: 10px;
+}
+
+.userOptions{
+    float: right;
+    margin-right:30px;
+}
+
+.uploadbtn{
+    background-image: url(../images/upload.png);
+    background-repeat: no-repeat;
+    background-size: 15px,15px;
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+a.userAccount{
+    margin-top: 5px;
+    margin-right: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: $white;
+    float: left;
+}
+
+.userAvatar{
+    background-image: url(../images/account_default.png);
+    background-repeat: no-repeat;
+    float: left;
+    height: 30px;
+    width: 30px;
+}
