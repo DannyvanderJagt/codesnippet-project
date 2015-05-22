@@ -1,4 +1,5 @@
 <div class="content pure-u-2-5">
+    {{ data.Voted }}
     <h1> {{ data.Title }} </h1>   
                    
     <div id="CodeBlock">
@@ -31,6 +32,7 @@
             <div class="commentNewReplyText">reply</div>
             <div class="replyBox">
                 <br><br>
+                 {{ comment.Voted | raw }}
                 <h5>Leave your reply:</h5>
                 <form action="" method='post'>
                     <textarea rows="4" cols="60" name="comment"> </textarea>
@@ -49,6 +51,7 @@
                     </div>
                     <div class="commentText">{{ subcomment.Comment_text }}</div>
                     <div class="commentOptions">
+                        {{ subcomment.Voted | raw }}
                         <div class="commentUpVote"></div>
                         <div class="commentUpVotes">{{ subcomment.Votes.up}}</div>
                         <div class="commentDownVote"></div>
@@ -149,7 +152,6 @@
         }
     }
 
-
     // Show and hide subcomments.
     for(var i = 0, len = drops.length; i < len; i++){
         drops[i].addEventListener('click', toggleShowHide);
@@ -164,5 +166,11 @@
             sub[0].style.display = 'block';
         }
     }
+
+
+
+
+
+
 
 </script>

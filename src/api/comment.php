@@ -48,15 +48,32 @@ class Comment{
 
 		$newOrder = [];
 
+		$userid = System::$Auth->getUser()['ID'];
+
 		// Subcomment logic.
 		foreach($comments as $comment){
 			if(!empty($comment['Comment_top_ID'])){
 				// This is an subcomment.
 				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
+				$voted = Model_Vote_Comment::where(["Comment_ID" => $comment["Comment_ID"], "Vote_user_ID"=>$userid])->first();
+				
+				if(empty($votes)){
+					$comment['Voted'] = null;
+				}else{
+					$comment['Voted'] = $voted['Vote_type'];
+				}
+
 				$newOrder[$comment['Comment_top_ID']]['SubComments'][] = $comment;
 			}else{
 				// This is an top comment.
 				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
+				$voted = Model_Vote_Comment::where(["Comment_ID" => $comment["Comment_ID"], "Vote_user_ID"=>$userid])->first();
+				if($voted == null){
+					$comment['Voted'] = null;
+				}else{
+					$comment['Voted'] = $voted->toArray()['Vote_type'];
+				}
+
 				$comment['SubComments'] = [];
 				$newOrder[$comment['Comment_ID']] = $comment;
 			}

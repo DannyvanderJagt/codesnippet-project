@@ -27,11 +27,20 @@ class Snippet{
 		$result->Language;
 		$result->framework;
 
-
 		if(empty($result)){
 			return null;
 		}
-		
+		$user = System::$Auth->getUser();
+
+		if(!empty($user)){
+			// Check if the user already votes on this snippet.
+			$model = new Model_Vote_Snippet();
+			$votes = $model->where("Snippet_ID", '=', $id)->where("Vote_user_ID","=",$user['ID'])->first()->toArray();
+			$result['Voted'] = $votes['Vote_type'];
+		}else{
+			$result['Voted'] = null;
+		}
+
 		$result['User'] = User::getById($result['User_ID']);
 		$result['Comments'] = Comment::getBySnippetID($id);
 		$result['Votes'] = Vote::getBySnippetID($id);
@@ -69,7 +78,7 @@ class Snippet{
 
 		return $model->create([
 			"Title" => $title,
-			"Code" =>	$language,
+			"Code" =>	$code,
 			"Description" => $description,
 			"Lang" => $lang, 
 			"Framework" => $framework,
