@@ -14,6 +14,30 @@ class Controller_Signup extends Controller
 			return ['home', !System::$Auth->required()];
 		}
 
+		private function uploadFile($file)
+		{
+			$target_dir = "uploads/";
+			$file_name = $file['profile_picture'];
+			$file_tmp = $file['tmp_name'];
+			$file_size = $file['size'];
+			$file_error = $file['error'];
+
+			$file_ext = explode('.', $file_name);
+			$file_ext = strtolower(end($file_ext));
+
+			$allowed = array('jpg', 'png', 'bmp');
+
+			if(in_array($file_ext, $allowed))
+			{
+				if ($file_error === 0) {
+					$file_name_new = uniqid('', true) . '.' . $file_ext;
+					$file_dest = $target_dir . $file_name_new;
+					move_uploaded_file($file_tmp, $file_dest);
+				}
+			}
+
+		}
+
 		public function onRequest($params = []){
 			if(isset($_POST['submit'])){
 			$this->data['error'] = [];
@@ -88,13 +112,13 @@ class Controller_Signup extends Controller
 		else
 		{
 			$picture = 'NULL';
-			if(isset($_POST['profile_picture']))
+			if(isset($_FILE['profile_picture']))
 				{
-				$picture =  $_POST['profile_picture'];
+				$picture =  $_FILE['profile_picture'];
 				}
 			$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
 			$password = Auth::encrypt($_POST['password']);
-
+			uploadFile($picture);
 			Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $picture);
 		
 		}
