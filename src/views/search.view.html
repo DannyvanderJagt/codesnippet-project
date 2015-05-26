@@ -1,37 +1,37 @@
-   <div class="content pure-u-2-5">
-            <h3>Search Results for: Time Converter</h3>
+   <div class="content pure-u-3-5">
+            <h3>Search Results for: {{ data.query }} </h3>
             
-            
-            {% for snippet in data %}
+            {% if data.snippets is empty %}
+                We couldn't find any snippets.
+            {% endif %}
+                
+            {% for snippet in data.snippets %}
 
             <div class="codeBlock">
                 <div class="codeBlockContent">
                     <div class="codeBlockVotes">
                         <div class="codeUpVote"></div>
-                        <div class="codeLikes">5</div>
+                        <div class="codeLikes">{{snippet.Votes.up - snippet.Votes.down}}</div>
                         <div class="codeDownVote"></div>
                     </div>
                     <div class="codeInfo">
-                        <h3 class="codeTitle">C# : {{snippet.Title}}</h3>
+                        <h3 class="codeTitle">{{snippet.Title}}</h3>
                         <div class="codeDate">Last updated: {{ snippet.Date }}</div>
                     </div>
 
                     <div class="codeText">{{snippet.Description}}</div>
                     
                     <div class="codeOptions">
-                        <div class="codeOptionsText">replies</div>
-                        <div class="codeRepliesNumber">1</div>
                         <div class="codeOptionsText">show code</div>
-                        <div id="codeDropDownIcon" onclick="showHideCode()"></div>
+                        <div class='codedropdown' id="codeDropDownIcon" ></div>
                     </div>
                 </div>
-                <div id="codeSnippet">
-                    trololol de beste code ooit
+                <div class="codeSnippet">
+                    {{ snippet.Code_Styled | raw }}
                 </div>
             </div>
 
-               {% endfor %}  
-                
+               {% endfor %}
                 
                 <div class="pageNumberHolder">
                     <div class="pageNumber">
@@ -52,37 +52,22 @@
        
 
 
-        <div class="pure-u-1-5">
-            <div class="rightContent">
-                <div id="searchSettings">
-                    <div class="headerRightContent"><h5>Language:</h5></div>
-                    <div class="styleButton">C#</div>
-                    <div class="styleButton">Java</div>
-                    <div class="styleButton">Javascript</div>
-                </div>
-                <div id="pageTags">
-                    <div class="headerRightContent"><h5>Tags:</h5></div>
-                    <a href="tagIdLink.php" class="tag-button">Timer</a>
-                    <a href="tagIdLink.php" class="tag-button">Converter</a>
-                    <a href="tagIdLink.php" class="tag-button">C#</a>
-                </div>
-                <div id="pageRelated">
-                    <div class="headerRightContent"><h5>Related:</h5></div>
-                    <div class="relatedDiv">Timer</div> 
-                    <div class="relatedDiv">Converter</div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">  
-        var drops = document.getElementsByClassName('codeDropDownIcon');
-        for(var i = 0, len = drops.length; i < len; i++){
-        drops[i].addEventListener('click', toggleShowHide);
-    }
-        function toggleShowHide(){
-        var sub = this.parentNode.parentNode.getElementsByClassName('codeSnippet');
-        // sub.style.display = 'block';
-        if(sub[0].style.display == 'block'){
-            sub[0].style.display = 'none';
-        }else{
-            sub[0].style.display = 'block';
-        }</script>
+      
+        <script>
+        var btns = document.getElementsByClassName('codedropdown');
+
+        for(var i = 0, len = btns.length; i < len; i++){
+            btns[i].addEventListener('click', toggleCode);
+        }
+
+        function toggleCode(){
+            console.log(this.parentNode.parentNode.parentNode);
+            var code = this.parentNode.parentNode.parentNode.getElementsByClassName('codeSnippet')[0];
+            if(code.style.display == 'block'){
+                code.style.display = 'none';
+            }else{
+                code.style.display = 'block';
+            }
+        }
+
+        </script>

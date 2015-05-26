@@ -1,3 +1,59 @@
-<div class="pure-u-1-2 content">
-	<h1>Welkom {{ auth.Username }} </h1>
-</div>
+<div class="content pure-u-3-5">
+            <div id="WelcomeDiv">
+                <h3>Welcome to CodeSnippet</h3>
+                <p class="welcomeDivText">CodeSnippet. – a website for quick code snippet ‘stealing’ to help people around the world with their search for specific code snippets.</p>
+                <p class="welcomeDivText">If you are not familiar with CodeSnippet we advice you to take a look at the <a href="howTo.html">how to</a> page</p>
+            </div>
+            <div id="homePageSuggestions">
+
+    <h3>Latest snippets:</h3>
+             {% for snippet in data.snippets %}
+
+            <div class="codeBlock">
+                <div class="codeBlockContent">
+                    <div class="codeBlockVotes">
+                        <div class="codeUpVote"></div>
+                        <div class="codeLikes">{{snippet.Votes.up - snippet.Votes.down}}</div>
+                        <div class="codeDownVote"></div>
+                    </div>
+                    <div class="codeInfo">
+                        <h3 class="codeTitle">{{snippet.Title}}</h3>
+                        <div class="codeDate">Last updated: {{ snippet.Date }}</div>
+                    </div>
+
+                    <div class="codeText">{{snippet.Description}}</div>
+                    
+                    <div class="codeOptions">
+                        <div class="codeOptionsText">show code</div>
+                        <div class='codedropdown' id="codeDropDownIcon" ></div>
+                    </div>
+                </div>
+                <div class="codeSnippet">
+                    {{ snippet.Code_Styled | raw }}
+                </div>
+            </div>
+
+               {% endfor %}
+
+
+            </div>
+
+        </div>
+          <script>
+        var btns = document.getElementsByClassName('codedropdown');
+
+        for(var i = 0, len = btns.length; i < len; i++){
+            btns[i].addEventListener('click', toggleCode);
+        }
+
+        function toggleCode(){
+            console.log(this.parentNode.parentNode.parentNode);
+            var code = this.parentNode.parentNode.parentNode.getElementsByClassName('codeSnippet')[0];
+            if(code.style.display == 'block'){
+                code.style.display = 'none';
+            }else{
+                code.style.display = 'block';
+            }
+        }
+
+        </script>

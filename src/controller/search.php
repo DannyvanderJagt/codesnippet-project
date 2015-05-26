@@ -15,7 +15,9 @@ class Controller_Search extends Controller
 		}
 
 		public function onRequest($params = []){
-			$data = Snippet::search($_GET['q']);
+			$data = [];
+			$data['query'] = $_GET['q'];
+			$data['snippets'] = Snippet::search($_GET['q'], $_GET['l']);
 			$this->renderView($data);
 		}
 

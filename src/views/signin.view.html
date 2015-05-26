@@ -1,13 +1,19 @@
-<h1> Sign in! </h1>
+<div class="content pure-u-3-5">
+	<h1> Sign in! </h1>
 
-{% if data.error %}
-	{{ data.errorMessage }}
-{% endif %}
+	{% if data.error %}
+		{{ data.errorMessage }}
+	{% endif %}
 
-<form action="" method="post">
-	<label for="username">Username:</label><input type="text" name='username' value="{{data.username}}">
-	<br>
-	<label for="password">Password:</label><input type="text" name='password' value="{{data.password}}">
-	<br>
-	<input type="submit" value="Signin" name='submit'>
-</form>
+	<form action="" method="post">
+		 <h4><label for="username">User Name:</label></h4><input class="inputField" type="text" name='username'>                                                    
+        <br>
+        <br>
+        <h4><label for="password">Password:</label></h4><input class="inputField" type="text" name='password'> 
+        <br>  
+        <br>
+        <br>
+        <input class="styleButton" type="submit" value="Submit" name='submit'>
+        <br>
+    </form>
+</div>

@@ -48,6 +48,43 @@ class Snippet{
 	}
 
 	/**
+	 * Get the latest snippets.
+	 */
+	public function getLastest(){
+		$model = new Model_Snippet();
+		$result = $model->orderBy('Date')->limit(10)->get()->toArray();
+		$newResults = [];
+		foreach($result as $snippet){
+			$newResults[] = Snippet::getByID($snippet['ID']);
+		}
+		$result = $newResults;
+
+		return $result;
+	}
+
+
+	/**
+	 * Get snippet by user.Username.
+	 */
+	public function getByUserID($id){
+		$model = new Model_Snippet();
+		$result = $model->where('User_ID', '=', $id)->get()->toArray();
+
+		if(empty($result)){
+			return false;
+		}
+
+		$newResults = [];
+		foreach($result as $snippet){
+			$newResults[] = Snippet::getByID($snippet['ID']);
+		}
+		$result = $newResults;
+
+		return $result;		
+	}
+
+
+	/**
 	 * Check if an snippet exists by snippet id.
 	 * @param  [type] $id [The id of the snippet]
 	 * @return [type]     [description]
@@ -140,11 +177,23 @@ class Snippet{
 	 * @param  [type] $query [The query for searching]
 	 * @return [type]        [description]
 	 */
-	public function search($query){
+	public function search($query, $languageID){
 		$model = new Model_Snippet();
-		$result = $model->where('title', 'LIKE', '%'.$query.'%')
-			->orWhere('description', 'LIKE', '%'.$query.'%')
-			->get();
+		$result = $model->where('Lang', '=', $languageID)
+			->where(function($q) use ($query){
+				return $q->where('title', 'LIKE', '%'.$query.'%')
+				->orWhere('description', 'LIKE', '%'.$query.'%');
+			})
+			->get()->toArray();
+
+		if(!empty($result)){
+			$newResults = [];
+			foreach($result as $snippet){
+				$newResults[] = Snippet::getByID($snippet['ID']);
+			}
+			$result = $newResults;
+		}
+
 		return $result;
 	}
 

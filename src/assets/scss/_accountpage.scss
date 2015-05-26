@@ -1,0 +1,133 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-mei-2015, 13:45:08
+    Author     : Leroy
+*/
+
+.accountBlock{
+    float:left;
+    width:100%;
+    margin-top:50px;
+    margin-bottom:50px;
+    //background-color:#88ffbb;
+    border-bottom: 1px solid #E6E7E8; 
+}
+
+.accountDetails{
+    float:left;
+    width:80px;
+    padding:5px;
+    //background-color:#880000;
+    margin-left:-100px;
+}
+
+.accountImage{
+    float:left;
+    background-image: url(../images/account_default.png);
+    background-repeat: no-repeat;
+    background-size: 80px 80px;
+    width:80px;
+    height:80px;
+}
+
+.accountUpvotes{
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+    background-image: url(../images/arrow_up_color.png);
+    background-repeat: no-repeat;
+    width:40px;
+    height:40px;
+}
+
+.accountUpvotesNumber{
+    float:left;
+    margin-top:10px;
+    margin-left:-5px;
+    width:30px;
+    height:30px;
+}
+
+.accountContent{
+    float:left;
+    //background-color:#19d800;
+    width:inherit;
+    
+}
+
+.accountTopContent{
+    float:left;
+    //background-color:#0b5c00;
+    width:100%;
+    height:60px;
+    border-bottom: 1px solid #E6E7E8; 
+}
+
+.accountHeader{
+    float:left;
+    width:50%;
+}
+
+.confinedHeader{
+    float:left;
+    margin:10px;
+}
+
+.accountProfession{
+    float:left;
+    width:50%;
+    color:#E6E7E8;
+    margin-top:28px;
+}
+
+.accountMiddleContent{
+    float:left;
+    width:100%;
+    border-bottom: 1px solid #E6E7E8; 
+}
+
+.accountText{
+    float:left;
+    padding:15px;
+    width:100%;
+}
+
+.accountBottomContent{
+    padding:10px;
+    width:100%;
+}
+
+.googlePlus{
+    float:left;
+    width:20px;
+    height:20px;
+    margin:10px;
+    background-image: url(../images/arrow_up_color.png);
+}
+
+.Twitter{
+    float:left;
+    width:20px;
+    height:20px;
+    margin:10px;
+    background-image: url(../images/arrow_up_color.png);
+}
+
+.LinkedIn{
+    float:left;
+    width:20px;
+    height:20px;
+    margin:10px;
+    background-image: url(../images/arrow_up_color.png);
+}
+
+.uploadsText{
+    width:100%;
+    padding:10px;
+}
+
+
