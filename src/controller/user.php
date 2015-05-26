@@ -26,7 +26,6 @@ class Controller_User extends Controller
 				// Get the snippets of the user.
 				$data['snippets'] = Api::$Snippet->getByUserID($data['user']['ID']);
 			}
-			
 			$this->renderView($data);
 		}
 	// **************************************** //

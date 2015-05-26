@@ -46,14 +46,12 @@
                     <div class="codeText">{{snippet.Description}}</div>
 
                     <div class="codeOptions">
-                        <div class="codeOptionsText">replies</div>
-                        <div class="codeRepliesNumber">1</div>
                         <div class="codeOptionsText">show code</div>
-                        <div id="codeDropDownIcon" onclick="showHideCode()"></div>
+                        <div class='codedropdown' id="codeDropDownIcon"></div>
                     </div>
                 </div>
-                <div id="codeSnippet">
-                    trololol de beste code ooit
+                <div class="codeSnippet">
+                    {{ snippet.Code_Styled | raw }}
                 </div>
             </div>
 
@@ -61,3 +59,22 @@
 
 
         </div>
+
+        <script>
+        var btns = document.getElementsByClassName('codedropdown');
+
+        for(var i = 0, len = btns.length; i < len; i++){
+            btns[i].addEventListener('click', toggleCode);
+        }
+
+        function toggleCode(){
+            console.log(this.parentNode.parentNode.parentNode);
+            var code = this.parentNode.parentNode.parentNode.getElementsByClassName('codeSnippet')[0];
+            if(code.style.display == 'block'){
+                code.style.display = 'none';
+            }else{
+                code.style.display = 'block';
+            }
+        }
+
+        </script>

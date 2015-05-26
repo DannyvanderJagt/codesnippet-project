@@ -60,12 +60,11 @@ class Snippet{
 
 		$newResults = [];
 		foreach($result as $snippet){
-			// Get the votes.
-			$snippet['Votes'] = Vote::getBySnippetID($snippet['ID']);
-			$newResults[] = $snippet;
+			$newResults[] = Snippet::getByID($snippet['ID']);
 		}
+		$result = $newResults;
 
-		return $newResults;		
+		return $result;		
 	}
 
 
@@ -162,11 +161,23 @@ class Snippet{
 	 * @param  [type] $query [The query for searching]
 	 * @return [type]        [description]
 	 */
-	public function search($query){
+	public function search($query, $languageID){
 		$model = new Model_Snippet();
-		$result = $model->where('title', 'LIKE', '%'.$query.'%')
-			->orWhere('description', 'LIKE', '%'.$query.'%')
-			->get();
+		$result = $model->where('Lang', '=', $languageID)
+			->where(function($q) use ($query){
+				return $q->where('title', 'LIKE', '%'.$query.'%')
+				->orWhere('description', 'LIKE', '%'.$query.'%');
+			})
+			->get()->toArray();
+
+		if(!empty($result)){
+			$newResults = [];
+			foreach($result as $snippet){
+				$newResults[] = Snippet::getByID($snippet['ID']);
+			}
+			$result = $newResults;
+		}
+
 		return $result;
 	}
 
