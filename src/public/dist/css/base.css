@@ -704,7 +704,7 @@ and open the template in the editor.
 .codeUpVote {
   width: 30px;
   height: 30px;
-  background-image: url(images/arrow_Up.png);
+  background-image: url(../images/arrow_Up.png);
   background-repeat: no-repeat; }
 
 .codeLikes {
@@ -715,7 +715,7 @@ and open the template in the editor.
 .codeDownVote {
   width: 30px;
   height: 30px;
-  background-image: url(images/arrow_down.png);
+  background-image: url(../images/arrow_down.png);
   background-repeat: no-repeat; }
 
 .codeInfo {
@@ -767,7 +767,7 @@ and open the template in the editor.
   margin-top: 3px;
   width: 19px;
   height: 19px;
-  background-image: url(images/plus.png);
+  background-image: url(../images/plus.png);
   background-repeat: no-repeat;
   float: left; }
 

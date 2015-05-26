@@ -48,6 +48,28 @@ class Snippet{
 	}
 
 	/**
+	 * Get snippet by user.Username.
+	 */
+	public function getByUserID($id){
+		$model = new Model_Snippet();
+		$result = $model->where('User_ID', '=', $id)->get()->toArray();
+
+		if(empty($result)){
+			return false;
+		}
+
+		$newResults = [];
+		foreach($result as $snippet){
+			// Get the votes.
+			$snippet['Votes'] = Vote::getBySnippetID($snippet['ID']);
+			$newResults[] = $snippet;
+		}
+
+		return $newResults;		
+	}
+
+
+	/**
 	 * Check if an snippet exists by snippet id.
 	 * @param  [type] $id [The id of the snippet]
 	 * @return [type]     [description]

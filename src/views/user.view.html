@@ -1,0 +1,63 @@
+<div class="content pure-u-3-5">
+            <div class="accountBlock">
+                <div class="accountDetails">
+                    <div class="accountImage"></div>
+                    <div class="accountUpvotes"></div>
+                    <div class="accountUpvotesNumber">150</div>
+                </div>
+
+                <div class="accountContent">
+                    <div class="accountTopContent">
+                        <div class="accountHeader"><h1 class="confinedHeader">{{data.user.Username}}</h1></div>
+                        <div class="accountProfession">{{data.user.Profession}}</div>
+                    </div>
+                    <div class="accountMiddleContent">
+                        <div class="accountText">
+                            <!-- Bla bla I'm a super good programmer more bla bla -->
+                        </div>
+                    </div>
+                    <div class="accountBottomContent">
+                        <div class="googlePlus"></div>
+                        <div class="Twitter"></div>
+                        <div class="LinkedIn"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="uploadsText"><h3>Snippets:</h3></div>
+	
+			{% if data.snippets is empty %}
+				There are no snippets.
+			{% endif %}
+
+			{% for snippet in data.snippets %}
+	
+            <div class="codeBlock">
+                <div class="codeBlockContent">
+                    <div class="codeBlockVotes">
+                        <div class="codeUpVote"></div>
+                        <div class="codeLikes">{{snippet.Votes.up -  snippet.Votes.down }}</div>
+                        <div class="codeDownVote"></div>
+                    </div>
+                    <div class="codeInfo">
+                        <h3 class="codeTitle">{{ snippet.Title }}</h3>
+                        <div class="codeDate">Last updated: {{snippet.Date}}</div>
+                    </div>
+
+                    <div class="codeText">{{snippet.Description}}</div>
+
+                    <div class="codeOptions">
+                        <div class="codeOptionsText">replies</div>
+                        <div class="codeRepliesNumber">1</div>
+                        <div class="codeOptionsText">show code</div>
+                        <div id="codeDropDownIcon" onclick="showHideCode()"></div>
+                    </div>
+                </div>
+                <div id="codeSnippet">
+                    trololol de beste code ooit
+                </div>
+            </div>
+
+			{% endfor %}
+
+
+        </div>

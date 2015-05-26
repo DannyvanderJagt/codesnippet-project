@@ -60,7 +60,7 @@ class User{
 		}
 
 		$result = $result->toArray();
-		$result['Votes'] = Vote::getByUserID($id);
+		$result['Votes'] = Vote::getByUserID($result['ID']);
 		return $result;
 	}
 
