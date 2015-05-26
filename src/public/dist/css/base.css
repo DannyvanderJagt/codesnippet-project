@@ -1318,3 +1318,92 @@ and open the template in the editor.
 
 .syntaxhighlighter .keyword {
   font-weight: bold !important; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-mei-2015, 9:30:10
+    Author     : Leroy
+*/
+#WelcomeDiv {
+  float: left;
+  width: 100%;
+  margin-top: 50px; }
+
+.welcomeDivText {
+  color: #414042; }
+
+#homePageSuggestions {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #58595B; }
+
+.infoSuggestions {
+  width: 100%;
+  height: 46px;
+  border-top: 1px solid #58595B;
+  color: #414042;
+  background-color: #58595B; }
+
+.whiteAdd {
+  border-color: #ffffff;
+  color: #ffffff; }
+
+.suggestion {
+  float: left;
+  width: 100%;
+  height: 46px;
+  border-top: 1px solid #58595B;
+  color: #414042; }
+
+.rating {
+  float: left;
+  width: 100px;
+  height: 46px;
+  border-right: 1px solid #58595B;
+  border-left: 1px solid #58595B; }
+
+.ratingWhite {
+  border-right: 1px solid #ffffff; }
+
+.ratingPadding {
+  padding: 14px;
+  padding-bottom: 10px;
+  width: 72px;
+  height: 22px; }
+
+.ratingImage {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-top: 14px;
+  margin-left: 12px;
+  background-image: url(images/arrow_up_color.png);
+  background-repeat: no-repeat; }
+
+.ratingText {
+  float: left;
+  width: 40px;
+  margin-top: 14px;
+  margin-left: 10px;
+  text-align: center; }
+
+.title {
+  float: left;
+  padding: 14px;
+  padding-bottom: 10px; }
+
+.language {
+  border-left: 1px solid #58595B;
+  border-right: 1px solid #58595B;
+  width: 72px;
+  height: 22px;
+  float: right;
+  padding: 14px;
+  padding-bottom: 10px; }
+
+.languageWhite {
+  border-left: 1px solid #ffffff; }

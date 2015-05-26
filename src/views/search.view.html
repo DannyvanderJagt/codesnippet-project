@@ -1,8 +1,11 @@
    <div class="content pure-u-3-5">
-            <h3>Search Results for: Time Converter</h3>
+            <h3>Search Results for: {{ data.query }} </h3>
             
-            
-            {% for snippet in data %}
+            {% if data.snippets is empty %}
+                We couldn't find any snippets.
+            {% endif %}
+                
+            {% for snippet in data.snippets %}
 
             <div class="codeBlock">
                 <div class="codeBlockContent">
