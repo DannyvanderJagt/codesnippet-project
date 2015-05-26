@@ -35,8 +35,10 @@ class Snippet{
 		if(!empty($user)){
 			// Check if the user already votes on this snippet.
 			$model = new Model_Vote_Snippet();
-			$votes = $model->where("Snippet_ID", '=', $id)->where("Vote_user_ID","=",$user['ID'])->first()->toArray();
-			$result['Voted'] = $votes['Vote_type'];
+			$votes = $model->where("Snippet_ID", '=', $id)->where("Vote_user_ID","=",$user['ID'])->first();
+			if(!empty($votes)){
+				$result['Voted'] = $votes->toArray()['Vote_type'];
+			}
 		}else{
 			$result['Voted'] = -1;
 		}

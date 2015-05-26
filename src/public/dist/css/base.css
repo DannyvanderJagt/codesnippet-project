@@ -347,6 +347,14 @@ h6 {
   margin: 40px auto 0px auto;
   text-align: center; }
 
+.error {
+  display: inline-block;
+  background: #ffffff;
+  color: #EC4324;
+  padding: 6px;
+  border: 1px solid #df3c1a;
+  margin: 10px 0px; }
+
 #searchInput {
   background-color: #414042;
   color: #E6E7E8;
@@ -367,6 +375,30 @@ textarea {
   color: #E6E7E8;
   resize: none;
   width: calc(100% - 30px); }
+
+.signInForm {
+  float: left;
+  width: 100%;
+  height: 240px; }
+
+.inputField {
+  width: auto;
+  height: 20px;
+  float: left;
+  color: #58595B;
+  font-weight: bold;
+  border: 1px solid #414042;
+  padding-left: 10px;
+  margin-right: 5px;
+  margin: 15px 15px 0px 0px; }
+
+.textareaMessage {
+  width: 50%;
+  border: 1px solid #414042;
+  color: #58595B;
+  font-weight: bold;
+  margin-left: 0px;
+  resize: none; }
 
 .searchbtn {
   background-image: url(../images/search.png);
@@ -1409,3 +1441,12 @@ and open the template in the editor.
 
 .languageWhite {
   border-left: 1px solid #ffffff; }
+
+.dropdownSpacing {
+  margin-right: 5px; }
+
+.signUpLabel {
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  width: 100%; }

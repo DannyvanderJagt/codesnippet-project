@@ -19,19 +19,30 @@ class Controller_Signin extends Controller
 		}
 
 		public function onPost($params = [], $data = []){
-			$result = System::$Auth->signin(
-				$data['username'], 
-				Auth::encrypt($data['password'])
-			);
-			if($result){
-				System::redirectToHome();
-			}else{
-				$this->data = [
-					'error' => true,
-					'errorMessage' => 'Your username and/or password are incorrect!'
-				];
-			}
 
+			// Validate.
+			if(empty($data['username'])){
+				$this->data['usernameError'] = 'Please enter a username!';
+			}
+			if(empty($data['password'])){
+				$this->data['passwordError'] = 'Please enter a password!';
+			} 
+
+			if($data['username'] && $data['password']){
+				$result = System::$Auth->signin(
+					$data['username'], 
+					Auth::encrypt($data['password'])
+				);
+				if($result){
+					System::redirectToHome();
+				}else{
+					$this->data = [
+						'error' => true,
+						'errorMessage' => 'Your username and/or password are incorrect!'
+					];
+				}
+			}
+			print_r($this->data);
 		}
 	// **************************************** //
 

@@ -6,10 +6,19 @@
 	{% endif %}
 
 	<form action="" method="post">
-		 <h4><label for="username">User Name:</label></h4><input class="inputField" type="text" name='username'>                                                    
+
+		 <h4><label for="username">User Name:</label></h4>
+         {% if data.usernameError %}
+            <div class="error">{{ data.usernameError }}</div>
+         {% endif %}
+         <input class="inputField" type="text" name='username'>                                                        
+        <br>   
         <br>
-        <br>
-        <h4><label for="password">Password:</label></h4><input class="inputField" type="text" name='password'> 
+        <h4><label for="password">Password:</label></h4>
+        {% if data.passwordError %}
+            <div class="error">{{ data.passwordError }}</div>
+         {% endif %}
+        <input class="inputField" type="text" name='password'> 
         <br>  
         <br>
         <br>

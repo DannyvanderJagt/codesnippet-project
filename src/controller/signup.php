@@ -114,7 +114,7 @@ class Controller_Signup extends Controller
 
 }
 
-public function uploadFile()
+		public function uploadFile()
 		{
 			$target_dir = "uploads";
 
@@ -134,7 +134,7 @@ public function uploadFile()
 				{
 
 					$imgbinary = fread(fopen($file_tmp, "r"), filesize($file_tmp));
-             $base = 'data:image/' . $file_ext . ';base64,' . base64_encode($imgbinary);
+		             $base = 'data:image/' . $file_ext . ';base64,' . base64_encode($imgbinary);
 					
 				}
 			}

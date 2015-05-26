@@ -329,3 +329,12 @@ h6{
  margin: 40px auto 0px auto;
  text-align:center;
 }
+
+.error{
+    display: inline-block;
+    background: $white;
+    color: $red;
+    padding: 6px;
+    border: 1px solid $red_tint;
+    margin: 10px 0px;
+}
