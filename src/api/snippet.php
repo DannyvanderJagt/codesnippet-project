@@ -48,6 +48,22 @@ class Snippet{
 	}
 
 	/**
+	 * Get the latest snippets.
+	 */
+	public function getLastest(){
+		$model = new Model_Snippet();
+		$result = $model->orderBy('Date')->limit(10)->get()->toArray();
+		$newResults = [];
+		foreach($result as $snippet){
+			$newResults[] = Snippet::getByID($snippet['ID']);
+		}
+		$result = $newResults;
+
+		return $result;
+	}
+
+
+	/**
 	 * Get snippet by user.Username.
 	 */
 	public function getByUserID($id){

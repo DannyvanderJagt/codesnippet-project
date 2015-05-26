@@ -15,7 +15,9 @@ class Controller_Home extends Controller
 		}
 
 		public function onRequest($params = []){
-			$this->renderView(['message'=>'Hi, there!']);
+			$data = [];
+			$data['snippets'] = Snippet::getLastest();
+			$this->renderView($data);
 		}
 	// **************************************** //
 

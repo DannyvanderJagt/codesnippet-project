@@ -98,7 +98,8 @@ h6 {
 
 .content {
   color: #414041;
-  min-height: calc(100% - 175px); }
+  margin-bottom: 30px;
+  min-height: calc(100% - 205px); }
 
 #CodeBlock {
   background-color: white;
@@ -557,6 +558,8 @@ img.logo {
   padding-left: 10px; }
 
 .searchbtn {
+  border: none;
+  background: none;
   background-image: url(../images/search.png);
   background-repeat: no-repeat;
   background-size: 20px, 20px;
@@ -1338,8 +1341,7 @@ and open the template in the editor.
 
 #homePageSuggestions {
   float: left;
-  width: 100%;
-  border-bottom: 1px solid #58595B; }
+  width: 100%; }
 
 .infoSuggestions {
   width: 100%;
