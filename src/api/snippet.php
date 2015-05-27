@@ -32,6 +32,8 @@ class Snippet{
 		}
 		$user = System::$Auth->getUser();
 
+
+		$result['Voted'] = -1;
 		if(!empty($user)){
 			// Check if the user already votes on this snippet.
 			$model = new Model_Vote_Snippet();
@@ -39,10 +41,9 @@ class Snippet{
 			if(!empty($votes)){
 				$result['Voted'] = $votes->toArray()['Vote_type'];
 			}
-		}else{
-			$result['Voted'] = -1;
 		}
 
+		
 		$result['User'] = User::getById($result['User_ID']);
 		$result['Comments'] = Comment::getBySnippetID($id);
 		$result['Votes'] = Vote::getBySnippetID($id);

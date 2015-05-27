@@ -11,11 +11,7 @@ class Controller_Account extends Controller
 		public function onAuth($params = []){
 			// This is only avialable when some one is signed in!
 			// Otherwise when an user is not signed in send them to the signin page.
-			if(!isset($params[1])){
-				return true;
-			}else{
-				return System::$Auth->required();
-			}
+			return System::$Auth->required();
 		}
 
 		/**

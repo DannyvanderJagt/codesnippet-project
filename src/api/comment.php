@@ -27,6 +27,16 @@ class Comment{
 		return $comments->toArray();
 	}
 
+	public function getByID($id){
+		$model = new Model_Comment();
+		$comment = $model->find($id);
+
+		if(empty($comment)){
+			return false;
+		}
+		return $comment->toArray();
+	}
+
 	/**
 	 * Get all the comments by an snippet id.
 	 * @param  [type] $id [The ID of the snippet]
@@ -56,8 +66,7 @@ class Comment{
 				// This is an subcomment.
 				$comment['Votes'] = Vote::getByCommentID($comment['Comment_ID']);
 				$voted = Model_Vote_Comment::where(["Comment_ID" => $comment["Comment_ID"], "Vote_user_ID"=>$userid])->first();
-				
-				if(empty($votes)){
+				if($voted == null){
 					$comment['Voted'] = -1;
 				}else{
 					$comment['Voted'] = $voted['Vote_type'];

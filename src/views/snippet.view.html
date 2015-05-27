@@ -1,10 +1,14 @@
 <div class="content pure-u-2-5">
-    {{ data.Voted }}
     <h1> {{ data.Title }} </h1>   
-                   
+   <div class="codeBlockVotes">
+         <div class="codeUpVote" {% if data.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_color.png)' {% endif%}></div>
+        <div class="codeLikes">{{data.Votes.up - data.Votes.down}}</div>
+        <div class="codeDownVote" {% if data.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_color.png)' {% endif%}></div>
+    </div>
     <div id="CodeBlock">
         {{ data.Code_Styled | raw }}
     </div>      
+
     <h3>Description</h3>
     <div id="Description">
         {{ data.Description }}
@@ -167,11 +171,4 @@
             sub[0].style.display = 'block';
         }
     }
-
-
-
-
-
-
-
 </script>

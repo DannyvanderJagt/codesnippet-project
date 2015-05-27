@@ -10,9 +10,9 @@
             <div class="codeBlock">
                 <div class="codeBlockContent">
                     <div class="codeBlockVotes">
-                        <div class="codeUpVote"></div>
+                         <div class="codeUpVote" {% if snippet.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_color.png)' {% endif%}></div>
                         <div class="codeLikes">{{snippet.Votes.up - snippet.Votes.down}}</div>
-                        <div class="codeDownVote"></div>
+                        <div class="codeDownVote" {% if snippet.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_color.png)' {% endif%}></div>
                     </div>
                     <div class="codeInfo">
                         <h3 class="codeTitle">{{snippet.Title}}</h3>
