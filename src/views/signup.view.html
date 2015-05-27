@@ -3,31 +3,50 @@
 <form action="" method="post" enctype="multipart/form-data">
 
 	<h3>Sign up</h3>
-
+	{% if data.error %}
+		{{ data.errorMessage }}
+	{% endif %}
 	<h4><label for="Username"> Username </label></h4>
-	<input class='inputField' type="text" name="username" value="{{username}}">
+	{% if data.error.usernameError %}
+            <div class="error">{{ data.error.usernameError }}</div>
+         {% endif %}
+	<input class='inputField' type="text" name="username" value="{{ data.data.username }}">
+	<br />
 	<br />
 	<h4><label for="Password">Password</label></h4>
-	<input class='inputField' type="text" name="password" value="{{password}}">
+	{% if data.error.passwordError %}
+            <div class="error">{{ data.error.passwordError }}</div>
+         {% endif %}
+	<input class='inputField' type="password" name="password" value="{{ data.data.password }}">
+	<br />
 	<br />
 	<h4><label for="First name">First name</label></h4>
-	<input class='inputField' type="text" name="first_name" value="{{first_name}}">
+	<input class='inputField' type="text" name="first_name" value="{{ data.data.first_name }}">
+	<br />
+	<br />
 	<h4><label for="Last name"> Last name</label></h4>
-	<input class='inputField' type="text" name="last_name" value="{{last_name}}">
+	<input class='inputField' type="text" name="last_name" value="{{ data.data.last_name }}">
+	<br />
 	<br />
 	<h4><label for="E-Mail">E-Mail </label></h4>
-	<input class='inputField' type="text" name="email" value="{{email}}">
+	{% if data.error.emailError %}
+            <div class="error">{{ data.error.emailError }}</div>
+         {% endif %}
+	<input class='inputField' type="text" name="email" value="{{ data.data.email }}">
+	<br />
 	<br />
 	<h4><label for="Birthday">Birthday, month, year</label></h4>
-	<input class='inputField' type="number" name="birthday" value="{{birthday}}">
-	<input class='inputField' type="number" name="birthmonth" value="{{birthmonth}}">
-	<input class='inputField' type="number" name="birthyear" value="{{birthyear}}">
+	<input class='inputField' type="number" name="birthday" value="{{ data.data.birthday }}">
+	<input class='inputField' type="number" name="birthmonth" value="{{ data.data.birthmonth }}">
+	<input class='inputField' type="number" name="birthyear" value="{{ data.data.birthyear }}">
+	<br />
 	<br />
 	<h4><label for="Profession">Profession</label></h4>
-	<input class='inputField' type="text" name="profession" value="{{profession}}">
+	<input class='inputField' type="text" name="profession" value="{{ data.data.profession }}">
+	<br />
 	<br />
 	<h4><label for="Profile picture"> Profile picture</label></h4>
-	<input class='inputField' type="file" name="profile_picture" accept="image/*" value="{{profile_picture}}">
+	<input class='inputField' type="file" name="profile_picture" accept="image/*" value="{{ data.data.profile_picture }}">
 
 	<input type="submit" name='submit' value="submit">
 </form>

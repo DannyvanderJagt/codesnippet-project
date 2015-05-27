@@ -1,24 +1,25 @@
 <div class="content pure-u-3-5">
 	<h1> Sign in! </h1>
-
+<div class="error">
 	{% if data.error %}
 		{{ data.errorMessage }}
 	{% endif %}
-
+</div>
 	<form action="" method="post">
 
 		 <h4><label for="username">User Name:</label></h4>
          {% if data.usernameError %}
             <div class="error">{{ data.usernameError }}</div>
          {% endif %}
-         <input class="inputField" type="text" name='username'>                                                        
+        
+         <input class="inputField" type="text" name='username' value="{{data.data.username}}">                                                        
         <br>   
         <br>
         <h4><label for="password">Password:</label></h4>
         {% if data.passwordError %}
             <div class="error">{{ data.passwordError }}</div>
          {% endif %}
-        <input class="inputField" type="text" name='password'> 
+        <input class="inputField" type="password" name='password' value= "{{ data.data.password }}"> 
         <br>  
         <br>
         <br>

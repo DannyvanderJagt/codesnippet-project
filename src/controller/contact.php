@@ -20,6 +20,11 @@ class Controller_Contact extends Controller
 		public function onRequest($params = []){
 			$this->renderView();
 		}
+
+		public function onPost($params = [], $data = []){
+			$this->data['send'] = "Mail has been sent!";
+			$this->data['submit'] = $data['submit'];
+		}
 	// **************************************** //
 
 

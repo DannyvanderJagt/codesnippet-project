@@ -42,7 +42,7 @@ class Controller_Signin extends Controller
 					];
 				}
 			}
-			print_r($this->data);
+			$this->data['data'] = $data;
 		}
 	// **************************************** //
 

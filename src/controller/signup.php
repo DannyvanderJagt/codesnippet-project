@@ -14,64 +14,34 @@ class Controller_Signup extends Controller
 			return ['home', !System::$Auth->required()];
 		}
 
-		
-
-		public function onRequest($params = []){
-			if(isset($_POST['submit'])){
-			$this->data['error'] = [];
-				if(isset($_POST['username'])){
-
+		public function onPost($params = [], $data = []){
+			if(empty($data['username'])){
+				$this->data['error']['usernameError'] = 'Please enter a username!';
+			}
+			if(empty($data['password'])){
+				$this->data['error']['passwordError'] = 'Please enter a password!';
+			}
+			if(empty($data['email'])){
+				$this->data['error']['emailError'] = 'Please enter a email!';
+			}
+			if(!empty($data['email'])){
+				$at = strpos($data['email'], '@');
+				if($at)
+				{
+					$eDomain = explode('@', $data['email']);
+					$dot = strpos($eDomain, '.');
+					if(!$dot){
+						$this->data['error']['emailError'] = 'Please enter a valid email!';
+					}
 				}
 				else
 				{
-					$this->data['error']['username'] = "Username not filled in.";
+					$this->data['error']['emailError'] = 'Please enter a valid email!';
 				}
-					if(isset($_POST['password'])){
-						
-					}
-					else
-				{
-					$this->data['error']['password'] = "Password not filled in.";
-				}
-					if(isset($_POST['first_name'])){
-
-					}
-					else
-				{
-					$this->data['error']['first_name'] = "First name not filled in.";
-				}
-					if(isset($_POST['last_name'])){
-
-					}
-					else
-				{
-					$this->data['error']['last_name'] = "Last name not filled in.";
-				}
-					if(isset($_POST['email'])){
-
-					}
-					else
-				{
-					$this->data['error']['email'] = "E-mail not filled in.";
-				}
-					if(isset($_POST['birthday']) && isset($_POST['birthmonth']) && isset($_POST['birthyear'])){
-						
-					}
-					else
-				{
-					$this->data['error']['birthday'] = "Birthday not filled in.";
-				}
-					if(isset($_POST['profession'])){
-
-					}
-					else
-				{
-					$this->data['error']['profession'] = "Profession not filled in.";
-				}
-			
+			}
+			elseif(count($this->data['error']) === 0){
+				echo count($this->data['error']);
 			$file = NULL;
-			if (count($this->data['error']) > 0)
-			{
 			$this->data['username'] = $_POST['username'];
 			$this->data['password'] = $_POST['password'];
 			$this->data['first_name'] = $_POST['first_name'];
@@ -85,10 +55,10 @@ class Controller_Signup extends Controller
 			{
 				$this->data['profile_picture'] = $_POST['profile_picture'];
 			}
-		}
 		
-		else
-		{
+		
+
+
 			//echo "Before check";
 			
 			if(isset($_FILES['profile_picture']))
@@ -103,16 +73,21 @@ class Controller_Signup extends Controller
 			Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $file, $file);
 		
 		}
+		$this->data['data'] = $data;
+		}		
 
+		public function onRequest($params = []){
+
+$this->renderView();
 
 	}
 
 
-			$this->renderView();
+			
 		
 	// **************************************** //
 
-}
+
 
 		public function uploadFile()
 		{
@@ -127,7 +102,7 @@ class Controller_Signup extends Controller
 			$image_name = $file_ext[0];
 			$file_ext = strtolower(end($file_ext));
 			$allowed = array('jpg', 'png');
-
+			$base = NULL;
 			if(in_array($file_ext, $allowed))
 			{
 				if ($file_error === 0) 
@@ -137,10 +112,6 @@ class Controller_Signup extends Controller
 		             $base = 'data:image/' . $file_ext . ';base64,' . base64_encode($imgbinary);
 					
 				}
-			}
-			else
-			{
-				echo "ERROR!";
 			}
 			return $base;
 		}
