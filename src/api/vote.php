@@ -35,8 +35,8 @@ class Vote{
 		$snippetDown = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
 
 		// Comment table.
-		$commentUp = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
-		$commentDown = $snippetModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
+		$commentUp = $commentModel->where('User_ID', '=', $id)->where('Vote_type','=',1)->count();
+		$commentDown = $commentModel->where('User_ID', '=', $id)->where('Vote_type','=',0)->count();
 	
 		$totalUp = $userUp + $snippetUp + $commentUp;
 		$totalDown = $userDown + $snippetDown + $commentDown; 
@@ -94,23 +94,35 @@ class Vote{
 	 * @param  [type] $voteUser [The userID of the user that is voting]
 	 * @return [type]           [description]
 	 */
-	public function voteSnippet($id, $vote, $voteUser){
+	public function voteSnippet($id, $vote){
 		$model = new Model_Vote_Snippet();
-		$result = $model->find($user);
-		if(empty($result)){
-			try{
-				$voteCreate = $model->create([
-					'Vote_ID' => 'NULL', 
-					'Vote_user_ID' => $voteUser, 
-					'Vote_type' => $vote, 
-					'Snippet_ID' => $id
-				]);
-			}catch(\Illuminate\Database\QueryException $e){
-				return false;
-			}
-			return true;
+		$auth = System::$Auth->getUser();
+		$snippet = Snippet::getByID($id);
+
+		if(empty($auth)){
+			return false;
 		}
-		return false;
+
+		if(empty($snippet)){
+			return false;
+		}
+
+		if(!($vote == 0 || $vote == 1)){
+			return false;
+		}
+
+		try{
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'User_ID' => $snippet['ID'],
+				'Vote_user_ID' => $auth['ID'], 
+				'Vote_type' => $vote,
+				'Snippet_ID' => $id
+			]);
+			return true;
+		}catch(\Illuminate\Database\QueryException $e){
+			return false;
+		}
 	}
 
 	/**
@@ -120,23 +132,34 @@ class Vote{
 	 * @param  [type] $voteUser [The userID of the user that is voting]
 	 * @return [type]           [description]
 	 */
-	public function voteComment($id, $vote, $voteUser){
-		$model = new Model_Vote_Snippet();
-		$result = $model->find($user);
-		if(empty($result)){
-			try{
-				$voteCreate = $model->create([
-					'Vote_ID' => 'NULL', 
-					'Vote_user_ID' => $voteUser, 
-					'Vote_type' => $vote, 
-					'Comment_ID' => $id
-				]);
-			}catch(\Illuminate\Database\QueryException $e){
-				return false;
-			}
-			return true;
+	public function voteComment($id, $vote){
+		$model = new Model_Vote_Comment();
+		$comment = Comment::getById($id);
+		$auth = System::$Auth->getUser();
+
+		if(empty($auth)){
+			return false;
 		}
-		return false;
+		if(empty($comment)){
+			return false;
+		}
+
+		if(!($vote == 0 || $vote == 1)){
+			return false;
+		}
+
+		try{
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $auth['ID'], 
+				'Vote_type' => $vote,
+				'Comment_ID' => $comment['Comment_ID'],
+				'User_ID' => $comment['User_ID']
+			]);
+			return true;
+		}catch(\Illuminate\Database\QueryException $e){
+			return false;
+		}
 	}
 
 	/**
@@ -146,23 +169,33 @@ class Vote{
 	 * @param  [type] $user     [The userID of the user which the vote is for]
 	 * @return [type]           [description]
 	 */
-	public function voteUser($vote, $voteUser, $user){
+	public function voteUser($user, $vote){
 		$model = new Model_Vote_User();
-		$result = $model->find($user);
-		if(empty($result)){
-			try{
-				$voteCreate = $model->create([
-					'Vote_ID' => 'NULL', 
-					'Vote_user_ID' => $voteUser, 
-					'User_ID' => $user, 
-					'Vote_type' => $vote, 
-					]);
-			}catch(\Illuminate\Database\QueryException $e){
-				return false;
-			}
-			return true;
+		$user = User::existByID();
+		$auth = System::$Auth->getUser();
+
+		if(empty($auth)){
+			return false;
 		}
-		return false;
+		if(!$user){
+			return false;
+		}
+
+		if(!($vote == 0 || $vote == 1)){
+			return false;
+		}
+
+		try{
+			$voteCreate = $model->create([
+				'Vote_ID' => 'NULL', 
+				'Vote_user_ID' => $auth['ID'], 
+				'Vote_type' => $vote,
+				'User_ID' => $user
+			]);
+			return true;
+		}catch(\Illuminate\Database\QueryException $e){
+			return false;
+		}
 	}
 
 }
