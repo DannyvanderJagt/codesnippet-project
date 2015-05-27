@@ -144,9 +144,9 @@ class Router{
 	 * @return [type]       [description]
 	 */
 	public function showApiResult($data){
-		echo "<pre>";
+		// echo "<pre>";
 		echo System::json_readable_encode($data);
-		echo "</pre>";
+		// echo "</pre>";
 		exit();
 	}
 

@@ -100,7 +100,6 @@ class Vote{
 		$snippet = Snippet::getByID($id);
 
 		if(empty($auth)){
-			echo 'auth';
 			return false;
 		}
 
@@ -139,7 +138,6 @@ class Vote{
 		$auth = System::$Auth->getUser();
 
 		if(empty($auth)){
-			echo 'auth';
 			return false;
 		}
 		if(empty($comment)){
@@ -147,7 +145,6 @@ class Vote{
 		}
 
 		if(!($vote == 0 || $vote == 1)){
-			echo 'vote';
 			return false;
 		}
 
@@ -185,7 +182,6 @@ class Vote{
 		}
 
 		if(!($vote == 0 || $vote == 1)){
-			echo 'vote';
 			return false;
 		}
 
