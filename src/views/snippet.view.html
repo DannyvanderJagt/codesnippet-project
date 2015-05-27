@@ -1,5 +1,5 @@
 <div class="content pure-u-2-5">
-    <div class="error" style='width: 100%; text-align: center;'>Loading...</div>
+    <div id='loading' class="error" style='opacity: 0; width: 100%; text-align: center;'>Loading...</div>
     <h1> {{ data.Title }} </h1>   
    <div class="codeBlockVotes">
          <div class="codeUpVote" onclick='voteSnippet({{data.ID}},1)' {% if data.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_color.png)' {% endif%}></div>
@@ -173,8 +173,19 @@
         }
     }
 
+    var loading = document.getElementById('loading');
+
+    function showLoading(){
+        loading.style.opacity = 1;
+    }
+
+    function hideLoading(){
+        loading.style.opacity = 0;
+    }
+
     // Vote on snippet.
     function voteSnippet(id, vote){
+        showLoading();
         var xmlhttp = new XMLHttpRequest();
         var url = "http://localhost/api/Vote/voteSnippet/"+id+"/"+vote;
 
@@ -182,9 +193,9 @@
             console.log(url);
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var myArr = JSON.parse(xmlhttp.responseText);
-                // console.log(xmlhttp.responseText);
                 if(myArr.data == false){
                     alert('You cannot vote on this!');
+                    hideLoading();
                 }else{
                     location.reload();
                 }
@@ -196,16 +207,16 @@
 
     // Vote on comment.
     function voteComment(id, vote){
+        showLoading();
         var xmlhttp = new XMLHttpRequest();
         var url = "http://localhost/api/Vote/voteComment/"+id+"/"+vote;
 
         xmlhttp.onreadystatechange = function() {
-            console.log(url);
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var myArr = JSON.parse(xmlhttp.responseText);
-                // console.log(xmlhttp.responseText);
                 if(myArr.data == false){
                     alert('You cannot vote on this!');
+                    hideLoading();
                 }else{
                     location.reload();
                 }
