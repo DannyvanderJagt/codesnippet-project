@@ -1,10 +1,10 @@
 <div class="content pure-u-3-5">
 	<h1> Sign in! </h1>
+    {% if data.error %}
 <div class="error">
-	{% if data.error %}
 		{{ data.errorMessage }}
-	{% endif %}
 </div>
+{% endif %}
 	<form action="" method="post">
 
 		 <h4><label for="username">User Name:</label></h4>

@@ -14,7 +14,7 @@ class Controller_Signin extends Controller
 			return ['home', !System::$Auth->required()];
 		}
 
-		public function onRequest($params = []){
+		public function onRequest($params = []){;
 			$this->renderView();
 		}
 
