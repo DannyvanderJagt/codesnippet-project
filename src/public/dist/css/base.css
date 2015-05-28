@@ -221,7 +221,8 @@ h6 {
   float: right;
   text-align: right;
   border: 1px solid #414042;
-  text-align: center; }
+  text-align: center;
+  cursor: pointer; }
 
 .replyBlock {
   width: auto;
@@ -443,7 +444,8 @@ textarea {
   width: 25px;
   background-image: url(../images/arrow_up_small.png);
   background-repeat: no-repeat;
-  float: left; }
+  float: left;
+  cursor: pointer; }
 
 .commentDownVote {
   margin-top: 3px;
@@ -451,7 +453,8 @@ textarea {
   width: 25px;
   background-image: url(../images/arrow_down_small.png);
   background-repeat: no-repeat;
-  float: left; }
+  float: left;
+  cursor: pointer; }
 
 .commentDropDownIcon {
   margin-top: 3px;
@@ -459,7 +462,8 @@ textarea {
   height: 19px;
   background-image: url(../images/plus.png);
   background-repeat: no-repeat;
-  float: left; }
+  float: left;
+  cursor: pointer; }
 
 .styleButton {
   float: left;
@@ -740,7 +744,8 @@ and open the template in the editor.
   width: 30px;
   height: 30px;
   background-image: url(../images/arrow_Up.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  cursor: pointer; }
 
 .codeLikes {
   width: 30px;
@@ -751,7 +756,8 @@ and open the template in the editor.
   width: 30px;
   height: 30px;
   background-image: url(../images/arrow_down.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  cursor: pointer; }
 
 .codeInfo {
   float: left;
@@ -1365,8 +1371,7 @@ and open the template in the editor.
 */
 #WelcomeDiv {
   float: left;
-  width: 100%;
-  margin-top: 50px; }
+  width: 100%; }
 
 .welcomeDivText {
   color: #414042; }
