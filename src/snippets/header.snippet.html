@@ -21,6 +21,7 @@
                 <a href="{{ basePath }}/snippet/add" title="Upload codesnippet"> <div class="uploadbtn" ></div> </a>
                 <a class="userAccount" href="{{ basePath }}/account">{{ auth.Username }}</a>
                 <a href="{{ basePath }}/account"><div class="userAvatar"></div></a>
+                <a href='{{basePath}}/signout'><img style='margin: 5px 0px 0px 30px;' width="20" src="{{basepath}}/dist/images/logout.png"></a>
             {% else %}
                 <a class='userAccount' href='{{ basePath }}/signup'>Register</a>
                 <a class='userAccount' href='{{ basePath }}/signin'>Signin</a>
