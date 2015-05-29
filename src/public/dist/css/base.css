@@ -103,9 +103,9 @@ h6 {
 
 #CodeBlock {
   background-color: white;
-  width: auto;
+  width: inherit;
   padding: 20px;
-  margin: 10px;
+  margin: 10px 20px;
   border-width: 1px;
   border-style: solid;
   border-color: #58595B;
@@ -725,9 +725,9 @@ and open the template in the editor.
 
 .codeBlock {
   float: left;
-  width: auto;
+  width: inherit;
   border: 1px solid #58595B;
-  margin-right: 10px;
+  margin: 10px 20px;
   padding: 10px; }
 
 .codeBlockContent {

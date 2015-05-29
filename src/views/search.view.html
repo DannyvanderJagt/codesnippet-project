@@ -1,4 +1,6 @@
    <div class="content pure-u-3-5">
+            <div id='loading' class="error" style='display: none; width: inherit; text-align: center;'>Loading...</div>
+            
             <h3>Search Results for: {{ data.query }} </h3>
             
             {% if data.snippets is empty %}
@@ -10,9 +12,9 @@
             <div class="codeBlock">
                 <div class="codeBlockContent">
                     <div class="codeBlockVotes">
-                         <div class="codeUpVote" {% if snippet.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_color.png)' {% endif%}></div>
-                        <div class="codeLikes">{{snippet.Votes.up - snippet.Votes.down}}</div>
-                        <div class="codeDownVote" {% if snippet.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_color.png)' {% endif%}></div>
+                        <div class="codeUpVote" onclick='voteSnippet({{snippet.ID}},1)' {% if snippet.Voted == 1 %}style='background-image: url(../dist/images/arrow_up_color.png)' {% endif%}></div>
+                    <div class="codeLikes">{{snippet.Votes.up - snippet.Votes.down}}</div>
+                    <div class="codeDownVote" onclick='voteSnippet({{snippet.ID}},0)' {% if snippet.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_color.png)' {% endif%}></div>
                     </div>
                     <div class="codeInfo">
                         <h3 class="codeTitle">{{snippet.Title}}</h3>
@@ -68,6 +70,38 @@
             }else{
                 code.style.display = 'block';
             }
+        }
+
+         var loading = document.getElementById('loading');
+
+        function showLoading(){
+            loading.style.display = "block";
+        }
+
+        function hideLoading(){
+            loading.style.display = "none";
+        }
+
+         // Vote on snippet.
+        function voteSnippet(id, vote){
+            showLoading();
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://localhost/api/Vote/voteSnippet/"+id+"/"+vote;
+
+            xmlhttp.onreadystatechange = function() {
+                console.log(url);
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var myArr = JSON.parse(xmlhttp.responseText);
+                    if(myArr.data == false){
+                        alert('You cannot vote on this!');
+                        hideLoading();
+                    }else{
+                        location.reload();
+                    }
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
         }
 
         </script>
