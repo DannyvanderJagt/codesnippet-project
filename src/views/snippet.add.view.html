@@ -31,7 +31,9 @@ edit snippet: {{ data.ID }}
                   
              <div class="dropDownOption">                       
                 <h5 class="dropDownHeader"> Language:</h5>
-            
+                     {% if data.error.langError %}
+            <div class="error">{{ data.error.langError }}</div>
+         {% endif %}
                 <select class="dropDown" name='language'>
                     {% for lang in data.languages %}
                      <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
@@ -50,10 +52,16 @@ edit snippet: {{ data.ID }}
              </div>
          
              <h4 class="codeSnippetInput">Code Snippet:</h4>
+             {% if data.error.codeError %}
+            <div class="error">{{ data.error.codeError }}</div>
+         {% endif %}
                  <textarea class ="codeInput" rows="15" name='code'></textarea>
                 
          
             <h4 class="codeDescription">Description:</h4>
+            {% if data.error.descriptionError %}
+            <div class="error">{{ data.error.descriptionError }}</div>
+         {% endif %}
                 <textarea class="codeDescriptionInput" rows="5" name='description' onfocus="if(this.value===this.defaultValue)this.value=''" onblur="if(this.value==='')this.value=this.defaultValue">Write here a description..</textarea>
                 
                 <h4 class="selectTags">Tags:</h4>

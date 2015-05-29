@@ -102,7 +102,7 @@ class Controller_Snippet extends Controller
 					'errorMessage' => 'This snippet id doesn\'t exists!'
 				];
 			}
-			$this->renderView($data, 'edit');
+			$this->renderView($this->data, 'edit');
 		}
 
 		public function upVoteSnippet($snippet){
@@ -139,15 +139,28 @@ class Controller_Snippet extends Controller
 
 		public function onEditPost($id, $data){
 			// Filter the data.
-			$data = [
-				'Title' => $data['title'],
-				'Code' => $data['code'],
-				'Description' => $data['description'],
-				'Lang' => $data['lang'],
-				'Framework' => $data['framework']
-			];
-
+			$data['error'] = [];
+			if(empty($data['title']))
+			{
+				$data['error']['titleError'] = 'Please enter a title!';
+			}
+			if(empty($data['code']))
+			{
+				$data['error']['codeError'] = 'Please enter some code!';
+			}
+			if(empty($data['description']))
+			{
+				$data['error']['descriptionError'] = 'Please enter a description!';
+			}
+			if(empty($data['lang']))
+			{
+				$data['error']['langError'] = 'Please enter a language!';
+			}
+			if(count($data['error']) === 0){
+			
+			
 			Api::$Snippet->updateById($id, $data);
+		}
 		}
 
 		/**
@@ -173,6 +186,23 @@ class Controller_Snippet extends Controller
 		}
 
 		public function onAddPost($data){
+			if(empty($data['title']))
+			{
+				$data['error']['titleError'] = 'Please enter a title!';
+			}
+			if(empty($data['code']))
+			{
+				$data['error']['codeError'] = 'Please enter some code!';
+			}
+			if(empty($data['description']))
+			{
+				$data['error']['descriptionError'] = 'Please enter a description!';
+			}
+			if(empty($data['lang']))
+			{
+				$data['error']['langError'] = 'Please enter a language!';
+			}
+			if(count($data['error']) === 0){
 			$id = Api::$Snippet->create(
 				$data['title'],
 				$data['code'],
@@ -182,6 +212,8 @@ class Controller_Snippet extends Controller
 				System::$Auth->getUser()['ID']
 			);
 			System::redirectTo('snippet/' . $id['ID']);
+		}
+		$this->data = $data;
 		}
 
 		/**
