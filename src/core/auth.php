@@ -63,6 +63,7 @@ class Auth
 		$this->loggedInUser = $user;
 		$this->loggedin = true;
 
+		setcookie("time", time(), time() + $this->sessionExpireDate,'/');
 		setcookie("key", $this->key, time() + $this->sessionExpireDate,'/');
 	}
 
