@@ -1,85 +1,55 @@
-<!-- {% if data.error %}
-	{{ data.errorMessage }}
-
-{% else %}
-edit snippet: {{ data.ID }}
-
-<form action="" method="post">
-	<label for="title">Title:</label><input type="text" name='title' value="{{data.Title}}">
-	<br/>
-	<label for="title">Code:</label><input type="text" name='code' value="{{data.Code}}">
-	<br/>
-	<label for="title">Description:</label><input type="text" name='description' value="{{data.Description}}">
-	<br/>
-	<label for="title">Lang:</label><input type="text" name='lang' value="{{data.Lang}}">
-	<br/>
-	<label for="title">Framework:</label><input type="text" name='framework' value="{{data.Framework}}">
-	<br/>
-	<input type="submit" value="Save" name='submit'>
-</form>
-
-{% endif %}
- -->
-
  <div class="content pure-u-3-5">
 
- <h1>Upload</h1>
-             
-             <h4>Code title</h4>  
-             <form action="" method="post">                       
-             <input class="input" type="text" name="title" value="Enter code title here.." onfocus="if(this.value===this.defaultValue)this.value=''" onblur="if(this.value==='')this.value=this.defaultValue">
-                  
-             <div class="dropDownOption">                       
-                <h5 class="dropDownHeader"> Language:</h5>
-                     {% if data.error.langError %}
-            <div class="error">{{ data.error.langError }}</div>
-         {% endif %}
-                <select class="dropDown" name='language'>
-                    {% for lang in data.languages %}
-                     <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
-                    {% endfor %}
-                </select> 
+     <h1>Upload</h1>
+     
+     
+     <form action="" method="post">
 
-                <br>
-                
-                <h5 class="dropDownHeader">Framework:</h5>
-                    
-                <select class="dropDown" name='framework'>
-                     {% for frame in data.frameworks %}
-                     <option value="{{frame.Framework_ID}}">{{frame.Framework_name}}</option>
-                    {% endfor %}
-                </select>
-             </div>
+         <h4>Code title</h4>     
+         {% if data.error.titleError %}
+            <div class="error">{{ data.error.titleError }}</div>
+         {% endif %}              
+         <input type="text" class='input inputField' name="title" value="" onfocus="if(this.value===this.defaultValue)this.value=''" onblur="if(this.value==='')this.value=this.defaultValue">
          
-             <h4 class="codeSnippetInput">Code Snippet:</h4>
-             {% if data.error.codeError %}
+        <br><br><br><br>
+
+        <h5 class="dropDownHeader"> Language:</h5>
+        <select class="dropdown" name='language'>
+            {% for lang in data.languages %}
+             <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
+            {% endfor %}
+        </select> 
+
+        <br>
+        <br>
+
+        <h5 class="dropDownHeader">Framework:</h5>
+            
+        <select class="dropdown" name='framework'>
+             {% for frame in data.frameworks %}
+             <option value="{{frame.Framework_ID}}">{{frame.Framework_name}}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+        <br>
+        <br>
+
+        <h4 class="codeSnippetInput">Code Snippet:</h4>
+        {% if data.error.codeError %}
             <div class="error">{{ data.error.codeError }}</div>
-         {% endif %}
-                 <textarea class ="codeInput" rows="15" name='code'></textarea>
-                
-         
-            <h4 class="codeDescription">Description:</h4>
-            {% if data.error.descriptionError %}
+        {% endif %}
+        <textarea style='float:left;' class="codeInput" rows="15" name='code'></textarea>
+        
+        <h4 class="codeDescription">Description:</h4>
+        {% if data.error.descriptionError %}
             <div class="error">{{ data.error.descriptionError }}</div>
-         {% endif %}
-                <textarea class="codeDescriptionInput" rows="5" name='description' onfocus="if(this.value===this.defaultValue)this.value=''" onblur="if(this.value==='')this.value=this.defaultValue">Write here a description..</textarea>
-                
-                <h4 class="selectTags">Tags:</h4>
-                
-                <div class="tagOption">
-                 <div class="styleButton">
-                    Choose
-                </div>   
-                    <div class="tagText">
-                        Select atleast 1 tag
-                    </div>
-                </div>
-                
-              
-                <div class="submitBTN">
-                    <input type="submit" value="Submit" name='submit' class='styleButton'>
-                </div>
-                </div>
-                </form>
+        {% endif %}
+        <textarea class="codeDescriptionInput" rows="5" name='description' onfocus="if(this.value===this.defaultValue)this.value=''" style='float:left;' onblur="if(this.value==='')this.value=this.defaultValue"></textarea>
+                      
+
+        <input type="submit" value="Submit" name='submit' class='styleButton'>
+ 
+    </form>
 </div>
                 

@@ -97,11 +97,10 @@ class Controller_Snippet extends Controller
 		public function onEdit($id){
 			$data = Api::$Snippet->getById($id);
 			if(empty($data)){
-				$data = [
-					'error' => true,
-					'errorMessage' => 'This snippet id doesn\'t exists!'
-				];
+				$this->data['error'] = true;
+				$this->data['errorMessage'] = 'This snippet id doesn\'t exists!';
 			}
+			$this->data['snippet'] = $data;
 			$this->renderView($this->data, 'edit');
 		}
 
@@ -157,10 +156,9 @@ class Controller_Snippet extends Controller
 				$data['error']['langError'] = 'Please enter a language!';
 			}
 			if(count($data['error']) === 0){
-			
-			
-			Api::$Snippet->updateById($id, $data);
-		}
+				Api::$Snippet->updateById($id, $data);
+			}
+			$this->data = $data;
 		}
 
 		/**
@@ -179,10 +177,9 @@ class Controller_Snippet extends Controller
 		 * @return [type]     [description]
 		 */
 		public function onAdd(){
-			$data = [];
-			$data['languages'] = Api::$Snippet->getLanguages();
-			$data['frameworks'] = Api::$Snippet->getFrameworks();
-			$this->renderView($data, 'add');
+			// $this->data['languages'] = Api::$Snippet->getLanguages();
+			// $this->data['frameworks'] = Api::$Snippet->getFrameworks();
+			$this->renderView($this->data, 'add');
 		}
 
 		public function onAddPost($data){
@@ -203,17 +200,18 @@ class Controller_Snippet extends Controller
 				$data['error']['langError'] = 'Please enter a language!';
 			}
 			if(count($data['error']) === 0){
-			$id = Api::$Snippet->create(
-				$data['title'],
-				$data['code'],
-				$data['description'],
-				$data['language'],
-				$data['framework'], 
-				System::$Auth->getUser()['ID']
-			);
-			System::redirectTo('snippet/' . $id['ID']);
-		}
-		$this->data = $data;
+				$id = Api::$Snippet->create(
+					$data['title'],
+					$data['code'],
+					$data['description'],
+					$data['language'],
+					$data['framework'], 
+					System::$Auth->getUser()['ID']
+				);
+				System::redirectTo('snippet/' . $id['ID']);
+			}
+			$this->data = $data;
+						// echo "a";
 		}
 
 		/**
