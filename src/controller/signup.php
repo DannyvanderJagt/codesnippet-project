@@ -29,7 +29,7 @@ class Controller_Signup extends Controller
 				if($at)
 				{
 					$eDomain = explode('@', $data['email']);
-					$dot = strpos($eDomain, '.');
+					$dot = strpos($eDomain[1], '.');
 					if(!$dot){
 						$this->data['error']['emailError'] = 'Please enter a valid email!';
 					}
