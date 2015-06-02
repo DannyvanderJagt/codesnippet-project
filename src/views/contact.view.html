@@ -1,8 +1,10 @@
-<div class="pure-u-1-2">           
+<div class="pure-u-1-2 content">           
 <h1>Contact</h1>
-<div class="error">
-{{data.send}}
-</div>
+{% if data.send %}
+    <div class="error">
+        {{data.send}}
+    </div>
+{% endif %}
 <form action="" method="post">	
         <h4><label class="signUpLabel" for="Firstname">First name (required):</label></h4>
         <input class="inputField" type="text" name="first_name">
