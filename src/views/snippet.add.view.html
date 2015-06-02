@@ -14,6 +14,9 @@
         <br><br><br><br>
 
         <h5 class="dropDownHeader"> Language:</h5>
+        {% if data.error.langError %}
+            <div class="error">{{ data.error.langError }}</div>
+        {% endif %}
         <select class="dropdown" name='language'>
             {% for lang in data.languages %}
              <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
@@ -24,7 +27,7 @@
         <br>
 
         <h5 class="dropDownHeader">Framework:</h5>
-            
+        
         <select class="dropdown" name='framework'>
              {% for frame in data.frameworks %}
              <option value="{{frame.Framework_ID}}">{{frame.Framework_name}}</option>

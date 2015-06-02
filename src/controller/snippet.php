@@ -212,10 +212,8 @@ class Controller_Snippet extends Controller
 			{
 				$data['error']['descriptionError'] = 'Please enter a description!';
 			}
-			if(empty($data['lang']))
-			{
-				$data['error']['langError'] = 'Please enter a language!';
-			}
+
+			print_r($data);
 			if(count($data['error']) === 0){
 				$id = Api::$Snippet->create(
 					$data['title'],
@@ -228,7 +226,6 @@ class Controller_Snippet extends Controller
 				System::redirectTo('snippet/' . $id['ID']);
 			}
 			$this->data = $data;
-						// echo "a";
 		}
 
 		/**
