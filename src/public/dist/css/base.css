@@ -743,7 +743,7 @@ and open the template in the editor.
 .codeUpVote {
   width: 30px;
   height: 30px;
-  background-image: url(../images/arrow_Up.png);
+  background-image: url(../images/arrow_up.png);
   background-repeat: no-repeat;
   cursor: pointer; }
 
