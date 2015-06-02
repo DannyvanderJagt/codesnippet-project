@@ -223,7 +223,7 @@ class Controller_Snippet extends Controller
 					$data['framework'], 
 					System::$Auth->getUser()['ID']
 				);
-				// System::redirectTo('snippet/' . $id['ID']);
+				System::redirectTo('snippet/' . $id['ID']);
 			}
 			$this->data = $data;
 		}
