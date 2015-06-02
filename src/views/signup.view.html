@@ -13,6 +13,7 @@
 	<input class='inputField' type="text" name="username" value="{{ data.data.username }}">
 	<br />
 	<br />
+    <br>
 	<h4><label for="Password">Password</label></h4>
 	{% if data.error.passwordError %}
             <div class="error">{{ data.error.passwordError }}</div>
@@ -20,15 +21,18 @@
 	<input class='inputField' type="password" name="password" value="{{ data.data.password }}">
 	<br />
 	<br />
+    <br>
 	<h4><label for="First name">First name</label></h4>
 	<input class='inputField' type="text" name="first_name" value="{{ data.data.first_name }}">
 	<br />
 	<br />
     <br>
+    <br>
 	<h4><label for="Last name"> Last name</label></h4>
 	<input class='inputField' type="text" name="last_name" value="{{ data.data.last_name }}">
 	<br />
 	<br />
+    <br>
     <br>
 	<h4><label for="E-Mail">E-Mail </label></h4>
 	{% if data.error.emailError %}
@@ -37,6 +41,8 @@
 	<input class='inputField' type="text" name="email" value="{{ data.data.email }}">
 	<br />
 	<br />
+    <br>
+    <br>
 	<h4><label for="Birthday">Birthday, month, year</label></h4>
     <br>
 	<select class="dropDown" name="birthday" value="{{ data.data.birthday }}">
