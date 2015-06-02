@@ -24,10 +24,12 @@
 	<input class='inputField' type="text" name="first_name" value="{{ data.data.first_name }}">
 	<br />
 	<br />
+    <br>
 	<h4><label for="Last name"> Last name</label></h4>
 	<input class='inputField' type="text" name="last_name" value="{{ data.data.last_name }}">
 	<br />
 	<br />
+    <br>
 	<h4><label for="E-Mail">E-Mail </label></h4>
 	{% if data.error.emailError %}
             <div class="error">{{ data.error.emailError }}</div>
@@ -36,6 +38,7 @@
 	<br />
 	<br />
 	<h4><label for="Birthday">Birthday, month, year</label></h4>
+    <br>
 	<select class="dropDown dropdownSpacing" name="birthday" value="{{ data.data.birthday }}">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -208,6 +211,8 @@
 	<input class='inputField' type="text" name="profession" value="{{ data.data.profession }}">
 	<br />
 	<br />
+    <br>
+    <br>
 	<h4><label for="Profile picture"> Profile picture</label></h4>
 	<input class='inputField' type="file" name="profile_picture" accept="image/*" value="{{ data.data.profile_picture }}">
 	<br>

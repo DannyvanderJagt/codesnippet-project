@@ -49,7 +49,7 @@ class Controller_Snippet extends Controller
 					$this->renderView();
 				}
 			}else{
-				if(Snippet::existByID($params[1])){
+				if(Snippet::existByID($params[0])){
 					switch($params[1]){
 						case 'edit': 
 							$this->onEdit($params[0]);
