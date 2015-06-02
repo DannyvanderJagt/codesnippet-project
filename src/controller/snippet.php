@@ -38,17 +38,34 @@ class Controller_Snippet extends Controller
 			}else if($params[0] == 'add'){
 				$this->onAdd();
 			}else if(!isset($params[1])){
-				$this->onShow($params[0]);
+				// Check if snippet exists.
+				if(Snippet::existByID($params[0])){
+					$this->onShow($params[0]);
+				}else{
+					$this->renderView([
+						'error' => true,
+						'errorMessage' => "This snippet doesn't exists!"
+					]);
+					$this->renderView();
+				}
 			}else{
-				switch($params[1]){
-					case 'edit': 
-						$this->onEdit($params[0]);
-						break;
-					case 'delete':
-						$this->onDelete($params[0]);
-						break;
-					default:
-						$this->onShow($params[0]);
+				if(Snippet::existByID($params[1])){
+					switch($params[1]){
+						case 'edit': 
+							$this->onEdit($params[0]);
+							break;
+						case 'delete':
+							$this->onDelete($params[0]);
+							break;
+						default:
+							$this->onShow($params[0]);
+					}
+				}else{
+					$this->renderView([
+						'error' => true,
+						'errorMessage' => "This snippet doesn't exists!"
+					]);
+					$this->renderView();
 				}
 			}
 		}
@@ -177,8 +194,8 @@ class Controller_Snippet extends Controller
 		 * @return [type]     [description]
 		 */
 		public function onAdd(){
-			// $this->data['languages'] = Api::$Snippet->getLanguages();
-			// $this->data['frameworks'] = Api::$Snippet->getFrameworks();
+			$this->data['languages'] = Api::$Snippet->getLanguages();
+			$this->data['frameworks'] = Api::$Snippet->getFrameworks();
 			$this->renderView($this->data, 'add');
 		}
 

@@ -1,4 +1,8 @@
 <div class="content pure-u-2-5">
+    
+    {% if data.error == true %}
+        <div class="error">This snippet doesn't exists!</div>
+    {% else %}
 
     <div id='loading' class="error" style='opacity: 0; width: 100%; text-align: center;'>Loading...</div>
     <h1> {{ data.Title }} </h1>   
@@ -143,6 +147,7 @@
             <div class="relatedDiv">Converter</div>
         </div> -->
     </div>
+    {% endif %}
 </div>
 <script type="text/javascript">
     // Show and hide subcomments.
@@ -233,3 +238,4 @@
 
    
 </script>
+

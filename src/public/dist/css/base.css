@@ -1,5 +1,5 @@
 body, html {
-  width: 880px;
+  min-width: 1130px;
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -674,7 +674,8 @@ a.userAccount {
 
 .codeInput {
   width: 100%;
-  background-color: #F1F2F2;
+  background-color: white;
+  color: black;
   float: left;
   resize: none;
   border: 1px solid #58595B; }
@@ -688,6 +689,7 @@ a.userAccount {
   width: 100%;
   float: left;
   resize: none;
+  color: black;
   border: 1px solid #58595B; }
 
 .selectTags {
