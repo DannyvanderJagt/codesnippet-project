@@ -76,7 +76,7 @@
         function voteSnippet(id, vote){
             showLoading();
             var xmlhttp = new XMLHttpRequest();
-            var url = "http://localhost/api/Vote/voteSnippet/"+id+"/"+vote;
+            var url = "http://codesnippet.ml/api/Vote/voteSnippet/"+id+"/"+vote;
 
             xmlhttp.onreadystatechange = function() {
                 console.log(url);

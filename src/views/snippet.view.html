@@ -219,7 +219,7 @@
     function voteComment(id, vote){
         showLoading();
         var xmlhttp = new XMLHttpRequest();
-        var url = "http://localhost/api/Vote/voteComment/"+id+"/"+vote;
+        var url = "http://codesnippet.ml/api/Vote/voteComment/"+id+"/"+vote;
 
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
