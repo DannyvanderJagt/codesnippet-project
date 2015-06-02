@@ -1,4 +1,5 @@
 <div class="content pure-u-2-5">
+
     <div id='loading' class="error" style='opacity: 0; width: 100%; text-align: center;'>Loading...</div>
     <h1> {{ data.Title }} </h1>   
    <div class="codeBlockVotes">
@@ -102,6 +103,11 @@
 </div>
 <div class="pure-u-1-5">
     <div class="rightContent">
+        {% if auth.ID == data.User_ID %}
+        <div class="styleButton" style='color:white;'>
+            <a style='color:white;' href="{{basePath}}/snippet/{{data.ID}}/edit">edit</a>
+        </div>
+        {% endif %}
         <a href="tagIdLink.php" id="creatorInfo">
             <div id="creatorImage"></div>
             <div id="creatorText">
