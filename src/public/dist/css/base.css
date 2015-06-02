@@ -1,5 +1,5 @@
 body, html {
-  min-width: 1130px;
+  min-width: 1300px;
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -100,7 +100,14 @@ h6 {
 .content {
   color: #414041;
   margin-bottom: 30px;
-  min-height: calc(100% - 205px); }
+  display: block;
+  margin: 0px auto; }
+
+.main {
+  width: 100%;
+  min-height: calc(100% - 175px);
+  margin-bottom: 40px;
+  display: table; }
 
 #CodeBlock {
   background-color: white;
@@ -728,7 +735,7 @@ and open the template in the editor.
 
 .codeBlock {
   float: left;
-  width: inherit;
+  width: 100%;
   border: 1px solid #58595B;
   margin: 10px 20px;
   padding: 10px; }

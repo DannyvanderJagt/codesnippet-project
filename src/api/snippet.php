@@ -114,6 +114,8 @@ class Snippet{
 	public function create($title, $code, $description, $lang, $framework, $userID){
 		$model = new Model_Snippet();
 		$language = Snippet::getLanguageByID($lang);
+		print_r($language);
+		print_r($code);
 		$contents = file_get_contents("http://127.0.0.1:3000?code=".urlencode($_POST['code'])."&language=".$language);
 
 		return $model->create([

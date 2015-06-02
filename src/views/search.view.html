@@ -17,7 +17,7 @@
                     <div class="codeDownVote" onclick='voteSnippet({{snippet.ID}},0)' {% if snippet.Voted == 0 %}style='background-image: url(../dist/images/arrow_down_color.png)' {% endif%}></div>
                     </div>
                     <div class="codeInfo">
-                        <a href="{{basePath}}/snippet/{{snippet.Snippet_ID}}">
+                        <a href="{{basePath}}/snippet/{{snippet.ID}}">
                             <h3 class="codeTitle">{{snippet.Title}}</h3>
                         </a>
                         <div class="codeDate">Last updated: {{ snippet.Date }}</div>
@@ -37,7 +37,7 @@
 
                {% endfor %}
                 
-                <div class="pageNumberHolder">
+               <!--  <div class="pageNumberHolder">
                     <div class="pageNumber">
                         <div class="styleButton"><</div>
                         <div class="styleButton">1</div>
@@ -51,7 +51,7 @@
                             <p>Viewing page 1 of 12</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
        
 
