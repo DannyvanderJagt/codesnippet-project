@@ -409,7 +409,11 @@ textarea {
   color: #58595B;
   font-weight: bold;
   margin-left: 0px;
-  resize: none; }
+  resize: none;
+  float: left; }
+
+.commentBox {
+  color: #414042; }
 
 .searchbtn {
   background-image: url(../images/search.png);
