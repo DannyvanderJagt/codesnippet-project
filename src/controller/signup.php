@@ -39,48 +39,44 @@ class Controller_Signup extends Controller
 					$this->data['error']['emailError'] = 'Please enter a valid email!';
 				}
 			}
-			elseif(count($this->data['error']) === 0){
-				echo count($this->data['error']);
-			$file = NULL;
-			$this->data['username'] = $_POST['username'];
-			$this->data['password'] = $_POST['password'];
-			$this->data['first_name'] = $_POST['first_name'];
-			$this->data['last_name'] = $_POST['last_name'];
-			$this->data['email'] = $_POST['email'];
-			$this->data['birthday'] = $_POST['birthday'];
-			$this->data['birthmonth'] = $_POST['birthmonth'];
-			$this->data['birthyear'] = $_POST['birthyear'];
-			$this->data['profession'] = $_POST['profession'];
-			if(isset($_POST['profile_picture']))
-			{
-				$this->data['profile_picture'] = $_POST['profile_picture'];
-			}
-		
-		
-
-
-			//echo "Before check";
-			
-			if(isset($_FILES['profile_picture']))
+			if(count($this->data['error']) === 0){
+				
+				$file = NULL;
+				$this->data['username'] = $_POST['username'];
+				$this->data['password'] = $_POST['password'];
+				$this->data['first_name'] = $_POST['first_name'];
+				$this->data['last_name'] = $_POST['last_name'];
+				$this->data['email'] = $_POST['email'];
+				$this->data['birthday'] = $_POST['birthday'];
+				$this->data['birthmonth'] = $_POST['birthmonth'];
+				$this->data['birthyear'] = $_POST['birthyear'];
+				$this->data['profession'] = $_POST['profession'];
+				if(isset($_POST['profile_picture']))
 				{
-					//echo "Starting Upload";
-				$file = $this->uploadFile();
+					$this->data['profile_picture'] = $_POST['profile_picture'];
 				}
-			$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
-			$password = Auth::encrypt($_POST['password']);
-			
-			$upload_dir = "uploads/";
-			Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $file, $file);
-		
-		}
+				if(isset($_FILES['profile_picture']))
+					{
+						//echo "Starting Upload";
+					$file = $this->uploadFile();
+					}
+				$date = $_POST['birthyear'] . "-" . $_POST['birthmonth']. "-" . $_POST['birthday'];
+				$password = Auth::encrypt($_POST['password']);
+				
+				$upload_dir = "uploads/";
+				Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $file, $file);
+				print_r($data);
+				System::redirectToHome();
+			}
+			print_r($data);
 		$this->data['data'] = $data;
 		}		
 
 		public function onRequest($params = []){
 
-$this->renderView();
+			$this->renderView();
 
-	}
+		}
 
 
 			

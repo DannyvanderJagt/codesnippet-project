@@ -8,13 +8,16 @@
             <input type="text" class="input" name="q" placeholder="Search">
             <select class="dropdown" name='l'>
                 {% for lang in header.languages %}
-                    <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
+                    <option value="{{lang.language_ID}}"
+                    {% if data.language == lang.language_ID %}
+                         selected
+                     {% endif %}
+                    >{{lang.language_name}}</option>
                 {% endfor %}
              </select>
              <input type="submit" value="" class="searchbtn">
         </form>
     </div>
-    
     <div class="user pure-u-1-4">
         <div class="userOptions">
             {% if auth %}
@@ -23,8 +26,8 @@
                 <a href="{{ basePath }}/user/{{auth.Username}}"><div class="userAvatar"></div></a>
                 <a href='{{basePath}}/signout'><img style='margin: 5px 0px 0px 30px;' width="20" src="{{basepath}}/dist/images/logout.png"></a>
             {% else %}
-                <a class='userAccount' href='{{ basePath }}/signup'>Signup</a>
-                <a class='userAccount' href='{{ basePath }}/signin'>Signin</a>
+                <a class='userAccount' href='{{ basePath }}/signup'>Sign up</a>
+                <a class='userAccount' href='{{ basePath }}/signin'>Sign in</a>
             {% endif %}
         </div>
     </div>
