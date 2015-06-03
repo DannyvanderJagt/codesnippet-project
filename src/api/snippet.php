@@ -200,4 +200,16 @@ class Snippet{
 		return $result;
 	}
 
+
+	public function deleteById($id){
+		$model = new Model_Snippet();
+		$exists = Snippet::existByID($id);
+		if($exists == false){
+			return false;
+		}
+
+		$result = $model->find($id)->delete();
+		return $result;
+	}
+
 }

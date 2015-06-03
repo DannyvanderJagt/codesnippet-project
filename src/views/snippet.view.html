@@ -25,8 +25,12 @@
     {% for comment in data.Comments %}
     <div class="commentBlock">
         <div class="commentInfo">
-            <div class="userImage"></div>
-            <div class="userSays">{{ comment.user.Username }}:</div>
+            <a href="{{basePath}}/user/{{comment.user.Username}}">
+                <div class="userImage"></div>
+            </a>
+             <a href="{{basePath}}/user/{{comment.user.Username}}" style='color:black;'>
+                <div class="userSays">{{ comment.user.Username }}:</div>
+            </a>
             <div class="commentDate">{{ comment.Comment_date }}</div>
         </div>
         <div class="commentText">{{ comment.Comment_text }}</div>
@@ -57,8 +61,12 @@
                 {% for subcomment in comment.SubComments %}
                 <div class="commentBlock sub">
                     <div class="commentInfo">
-                        <div class="userImage"></div>
-                        <div class="userSays">{{ subcomment.user.Username }}:</div>
+                        <a href="{{basePath}}/user/{{comment.user.Username}}">
+                            <div class="userImage"></div>
+                        </a>
+                        <a href="{{basePath}}/user/{{comment.user.Username}}" style='color:black;'>
+                            <div class="userSays">{{ subcomment.user.Username }}:</div>
+                        </a>
                         <div class="commentDate"> {{ subcomment.Comment_date }}</div>
                     </div>
                     <div class="commentText">{{ subcomment.Comment_text }}</div>
