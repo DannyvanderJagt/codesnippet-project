@@ -47,7 +47,7 @@
                  {{ comment.Voted | raw }}
                 <h5>Leave your reply:</h5>
                 <form action="" method='post'>
-                    <textarea rows="4" cols="60" name="comment"> </textarea>
+                    <textarea class="commentBox" rows="4" cols="60" name="comment"> </textarea>
                     <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
                     <input type='submit' name='submit' class="styleButton right" value="Submit">
                 </form>
@@ -72,7 +72,7 @@
                         <div class="replyBox">
                             <h5>Leave your reply:</h5>
                             <form action="" method='post'>
-                                <textarea rows="4" cols="60" name="comment">@{{subcomment.user.Username}} </textarea>
+                                <textarea class="commentBox" rows="4" cols="60" name="comment">@{{subcomment.user.Username}} </textarea>
                                 <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
                                 <input type='submit' name='submit' class="styleButton right" value="Submit">
                             </form>
@@ -85,7 +85,7 @@
         {% endfor %}
         <h5>Leave your comment:</h5>
         <form action="" method='post'>
-            <textarea rows="4" cols="60" name="comment" placeholder="Comment..."></textarea>
+            <textarea class="commentBox" rows="4" cols="60" name="comment" placeholder="Comment..."></textarea>
             <input type='submit' name='submit' class="styleButton right" value="Submit">
         </form>
        <!--  <div class="pageNumberHolder">
