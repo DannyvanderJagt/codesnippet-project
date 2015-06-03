@@ -117,6 +117,8 @@ class Controller_Snippet extends Controller
 				$this->data['error'] = true;
 				$this->data['errorMessage'] = 'This snippet id doesn\'t exists!';
 			}
+			$this->data['languages'] = Api::$Snippet->getLanguages();
+			$this->data['frameworks'] = Api::$Snippet->getFrameworks();
 			$this->data['snippet'] = $data;
 			$this->renderView($this->data, 'edit');
 		}
@@ -175,6 +177,7 @@ class Controller_Snippet extends Controller
 			if(count($data['error']) === 0){
 				Api::$Snippet->updateById($id, $data);
 			}
+
 			$this->data = $data;
 		}
 

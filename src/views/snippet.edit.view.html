@@ -24,7 +24,7 @@
 		{% if data.error.codeError %}
 	        <div class="error">{{ data.error.codeError }}</div>
 	     {% endif %}
-		<input type="text" class='inputField' name='code' value="{{data.snippet.Code}}">
+		<input id='codeTextArea' style='float:left;' class="codeInput" rows="15" name='code' value="{{data.snippet.Code}}">
 		<br/>
 		<br>
 		<br>
@@ -44,14 +44,22 @@
 		{% if data.error.langError %}
 	        <div class="error">{{ data.error.langError }}</div>
 	    {% endif %}
-		<input type="text" class='inputField' name='lang' value="{{data.snippet.Lang}}">
+		<select class="dropdown" name='language'>
+            {% for lang in data.languages %}
+             <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
+            {% endfor %}
+        </select>
 		<br/>
 		<br>
 		<br>
 		<h4>
 			<label for="title">Framework:</label>
 		</h4>
-		<input type="text" name='framework' class='inputField' value="{{data.snippet.Framework}}">
+		        <select class="dropdown" name='framework'>
+             {% for frame in data.frameworks %}
+             <option value="{{frame.Framework_ID}}">{{frame.Framework_name}}</option>
+            {% endfor %}
+        </select>
 		<br/>
 		<br>
 		<br>
