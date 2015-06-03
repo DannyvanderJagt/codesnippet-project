@@ -4,11 +4,8 @@
 
  <div class="content pure-u-3-5">
 
-     <h1>Upload</h1>
-     
-     
+     <h1>Upload</h1> 
      <form action="" method="post">
-
          <h4>Code title</h4>     
          {% if data.error.titleError %}
             <div class="error">{{ data.error.titleError }}</div>
@@ -41,12 +38,15 @@
         <br>
         <br>
         <br>
+    
+        <h4>Code Snippet:</h4>
 
-        <h4 class="codeSnippetInput">Code Snippet:</h4>
         {% if data.error.codeError %}
             <div class="error">{{ data.error.codeError }}</div>
         {% endif %}
-        <textarea id='codeTextArea' style='float:left;' class="codeInput" rows="15" name='code'></textarea>
+    
+        <textarea name="code" id="code" cols="30" rows="10"></textarea>
+
         
         <h4 class="codeDescription">Description:</h4>
         {% if data.error.descriptionError %}
@@ -55,15 +55,24 @@
         <textarea class="codeDescriptionInput" rows="5" name='description' onfocus="if(this.value===this.defaultValue)this.value=''" style='float:left;' onblur="if(this.value==='')this.value=this.defaultValue"></textarea>
                       
 
-        <input type="submit" value="Submit" name='submit' class='styleButton'>
+        <input id='submit' type="submit" value="Submit" name='submit' class='styleButton'>
  
     </form>
 </div>
                 
 <script>
-// var codeTextArea = document.getElementById('codeTextArea');
-//   var editor = CodeMirror.fromTextArea(codeTextArea, {
-//     lineNumbers: true,
-//     mode:  "javascript"
-//   });
+    var code = document.getElementById('code');
+    var editor = CodeMirror.fromTextArea(code, {
+        lineNumbers: true,
+        mode:  "javascript"
+    });
+
+    var submit = document.getElementById('submit');
+    submit.addEventListener('click', function(){
+        console.log('submit!');
+        console.log(editor.getValue());
+        code.value = editor.getValue();
+    });
+
+
 </script>

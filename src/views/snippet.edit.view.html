@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="{{basePath}}/dist/codemirror/codemirror.css">
+<script src="{{basePath}}/dist/codemirror/codemirror.js"></script>
+<script src="{{basePath}}/dist/codemirror/javascript.js"></script>
+
 <div class="content pure-u-1-2">
 	{% if auth.ID == data.snippet.User_ID %}
     <div class="styleButton" style='color:white; float:right;'>
@@ -24,7 +28,9 @@
 		{% if data.error.codeError %}
 	        <div class="error">{{ data.error.codeError }}</div>
 	     {% endif %}
-		<input id='codeTextArea' style='float:left;' class="codeInput" rows="15" name='code' value="{{data.snippet.Code}}">
+
+		<textarea name="code" id="code" cols="30" rows="10">{{data.snippet.Code}}</textarea>
+
 		<br/>
 		<br>
 		<br>
@@ -34,19 +40,24 @@
 		{% if data.error.descriptionError %}
 	        <div class="error">{{ data.error.descriptionError }}</div>
 	     {% endif %}
-		<input type="text" class='inputField' name='description' value="{{data.snippet.Description}}">
+		<textarea type="text" cols="60" rows="4" name='description' value="{{data.snippet.Description}}">
+		</textarea>
 		<br/>
 		<br>
 		<br>
 		<h4>
-			<label for="title">Lang:</label>
+			<label for="title">Language:</label>
 		</h4>
 		{% if data.error.langError %}
 	        <div class="error">{{ data.error.langError }}</div>
 	    {% endif %}
 		<select class="dropdown" name='language'>
             {% for lang in data.languages %}
-             <option value="{{lang.language_ID}}">{{lang.language_name}}</option>
+             <option value="{{lang.language_ID}}"
+			{% if lang.language_ID == data.snippet.Lang %}
+				selected
+				{% endif %}
+             >{{lang.language_name}}</option>
             {% endfor %}
         </select>
 		<br/>
@@ -57,7 +68,12 @@
 		</h4>
 		        <select class="dropdown" name='framework'>
              {% for frame in data.frameworks %}
-             <option value="{{frame.Framework_ID}}">{{frame.Framework_name}}</option>
+             <option value="{{frame.Framework_ID}}"
+				{% if frame.Framework_ID == data.snippet.Framework %}
+				selected
+				{% endif %}
+	             >{{frame.Framework_name}}</option>
+				}
             {% endfor %}
         </select>
 		<br/>
@@ -65,7 +81,7 @@
 		<br>
 		<br>
 		<br>
-		<input class='styleButton' type="submit" value="Save" name='submit'>
+		<input id='submit' class='styleButton' type="submit" value="Save" name='submit'>
 	</form>
 
 	<br>
@@ -73,3 +89,19 @@
 	<br>
 	<br>
 </div>
+<script>
+    var code = document.getElementById('code');
+    var editor = CodeMirror.fromTextArea(code, {
+        lineNumbers: true,
+        mode:  "javascript"
+    });
+
+    var submit = document.getElementById('submit');
+    submit.addEventListener('click', function(){
+        console.log('submit!');
+        console.log(editor.getValue());
+        code.value = editor.getValue();
+    });
+
+
+</script>

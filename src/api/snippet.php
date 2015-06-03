@@ -142,8 +142,13 @@ class Snippet{
 		if(empty($snippet)){
 			return false;
 		}
-
-		$snippet->update($data);
+		$model->find($id)->update([
+			'Title' => $data['title'],
+			'Code' => $data['code'],
+			'Description' => $data['description'],
+			'Lang' => $data['language'],
+			'Framework' => $data['framework']
+		]);
 	}
 
 	/**

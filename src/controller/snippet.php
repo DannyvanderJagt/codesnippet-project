@@ -170,11 +170,8 @@ class Controller_Snippet extends Controller
 			{
 				$data['error']['descriptionError'] = 'Please enter a description!';
 			}
-			if(empty($data['lang']))
-			{
-				$data['error']['langError'] = 'Please enter a language!';
-			}
 			if(count($data['error']) === 0){
+				echo 'try to update';
 				Api::$Snippet->updateById($id, $data);
 			}
 
