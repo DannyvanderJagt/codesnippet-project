@@ -113,7 +113,7 @@
             <a style='color:white;' href="{{basePath}}/snippet/{{data.ID}}/edit">edit</a>
         </div>
         {% endif %}
-        <a href="tagIdLink.php" id="creatorInfo">
+        <a href="{{basePath}}/user/{{ data.User.Username }}" id="creatorInfo">
             <div id="creatorImage"></div>
             <div id="creatorText">
                 <div id="creatorName">{{ data.User.Username }}</div>

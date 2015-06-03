@@ -55,7 +55,7 @@ class Snippet{
 	 */
 	public function getLastest(){
 		$model = new Model_Snippet();
-		$result = $model->orderBy('Date')->limit(10)->get()->toArray();
+		$result = $model->orderBy('Date', 'DESC')->limit(10)->get()->toArray();
 		$newResults = [];
 		foreach($result as $snippet){
 			$newResults[] = Snippet::getByID($snippet['ID']);

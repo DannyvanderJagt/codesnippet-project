@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="{{basePath}}/dist/codemirror/codemirror.css">
+<script src="{{basePath}}/dist/codemirror/codemirror.js"></script>
+<script src="{{basePath}}/dist/codemirror/javascript.js"></script>
+
  <div class="content pure-u-3-5">
 
      <h1>Upload</h1>
@@ -42,7 +46,7 @@
         {% if data.error.codeError %}
             <div class="error">{{ data.error.codeError }}</div>
         {% endif %}
-        <textarea style='float:left;' class="codeInput" rows="15" name='code'></textarea>
+        <textarea id='codeTextArea' style='float:left;' class="codeInput" rows="15" name='code'></textarea>
         
         <h4 class="codeDescription">Description:</h4>
         {% if data.error.descriptionError %}
@@ -56,3 +60,10 @@
     </form>
 </div>
                 
+<script>
+var codeTextArea = document.getElementById('codeTextArea');
+  var editor = CodeMirror.fromTextArea(codeTextArea, {
+    lineNumbers: true,
+    mode:  "javascript"
+  });
+</script>
