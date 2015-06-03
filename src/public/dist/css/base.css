@@ -215,11 +215,11 @@ h6 {
   width: 50px;
   float: left; }
 
-#commentDropDownIcon {
+.commentDropDownIcon {
   margin-top: 3px;
   width: 19px;
   height: 19px;
-  background-image: url(../images/plus.png);
+  background-image: url(../images/plus.svg);
   background-repeat: no-repeat;
   float: left; }
 
@@ -290,11 +290,11 @@ h6 {
   margin-left: 10px; }
 
 #creatorUpvotesImage {
-  background-image: url(../images/arrow_up_small_color.png);
+  background-image: url(../images/arrow_up_color.svg);
   background-size: 20px, 20px;
   background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 25px;
   float: left;
   margin-top: 2px; }
 
@@ -431,7 +431,7 @@ textarea {
   background-repeat: no-repeat; }
 
 #upVote {
-  background-image: url(../images/arrow_up.png);
+  background-image: url(../images/arrow_up.svg);
   background-repeat: no-repeat;
   margin-top: 3px;
   width: 30px;
@@ -440,7 +440,7 @@ textarea {
   margin-left: -60px; }
 
 #downVote {
-  background-image: url(../images/arrow_down.png);
+  background-image: url(../images/arrow_down.svg);
   background-repeat: no-repeat;
   margin-top: 7px;
   width: 30px;
@@ -450,27 +450,27 @@ textarea {
 
 .commentUpVote {
   margin-top: 3px;
-  height: 12px;
+  height: 19px;
   width: 25px;
-  background-image: url(../images/arrow_up_small.png);
+  background-image: url(../images/arrow_up.svg);
   background-repeat: no-repeat;
   float: left;
   cursor: pointer; }
 
 .commentDownVote {
   margin-top: 3px;
-  height: 12px;
+  height: 19px;
   width: 25px;
-  background-image: url(../images/arrow_down_small.png);
+  background-image: url(../images/arrow_down.svg);
   background-repeat: no-repeat;
   float: left;
   cursor: pointer; }
 
 .commentDropDownIcon {
   margin-top: 3px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../images/plus.png);
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/plus.svg);
   background-repeat: no-repeat;
   float: left;
   cursor: pointer; }
@@ -543,7 +543,7 @@ textarea {
   bottom: 0px; }
 
 .footerLogo {
-  background-image: url(../images/logo.png);
+  background-image: url(../images/logo.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 225px, 60px;
@@ -606,7 +606,7 @@ img.logo {
 .searchbtn {
   border: none;
   background: none;
-  background-image: url(../images/search.png);
+  background-image: url(../images/search.svg);
   background-repeat: no-repeat;
   background-size: 20px, 20px;
   height: 20px;
@@ -624,7 +624,7 @@ img.logo {
   margin-right: 30px; }
 
 .uploadbtn {
-  background-image: url(../images/upload.png);
+  background-image: url(../images/upload.svg);
   background-repeat: no-repeat;
   background-size: 15px, 15px;
   height: 30px;
@@ -753,9 +753,9 @@ and open the template in the editor.
   margin-left: -61px; }
 
 .codeUpVote {
-  width: 30px;
-  height: 30px;
-  background-image: url(../images/arrow_up.png);
+  width: 33px;
+  height: 33px;
+  background-image: url(../images/arrow_up.svg);
   background-repeat: no-repeat;
   cursor: pointer; }
 
@@ -767,7 +767,7 @@ and open the template in the editor.
 .codeDownVote {
   width: 30px;
   height: 30px;
-  background-image: url(../images/arrow_down.png);
+  background-image: url(../images/arrow_down.svg);
   background-repeat: no-repeat;
   cursor: pointer; }
 
@@ -818,9 +818,9 @@ and open the template in the editor.
 
 #codeDropDownIcon {
   margin-top: 3px;
-  width: 19px;
-  height: 19px;
-  background-image: url(../images/plus.png);
+  width: 15px;
+  height: 15px;
+  background-image: url(../images/plus.svg);
   background-repeat: no-repeat;
   float: left; }
 
@@ -1432,7 +1432,7 @@ and open the template in the editor.
   height: 30px;
   margin-top: 14px;
   margin-left: 12px;
-  background-image: url(images/arrow_up_color.png);
+  background-image: url(images/arrow_up_color.svg);
   background-repeat: no-repeat; }
 
 .ratingText {

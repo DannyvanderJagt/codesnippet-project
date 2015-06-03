@@ -39,9 +39,9 @@ and open the template in the editor.
 }
 
 .codeUpVote{
-    width:30px;
-    height:30px;
-    background-image: url(../images/arrow_up.png);
+    width:33px;
+    height:33px;
+    background-image: url(../images/arrow_up.svg);
     background-repeat: no-repeat;
     cursor: pointer;
 }
@@ -55,7 +55,7 @@ and open the template in the editor.
 .codeDownVote{
     width:30px;
     height:30px;
-    background-image: url(../images/arrow_down.png);
+    background-image: url(../images/arrow_down.svg);
     background-repeat: no-repeat;
     cursor: pointer;
 }
@@ -114,9 +114,9 @@ and open the template in the editor.
 
 #codeDropDownIcon{
     margin-top:3px;
-    width:19px;
-    height:19px;
-    background-image: url(../images/plus.png);
+    width:15px;
+    height:15px;
+    background-image: url(../images/plus.svg);
     background-repeat: no-repeat;
     float:left;
 }
