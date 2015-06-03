@@ -171,8 +171,8 @@ class Controller_Snippet extends Controller
 				$data['error']['descriptionError'] = 'Please enter a description!';
 			}
 			if(count($data['error']) === 0){
-				echo 'try to update';
 				Api::$Snippet->updateById($id, $data);
+				System::redirectTo('snippet/' . $id);
 			}
 
 			$this->data = $data;

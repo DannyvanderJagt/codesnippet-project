@@ -142,12 +142,18 @@ class Snippet{
 		if(empty($snippet)){
 			return false;
 		}
+
+		$language = Snippet::getLanguageByID($data['language']);
+		$contents = file_get_contents("http://127.0.0.1:3000?code=".urlencode($data['code'])."&language=".$language);
+		
+
 		$model->find($id)->update([
 			'Title' => $data['title'],
 			'Code' => $data['code'],
 			'Description' => $data['description'],
 			'Lang' => $data['language'],
-			'Framework' => $data['framework']
+			'Framework' => $data['framework'],
+			'Code_Styled' => $contents
 		]);
 	}
 
