@@ -1,12 +1,12 @@
 <div class="content pure-u-3-5">
 
 <form action="" method="post" enctype="multipart/form-data">
-
 	<h3>Sign up</h3>
+    <div style='float:right;'>* = required</div>
 	{% if data.error %}
 		{{ data.errorMessage }}
 	{% endif %}
-	<h4><label for="Username"> Username </label></h4>
+	<h4><label for="Username"> Username *</label></h4>
 	{% if data.error.usernameError %}
             <div class="error">{{ data.error.usernameError }}</div>
          {% endif %}
@@ -14,7 +14,7 @@
 	<br />
 	<br />
     <br>
-	<h4><label for="Password">Password</label></h4>
+	<h4><label for="Password">Password *</label></h4>
 	{% if data.error.passwordError %}
             <div class="error">{{ data.error.passwordError }}</div>
          {% endif %}
@@ -22,19 +22,19 @@
 	<br />
 	<br />
     <br>
-	<h4><label for="First name">First name</label></h4>
+	<h4><label for="First name">First name *</label></h4>
 	<input class='inputField' type="text" name="first_name" value="{{ data.data.first_name }}">
 	<br />
 	<br />
     <br>
     <br>
-	<h4><label for="Last name"> Last name</label></h4> *required
+	<h4><label for="Last name"> Last name *</label></h4>
 	<input class='inputField' type="text" name="last_name" value="{{ data.data.last_name }}">
 	<br />
 	<br />
     <br>
     <br>
-	<h4><label for="E-Mail">E-Mail </label></h4>
+	<h4><label for="E-Mail">E-Mail *</label></h4>
 	{% if data.error.emailError %}
             <div class="error">{{ data.error.emailError }}</div>
          {% endif %}
@@ -43,7 +43,7 @@
 	<br />
     <br>
     <br>
-	<h4><label for="Birthday">Birthday, month, year</label></h4>
+	<h4><label for="Birthday">Birthday, month, year *</label></h4>
     <br>
 	<select class="dropdown" name="birthday" value="{{ data.data.birthday }}">
 
@@ -214,7 +214,7 @@
                        </select>
 	<br />
 	<br />
-	<h4><label for="Profession">Profession</label></h4>
+	<h4><label for="Profession">Profession *</label></h4>
 	<input class='inputField' type="text" name="profession" value="{{ data.data.profession }}">
 	<br />
 	<br />
