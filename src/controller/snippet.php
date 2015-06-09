@@ -101,7 +101,6 @@ class Controller_Snippet extends Controller
 				$data['topCommentID'] = null;
 			}
 			Api::$Comment->addBySnippetID($snippetID, $data['comment'], $data['topCommentID']);
-
 			return true;
 		}
 
@@ -241,6 +240,7 @@ class Controller_Snippet extends Controller
 					'errorMessage' => 'This snippet id doesn\'t exists!'
 				];
 			}
+			Snippet::addView($id, $data['Views']);
 			$this->renderView($data);
 		}
 	// **************************************** //

@@ -184,11 +184,13 @@
 
     function toggleShowHide(){
         var sub = this.parentNode.parentNode.parentNode.getElementsByClassName('subcomments');
-        // sub.style.display = 'block';
+        
         if(sub[0].style.display == 'block'){
             sub[0].style.display = 'none';
+            this.style.background = 'url("../dist/images/min.svg")';
         }else{
             sub[0].style.display = 'block';
+            this.style.background = 'url("../dist/images/plug.svg")';
         }
     }
 
@@ -237,7 +239,8 @@
                     alert('You cannot vote on this!');
                     hideLoading();
                 }else{
-                    location.reload();
+                    window.location.href = window.location.href;
+                    return false;
                 }
             }
         }

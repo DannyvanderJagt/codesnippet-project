@@ -65,6 +65,18 @@ class Snippet{
 		return $result;
 	}
 
+	public function addView($id, $views){
+		$model = new Model_Snippet();
+		$snippet = $model->find($id);
+
+		if(empty($snippet)){
+			return false;
+		}	
+
+		$views = (int)$views +1 ;
+		$snippet->update(['Views'=> $views]);
+		return true;
+	}
 
 	/**
 	 * Get snippet by user.Username.
