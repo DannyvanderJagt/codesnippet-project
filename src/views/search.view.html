@@ -54,9 +54,6 @@
                 </div> -->
             </div>
        
-
-
-      
         <script>
         var btns = document.getElementsByClassName('codedropdown');
 
@@ -69,8 +66,10 @@
             var code = this.parentNode.parentNode.parentNode.getElementsByClassName('codeSnippet')[0];
             if(code.style.display == 'block'){
                 code.style.display = 'none';
+                this.style.background = 'url("../dist/images/plus.svg")';
             }else{
                 code.style.display = 'block';
+                this.style.background = 'url("../dist/images/min.svg")';
             }
         }
 

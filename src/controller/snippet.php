@@ -240,6 +240,7 @@ class Controller_Snippet extends Controller
 					'errorMessage' => 'This snippet id doesn\'t exists!'
 				];
 			}
+			Snippet::addView($id, $data['Views']);
 			$this->renderView($data);
 		}
 	// **************************************** //
