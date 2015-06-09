@@ -1,5 +1,7 @@
 <?php
 
+require_once('../api/mail.php');
+
 class Controller_Snippet extends Controller
 {
 
