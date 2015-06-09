@@ -101,7 +101,6 @@ class Controller_Snippet extends Controller
 				$data['topCommentID'] = null;
 			}
 			Api::$Comment->addBySnippetID($snippetID, $data['comment'], $data['topCommentID']);
-
 			return true;
 		}
 
