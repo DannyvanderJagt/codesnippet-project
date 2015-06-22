@@ -224,7 +224,7 @@
     function voteSnippet(id, vote){
         showLoading();
         var xmlhttp = new XMLHttpRequest();
-        var url = "http://codesnippet.ml/api/Vote/voteSnippet/"+id+"/"+vote;
+        var url = "{{basePath}}/api/Vote/voteSnippet/"+id+"/"+vote;
 
         xmlhttp.onreadystatechange = function() {
             console.log(url);
@@ -246,7 +246,7 @@
     function voteComment(id, vote){
         showLoading();
         var xmlhttp = new XMLHttpRequest();
-        var url = "http://codesnippet.ml/api/Vote/voteComment/"+id+"/"+vote;
+        var url = "{{basePath}}/api/Vote/voteComment/"+id+"/"+vote;
 
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
