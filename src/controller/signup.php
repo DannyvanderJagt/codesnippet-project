@@ -65,10 +65,10 @@ class Controller_Signup extends Controller
 				
 				$upload_dir = "uploads/";
 				Api::$User->create($_POST['username'], $password,$_POST['first_name'], $_POST['last_name'], $_POST['email'], $date, $_POST['profession'], $file, $file);
-				print_r($data);
+				
 				System::redirectToHome();
 			}
-			print_r($data);
+			
 		$this->data['data'] = $data;
 		}		
 

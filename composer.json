@@ -13,8 +13,7 @@
     "require": {
     	"twig/twig": "1.18.1",
         "illuminate/database": "~5.0",
-        "dnode/dnode": "0.2.*",
-        "phpmailer/phpmailer": "~5.2"
+        "dnode/dnode": "0.2.*"
     },
     "autoload":{
        "classmap":[

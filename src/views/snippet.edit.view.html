@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{basePath}}/dist/codemirror/codemirror.css">
 <script src="{{basePath}}/dist/codemirror/codemirror.js"></script>
 <script src="{{basePath}}/dist/codemirror/javascript.js"></script>
+<script src="{{basePath}}/dist/codemirror/clike.js"></script>
 
 <div class="content pure-u-1-2">
 	{% if auth.ID == data.snippet.User_ID %}
@@ -92,7 +93,7 @@
     var code = document.getElementById('code');
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers: true,
-        mode:  "javascript"
+        mode:  "text/x-csharp"
     });
 
     var submit = document.getElementById('submit');

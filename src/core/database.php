@@ -7,7 +7,7 @@ $capsule = new Capsule();
 
 $capsule->addConnection([
 	'driver' => 'mysql',
-	'host' => $_SERVER['SERVER_NAME'] == 'localhost' ? '94.213.72.122' : 'localhost', // Ease of use for the server and for local use.
+	'host' => 'localhost',// $_SERVER['SERVER_NAME'] == 'localhost' ? '94.213.72.122' : 'localhost', // Ease of use for the server and for local use.
 	'username' => 'root',
 	'password' => 'Welkom2015',
 	'database' => 'codesnippet',

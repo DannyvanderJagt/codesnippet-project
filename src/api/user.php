@@ -120,6 +120,9 @@ class User{
 	 */
 	public function create($username, $password, $first_name, $last_name, $email, $birthday, $profession, $picture, $picture_thumb){
 		$model = new Model_User();
+
+		$contents = file_get_contents("http://127.0.0.1:3000/mail?email=".$email."&username=".$username);
+
 		$user = $model->create([
 				'ID' => 'NULL',
 				'Username' => $username,

@@ -44,17 +44,23 @@
             <div class="commentReplies">
                 <div class="commentRepliesNumber">{{ comment.SubComments|length }}</div>
                 <div class="commentRepliesText">replies</div>
-                <div class="commentDropDownIcon"></div>
+               {% if comment.SubComments|length > 0 %} <div class="commentDropDownIcon"></div> {% endif %}
             </div>
             <div class="replyBox">
+		{% if auth %}
                 <br><br>
-                 {{ comment.Voted | raw }}
                 <h5>Leave your reply:</h5>
                 <form action="" method='post'>
                     <textarea class="commentBox" rows="4" cols="60" name="comment"> </textarea>
                     <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
                     <input type='submit' name='submit' class="styleButton right" value="Submit">
                 </form>
+		{% else %}
+			<br><br>
+			<p>
+			You must be logged in to leave a reply!
+			</p>
+		{% endif %}
             </div>
         </div>
             <div class="subcomments" style='display:none;'>
@@ -78,12 +84,16 @@
                         <div class="commentNewReplyText">reply</div>
                         <br>
                         <div class="replyBox">
+			    {% if auth %}
                             <h5>Leave your reply:</h5>
                             <form action="" method='post'>
                                 <textarea class="commentBox" rows="4" cols="60" name="comment">@{{subcomment.user.Username}} </textarea>
                                 <input type="hidden" name="topCommentID" value="{{comment.Comment_ID}}">
                                 <input type='submit' name='submit' class="styleButton right" value="Submit">
                             </form>
+			   {% else %}
+				You must be logged in to leave a reply!
+			   {% endif %}
                         </div>
                     </div>
                 </div>
@@ -91,11 +101,17 @@
             </div>
         </div>
         {% endfor %}
+	{% if auth  %}
         <h5>Leave your comment:</h5>
         <form action="" method='post'>
             <textarea class="commentBox" rows="4" cols="60" name="comment" placeholder="Comment..."></textarea>
             <input type='submit' name='submit' class="styleButton right" value="Submit">
         </form>
+	{% else %}
+		<p>
+			You must be logged in to leave a reply!
+		</p>
+	{% endif %}
        <!--  <div class="pageNumberHolder">
          <div class="pageNumber">
              <div class="styleButton"><</div>
