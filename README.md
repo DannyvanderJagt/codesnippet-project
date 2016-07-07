@@ -1,3 +1,5 @@
+***The project is over and this repo is only used as archive for our team.***
+
 # Codesnippet
 **This is a school project! Please don't create issues or pull requests!**
 
